@@ -11,13 +11,12 @@ Build instructions
 ------------------
 
 ### Windows
-From a Visual Studio command prompt, go to the `runtime` folder and do
+From a Visual Studio command prompt:
 ```
 cl source\main.c
 ```
 
 ### Mac
-Go to the `runtime` folder and do
 ```
 clang source/main.c -lSDL2 -lGLEW -framework OpenGL
 ```
@@ -28,7 +27,6 @@ brew install sdl2 glew
 ```
 
 ### Linux
-Go to the `runtime` folder and do
 ```
 gcc source/main.c -lSDL2 -lGLEW -lGL -lm -lpthread
 ```
