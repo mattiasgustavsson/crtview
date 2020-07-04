@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: install dependencies
         run: brew install sdl2 glew
-      - name: build svgs
+      - name: build crtview
         run: |
           clang source/main.c -lSDL2 -lGLEW -framework OpenGL
   build-linux-gcc:
@@ -30,6 +30,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -qq libsdl2-dev
           sudo apt-get install -qq libglew-dev
-      - name: build svgs
+      - name: build crtview
         run: |
           gcc source/main.c -lSDL2 -lGLEW -lGL -lm -lpthread
