@@ -7,6 +7,8 @@ ESC to exit
 
 Pass the filename of your image as command-line parameter (or just drag-drop it onto the EXE)
 
+Pre-built binaries can be found here: https://mattiasgustavsson.itch.io/crtview
+
 Build instructions
 ------------------
 
