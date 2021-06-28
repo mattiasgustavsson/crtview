@@ -47,7 +47,7 @@ void app_log( app_t* app, app_log_level_t level, char const* message );
 void app_fatal_error( app_t* app, char const* message );
 
 void app_pointer( app_t* app, int width, int height, APP_U32* pixels_abgr, int hotspot_x, int hotspot_y );
-void app_pointer_default( app_t* app, int* width, int* height, APP_U32* pixels_abgr, int* hotspot_x, int* hotspot_y ); 
+void app_pointer_default( app_t* app, int* width, int* height, APP_U32* pixels_abgr, int* hotspot_x, int* hotspot_y );
 
 void app_pointer_pos( app_t* app, int x, int y );
 int app_pointer_x( app_t* app );
@@ -70,7 +70,7 @@ void app_window_pos( app_t* app, int x, int y );
 int app_window_x( app_t* app );
 int app_window_y( app_t* app );
 
-typedef struct app_display_t 
+typedef struct app_display_t
     {
     char id[ 64 ];
     int x;
@@ -84,42 +84,42 @@ app_displays_t app_displays( app_t* app );
 
 void app_present( app_t* app, APP_U32 const* pixels_xbgr, int width, int height, APP_U32 mod_xbgr, APP_U32 border_xbgr );
 
-void app_sound( app_t* app, int sample_pairs_count, 
+void app_sound( app_t* app, int sample_pairs_count,
     void (*sound_callback)( APP_S16* sample_pairs, int sample_pairs_count, void* user_data ), void* user_data );
 void app_sound_volume( app_t* app, float volume );
 
-typedef enum app_key_t { APP_KEY_INVALID, APP_KEY_LBUTTON, APP_KEY_RBUTTON, APP_KEY_CANCEL, APP_KEY_MBUTTON, 
-    APP_KEY_XBUTTON1, APP_KEY_XBUTTON2, APP_KEY_BACK, APP_KEY_TAB, APP_KEY_CLEAR, APP_KEY_RETURN, APP_KEY_SHIFT, 
-    APP_KEY_CONTROL, APP_KEY_MENU, APP_KEY_PAUSE, APP_KEY_CAPITAL, APP_KEY_KANA, APP_KEY_HANGUL = APP_KEY_KANA, 
-    APP_KEY_JUNJA, APP_KEY_FINAL, APP_KEY_HANJA, APP_KEY_KANJI = APP_KEY_HANJA, APP_KEY_ESCAPE, APP_KEY_CONVERT, 
-    APP_KEY_NONCONVERT, APP_KEY_ACCEPT, APP_KEY_MODECHANGE, APP_KEY_SPACE, APP_KEY_PRIOR, APP_KEY_NEXT, APP_KEY_END, 
-    APP_KEY_HOME, APP_KEY_LEFT, APP_KEY_UP, APP_KEY_RIGHT, APP_KEY_DOWN, APP_KEY_SELECT, APP_KEY_PRINT, APP_KEY_EXEC, 
-    APP_KEY_SNAPSHOT, APP_KEY_INSERT, APP_KEY_DELETE, APP_KEY_HELP, APP_KEY_0, APP_KEY_1, APP_KEY_2, APP_KEY_3, 
-    APP_KEY_4, APP_KEY_5, APP_KEY_6, APP_KEY_7, APP_KEY_8, APP_KEY_9, APP_KEY_A, APP_KEY_B, APP_KEY_C, APP_KEY_D, 
-    APP_KEY_E, APP_KEY_F, APP_KEY_G, APP_KEY_H, APP_KEY_I, APP_KEY_J, APP_KEY_K, APP_KEY_L, APP_KEY_M, APP_KEY_N, 
-    APP_KEY_O, APP_KEY_P, APP_KEY_Q, APP_KEY_R, APP_KEY_S, APP_KEY_T, APP_KEY_U, APP_KEY_V, APP_KEY_W, APP_KEY_X, 
-    APP_KEY_Y, APP_KEY_Z, APP_KEY_LWIN, APP_KEY_RWIN, APP_KEY_APPS, APP_KEY_SLEEP, APP_KEY_NUMPAD0, APP_KEY_NUMPAD1, 
-    APP_KEY_NUMPAD2, APP_KEY_NUMPAD3, APP_KEY_NUMPAD4, APP_KEY_NUMPAD5, APP_KEY_NUMPAD6, APP_KEY_NUMPAD7, 
-    APP_KEY_NUMPAD8, APP_KEY_NUMPAD9, APP_KEY_MULTIPLY, APP_KEY_ADD, APP_KEY_SEPARATOR, APP_KEY_SUBTRACT, 
-    APP_KEY_DECIMAL, APP_KEY_DIVIDE, APP_KEY_F1, APP_KEY_F2, APP_KEY_F3, APP_KEY_F4, APP_KEY_F5, APP_KEY_F6, APP_KEY_F7, 
-    APP_KEY_F8, APP_KEY_F9, APP_KEY_F10, APP_KEY_F11, APP_KEY_F12, APP_KEY_F13, APP_KEY_F14, APP_KEY_F15, APP_KEY_F16, 
-    APP_KEY_F17, APP_KEY_F18, APP_KEY_F19, APP_KEY_F20, APP_KEY_F21, APP_KEY_F22, APP_KEY_F23, APP_KEY_F24, 
-    APP_KEY_NUMLOCK, APP_KEY_SCROLL, APP_KEY_LSHIFT, APP_KEY_RSHIFT, APP_KEY_LCONTROL, APP_KEY_RCONTROL, APP_KEY_LMENU, 
-    APP_KEY_RMENU, APP_KEY_BROWSER_BACK, APP_KEY_BROWSER_FORWARD, APP_KEY_BROWSER_REFRESH, APP_KEY_BROWSER_STOP, 
-    APP_KEY_BROWSER_SEARCH, APP_KEY_BROWSER_FAVORITES, APP_KEY_BROWSER_HOME, APP_KEY_VOLUME_MUTE, APP_KEY_VOLUME_DOWN, 
-    APP_KEY_VOLUME_UP, APP_KEY_MEDIA_NEXT_TRACK, APP_KEY_MEDIA_PREV_TRACK, APP_KEY_MEDIA_STOP, APP_KEY_MEDIA_PLAY_PAUSE, 
-    APP_KEY_LAUNCH_MAIL, APP_KEY_LAUNCH_MEDIA_SELECT, APP_KEY_LAUNCH_APP1, APP_KEY_LAUNCH_APP2, APP_KEY_OEM_1, 
-    APP_KEY_OEM_PLUS, APP_KEY_OEM_COMMA, APP_KEY_OEM_MINUS, APP_KEY_OEM_PERIOD, APP_KEY_OEM_2, APP_KEY_OEM_3, 
-    APP_KEY_OEM_4, APP_KEY_OEM_5, APP_KEY_OEM_6, APP_KEY_OEM_7, APP_KEY_OEM_8, APP_KEY_OEM_102, APP_KEY_PROCESSKEY, 
-    APP_KEY_ATTN, APP_KEY_CRSEL, APP_KEY_EXSEL, APP_KEY_EREOF, APP_KEY_PLAY, APP_KEY_ZOOM, APP_KEY_NONAME, APP_KEY_PA1, 
+typedef enum app_key_t { APP_KEY_INVALID, APP_KEY_LBUTTON, APP_KEY_RBUTTON, APP_KEY_CANCEL, APP_KEY_MBUTTON,
+    APP_KEY_XBUTTON1, APP_KEY_XBUTTON2, APP_KEY_BACK, APP_KEY_TAB, APP_KEY_CLEAR, APP_KEY_RETURN, APP_KEY_SHIFT,
+    APP_KEY_CONTROL, APP_KEY_MENU, APP_KEY_PAUSE, APP_KEY_CAPITAL, APP_KEY_KANA, APP_KEY_HANGUL = APP_KEY_KANA,
+    APP_KEY_JUNJA, APP_KEY_FINAL, APP_KEY_HANJA, APP_KEY_KANJI = APP_KEY_HANJA, APP_KEY_ESCAPE, APP_KEY_CONVERT,
+    APP_KEY_NONCONVERT, APP_KEY_ACCEPT, APP_KEY_MODECHANGE, APP_KEY_SPACE, APP_KEY_PRIOR, APP_KEY_NEXT, APP_KEY_END,
+    APP_KEY_HOME, APP_KEY_LEFT, APP_KEY_UP, APP_KEY_RIGHT, APP_KEY_DOWN, APP_KEY_SELECT, APP_KEY_PRINT, APP_KEY_EXEC,
+    APP_KEY_SNAPSHOT, APP_KEY_INSERT, APP_KEY_DELETE, APP_KEY_HELP, APP_KEY_0, APP_KEY_1, APP_KEY_2, APP_KEY_3,
+    APP_KEY_4, APP_KEY_5, APP_KEY_6, APP_KEY_7, APP_KEY_8, APP_KEY_9, APP_KEY_A, APP_KEY_B, APP_KEY_C, APP_KEY_D,
+    APP_KEY_E, APP_KEY_F, APP_KEY_G, APP_KEY_H, APP_KEY_I, APP_KEY_J, APP_KEY_K, APP_KEY_L, APP_KEY_M, APP_KEY_N,
+    APP_KEY_O, APP_KEY_P, APP_KEY_Q, APP_KEY_R, APP_KEY_S, APP_KEY_T, APP_KEY_U, APP_KEY_V, APP_KEY_W, APP_KEY_X,
+    APP_KEY_Y, APP_KEY_Z, APP_KEY_LWIN, APP_KEY_RWIN, APP_KEY_APPS, APP_KEY_SLEEP, APP_KEY_NUMPAD0, APP_KEY_NUMPAD1,
+    APP_KEY_NUMPAD2, APP_KEY_NUMPAD3, APP_KEY_NUMPAD4, APP_KEY_NUMPAD5, APP_KEY_NUMPAD6, APP_KEY_NUMPAD7,
+    APP_KEY_NUMPAD8, APP_KEY_NUMPAD9, APP_KEY_MULTIPLY, APP_KEY_ADD, APP_KEY_SEPARATOR, APP_KEY_SUBTRACT,
+    APP_KEY_DECIMAL, APP_KEY_DIVIDE, APP_KEY_F1, APP_KEY_F2, APP_KEY_F3, APP_KEY_F4, APP_KEY_F5, APP_KEY_F6, APP_KEY_F7,
+    APP_KEY_F8, APP_KEY_F9, APP_KEY_F10, APP_KEY_F11, APP_KEY_F12, APP_KEY_F13, APP_KEY_F14, APP_KEY_F15, APP_KEY_F16,
+    APP_KEY_F17, APP_KEY_F18, APP_KEY_F19, APP_KEY_F20, APP_KEY_F21, APP_KEY_F22, APP_KEY_F23, APP_KEY_F24,
+    APP_KEY_NUMLOCK, APP_KEY_SCROLL, APP_KEY_LSHIFT, APP_KEY_RSHIFT, APP_KEY_LCONTROL, APP_KEY_RCONTROL, APP_KEY_LMENU,
+    APP_KEY_RMENU, APP_KEY_BROWSER_BACK, APP_KEY_BROWSER_FORWARD, APP_KEY_BROWSER_REFRESH, APP_KEY_BROWSER_STOP,
+    APP_KEY_BROWSER_SEARCH, APP_KEY_BROWSER_FAVORITES, APP_KEY_BROWSER_HOME, APP_KEY_VOLUME_MUTE, APP_KEY_VOLUME_DOWN,
+    APP_KEY_VOLUME_UP, APP_KEY_MEDIA_NEXT_TRACK, APP_KEY_MEDIA_PREV_TRACK, APP_KEY_MEDIA_STOP, APP_KEY_MEDIA_PLAY_PAUSE,
+    APP_KEY_LAUNCH_MAIL, APP_KEY_LAUNCH_MEDIA_SELECT, APP_KEY_LAUNCH_APP1, APP_KEY_LAUNCH_APP2, APP_KEY_OEM_1,
+    APP_KEY_OEM_PLUS, APP_KEY_OEM_COMMA, APP_KEY_OEM_MINUS, APP_KEY_OEM_PERIOD, APP_KEY_OEM_2, APP_KEY_OEM_3,
+    APP_KEY_OEM_4, APP_KEY_OEM_5, APP_KEY_OEM_6, APP_KEY_OEM_7, APP_KEY_OEM_8, APP_KEY_OEM_102, APP_KEY_PROCESSKEY,
+    APP_KEY_ATTN, APP_KEY_CRSEL, APP_KEY_EXSEL, APP_KEY_EREOF, APP_KEY_PLAY, APP_KEY_ZOOM, APP_KEY_NONAME, APP_KEY_PA1,
     APP_KEY_OEM_CLEAR, APP_KEYCOUNT } app_key_t;
 
-typedef enum app_input_type_t { APP_INPUT_KEY_DOWN, APP_INPUT_KEY_UP, APP_INPUT_DOUBLE_CLICK, APP_INPUT_CHAR, 
+typedef enum app_input_type_t { APP_INPUT_KEY_DOWN, APP_INPUT_KEY_UP, APP_INPUT_DOUBLE_CLICK, APP_INPUT_CHAR,
     APP_INPUT_MOUSE_MOVE, APP_INPUT_MOUSE_DELTA, APP_INPUT_SCROLL_WHEEL, APP_INPUT_TABLET } app_input_type_t;
 
 typedef enum app_pressed_t { APP_NOT_PRESSED, APP_PRESSED, } app_pressed_t;
 
-typedef struct app_input_event_t 
+typedef struct app_input_event_t
     {
     app_input_type_t type;
     union data_t
@@ -138,6 +138,8 @@ app_input_t app_input( app_t* app );
 
 void app_coordinates_window_to_bitmap( app_t* app, int width, int height, int* x, int* y );
 void app_coordinates_bitmap_to_window( app_t* app, int width, int height, int* x, int* y );
+
+char const* app_last_dropped_file( app_t* app );
 
 #endif /* app_h */
 
@@ -194,9 +196,9 @@ API Documentation
 
 app.h is a single-header library, and does not need any .lib files or other binaries, or any build scripts. To use it,
 you just include app.h to get the API declarations. To get the definitions, you must include app.h from *one* single
-C or C++ file, and #define the symbol `APP_IMPLEMENTATION` before you do. 
+C or C++ file, and #define the symbol `APP_IMPLEMENTATION` before you do.
 
-As app.h is meant to be a cross platform library (even though only windows is supported right now), you must also 
+As app.h is meant to be a cross platform library (even though only windows is supported right now), you must also
 define which platform you are running on, like this:
 
     #define APP_IMPLEMENTATION
@@ -207,10 +209,10 @@ define which platform you are running on, like this:
 Customization
 -------------
 There are a few different things in app.h which are configurable by #defines. Most of the API use the `int` data type,
-for integer values where the exact size is not important. However, for some functions, it specifically makes use of 16, 
+for integer values where the exact size is not important. However, for some functions, it specifically makes use of 16,
 32 and 64 bit data types. These default to using `short`, `unsigned int` and `unsigned long long` by default, but can be
-redefined by #defining APP_S16, APP_U32 and APP_U64 respectively, before including app.h. This is useful if you, for 
-example, use the types from `<stdint.h>` in the rest of your program, and you want app.h to use compatible types. In 
+redefined by #defining APP_S16, APP_U32 and APP_U64 respectively, before including app.h. This is useful if you, for
+example, use the types from `<stdint.h>` in the rest of your program, and you want app.h to use compatible types. In
 this case, you would include app.h using the following code:
 
     #define APP_S16 int16_t
@@ -218,7 +220,7 @@ this case, you would include app.h using the following code:
     #define APP_U64 uint64_t
     #include "app.h"
 
-Note that when customizing the data types, you need to use the same definition in every place where you include app.h, 
+Note that when customizing the data types, you need to use the same definition in every place where you include app.h,
 as they affect the declarations as well as the definitions.
 
 The rest of the customizations only affect the implementation, so will only need to be defined in the file where you
@@ -249,10 +251,10 @@ If no custom allocator is defined, app.h will default to `malloc` and `free` fro
 
 ### Custom logging function
 
-There's a bunch of things being logged when app.h runs. It will log an informational entry with the date and time for 
-when the app is started and stopped, it will log warnings when non-essential initialization fails, and it will log 
+There's a bunch of things being logged when app.h runs. It will log an informational entry with the date and time for
+when the app is started and stopped, it will log warnings when non-essential initialization fails, and it will log
 error messages when things go wrong. By default, logging is done by a simple printf to stdout. As some applications may
-need a different behavior, such as writing out a log file, it is possible to override the default logging behavior 
+need a different behavior, such as writing out a log file, it is possible to override the default logging behavior
 through defines like this:
 
     #define APP_IMPLEMENTATION
@@ -291,7 +293,7 @@ Creates a new app instance, calls the given app_proc and waits for it to return.
 
 * app_proc - function pointer to the user defined starting point of the app. The parameters to that function are:
     app_t* a pointer to the app instance. This is an opaque type, and it is passed to all other functions in the API.
-    void* pointer to the user defined data that was passed as the `user_data` parameter to `app_run`.   
+    void* pointer to the user defined data that was passed as the `user_data` parameter to `app_run`.
 * user_data - pointer to user defined data which will be passed through to app_proc. May be NULL.
 * memctx - pointer to user defined data which will be passed through to custom APP_MALLOC/APP_FREE calls. May be NULL.
 * logctx - pointer to user defined data to be passed through to custom APP_LOG calls. May be NULL.
@@ -299,7 +301,7 @@ Creates a new app instance, calls the given app_proc and waits for it to return.
 
 When app_run is called, it will perform all the initialization needed by app.h, and create an `app_t*` instance. It will
 then call the user-specified `app_proc`, and wait for it to return. The `app_t*` instance will be passed to `app_proc`,
-and can be used to call other functions in the API. When returning from `app_proc`, a return value is specified, and 
+and can be used to call other functions in the API. When returning from `app_proc`, a return value is specified, and
 `app_run` will perform termination and cleanup, and destroy the `app_t*` instance, and then return the same value it got
 from the `app_proc`. After `app_run` returns, the `app_t*` value is no longer valid for use in any API calls.
 
@@ -355,7 +357,7 @@ the full path.
 
 app_userdata
 ------------
-    
+
     char const* app_userdata( app_t* app )
 
 Returns the full path to a directory where a users personal files can be stored. Depending on the access rights of the
@@ -380,7 +382,7 @@ app_time_count
 
     APP_U64 app_time_count( app_t* app )
 
-Returns the current value of the high precision clock. The epoch is undefined, and the resolution can vary between 
+Returns the current value of the high precision clock. The epoch is undefined, and the resolution can vary between
 systems. Use `app_time_freq` to convert to seconds. Typical use is to make two calls to `app_time_count` and calculate
 the difference, to measure the time elapsed between the two calls.
 
@@ -441,11 +443,11 @@ app_pointer_default
 Retrieves the width, height, pixel data and hotspot for the default mouse pointer. Useful for restoring the default
 pointer after using `app_pointer`, or for doing software rendered pointers. Called with the following parameters:
 
-* width, height - pointers to integer values that are to receive the width and height of the pointer. May be NULL.  
+* width, height - pointers to integer values that are to receive the width and height of the pointer. May be NULL.
 * pixels_abgr - width x height number of pixels to receive the pointer bitmap. May be NULL
-* hotspot_x, hotspot_y - pointers to integer values that are to receive the hotspot coordinates. May be NULL.    
+* hotspot_x, hotspot_y - pointers to integer values that are to receive the hotspot coordinates. May be NULL.
 
-A typical pattern for calling `app_pointer_default` is to first call it with `pixels_abgr` as NULL, to query the bitmaps 
+A typical pattern for calling `app_pointer_default` is to first call it with `pixels_abgr` as NULL, to query the bitmaps
 dimensions, and then call it again after preparing a large enough memory area.
 
 
@@ -463,8 +465,8 @@ app_pointer_limit
 
     void app_pointer_limit( app_t* app, int x, int y, int width, int height )
 
-Locks the mouse pointer movements to stay within the specified area, in window coordinates. The function 
-`app_coordinates_bitmap_to_window` can be used to convert between the coordinate system of the currently displayed 
+Locks the mouse pointer movements to stay within the specified area, in window coordinates. The function
+`app_coordinates_bitmap_to_window` can be used to convert between the coordinate system of the currently displayed
 bitmap and that of the window.
 
 
@@ -481,9 +483,9 @@ app_interpolation
 
     void app_interpolation( app_t* app, app_interpolation_t interpolation )
 
-app.h supports two different modes of displaying a bitmap. When using `APP_INTERPOLATION_LINEAR`, the bitmap will be 
+app.h supports two different modes of displaying a bitmap. When using `APP_INTERPOLATION_LINEAR`, the bitmap will be
 drawn with bilinear interpolations, stretching it to fill the window (maintaining aspect ratio), giving it a smooth, if
-somwhat blurry, look. With `APP_INTERPOLATION_NONE`, scaling will only be done on whole pixel ratios, using no 
+somwhat blurry, look. With `APP_INTERPOLATION_NONE`, scaling will only be done on whole pixel ratios, using no
 interpolation, which is particularly suitable to maintain the clean, precise look of pixel art.
 `APP_INTERPOLATION_LINEAR` is the default setting.
 
@@ -519,7 +521,7 @@ app_window_width/app_window_height
 
 Returns the current dimensions of the window (which might have been resized by the user). Regardless of whether the app
 is currently in fullscreen or windowed mode, `app_window_width` and `app_window_height` returns the dimension the window
-*would* have in windowed mode. Width and height specifies the size of the windows client area, not counting borders, 
+*would* have in windowed mode. Width and height specifies the size of the windows client area, not counting borders,
 title bar or decorations.
 
 
@@ -528,8 +530,8 @@ app_window_pos
 
     void app_window_pos( app_t* app, int x, int y )
 
-Sets the position of the top left corner of the window. If currently in `APP_SCREENMODE_FULLSCREEN` screen mode, the 
-setting will not take effect until switching to `APP_SCREENMODE_WINDOW`. 
+Sets the position of the top left corner of the window. If currently in `APP_SCREENMODE_FULLSCREEN` screen mode, the
+setting will not take effect until switching to `APP_SCREENMODE_WINDOW`.
 
 
 app_window_x/app_window_y
@@ -538,8 +540,8 @@ app_window_x/app_window_y
     int app_window_x( app_t* app )
     int app_window_y( app_t* app )
 
-Returns the current position of the windows top left corner. Regardless of whether the app is currently in fullscreen or 
-windowed mode, `app_window_x` and `app_window_y` returns the position the window *would* have in windowed mode. 
+Returns the current position of the windows top left corner. Regardless of whether the app is currently in fullscreen or
+windowed mode, `app_window_x` and `app_window_y` returns the position the window *would* have in windowed mode.
 
 
 app_displays
@@ -555,14 +557,14 @@ Returns a list of all displays connected to the system. For each display, the fo
 
 app_present
 -----------
-    
+
     void app_present( app_t* app, APP_U32 const* pixels_xbgr, int width, int height, APP_U32 mod_xbgr, APP_U32 border_xbgr )
 
 app.h provides a very minimal API for drawing - the only thing you can really do, is provide it with a bitmap for it to
-display on the screen. It is then up to the rest of your program to implement code for drawing shapes or sprites onto 
-that bitmap. When all your drawing is done, you call `app_present` passing it the bitmap, and it will be displayed on 
+display on the screen. It is then up to the rest of your program to implement code for drawing shapes or sprites onto
+that bitmap. When all your drawing is done, you call `app_present` passing it the bitmap, and it will be displayed on
 the screen. `app_present` takes the following parameters:
-* pixels_xbgr - width x height number of pixels making up the bitmap to be presented, each pixel being a 32-bit unsigned 
+* pixels_xbgr - width x height number of pixels making up the bitmap to be presented, each pixel being a 32-bit unsigned
     integer where the highest 8 bits are not used, and the following 8-bit groups are blue, green and red channels. This
     parameter may be NULL, in which case no bitmap is drawn, to allow for custom rendering. See below for details.
 * width, height - the horizontal and vertical dimensions of the bitmap
@@ -572,8 +574,8 @@ the screen. `app_present` takes the following parameters:
     are visible when the window aspect ratio does not match that of the bitmap, so you get bars above or below it.
 
 Since app.h uses opengl, you can also opt to not pass a bitmap to `app_present`, by passing NULL as the `pixels_xbgr`
-parameter (in which case the rest of the parameters are ignored). When doing this, it is up to your program to perform 
-drawing using opengl calls. In this case `app_present` will work as a call to SwapBuffers only. Note that glSetViewPort 
+parameter (in which case the rest of the parameters are ignored). When doing this, it is up to your program to perform
+drawing using opengl calls. In this case `app_present` will work as a call to SwapBuffers only. Note that glSetViewPort
 will be automatically called whenever the window is resized.
 
 
@@ -601,7 +603,7 @@ app_sound_position
 
 Returns the current playback position of the sound stream, given in the number of sample pairs from the start of the
 buffer. Typical use of a streaming sound buffer is to fill the buffer with data, wait for the playback position to get
-passed the mid point of the buffer, and then write the next bit of data over the part that has already been played, and 
+passed the mid point of the buffer, and then write the next bit of data over the part that has already been played, and
 so on.
 
 
@@ -632,22 +634,22 @@ app_input
 
     app_input_t app_input( app_t* app )
 
-Returns a list of input events which occured since the last call to `app_input`. Each input event can be of one of a 
+Returns a list of input events which occured since the last call to `app_input`. Each input event can be of one of a
 list of types, and the `type` field of the `app_input_event_t` struct specifies which type the event is. The `data`
 struct is a union of fields, where only one of them is valid, depending on the value of `type`:
 * APP_INPUT_KEY_DOWN, APP_INPUT_KEY_UP, APP_INPUT_DOUBLE_CLICK - use the `key` field of the `data` union, which contains
     one of the keyboard key identifiers from the `app_key_t` enumeration. `APP_INPUT_KEY_DOWN` means a key was pressed,
     or that it was held long enough for the key repeat to kick in. `APP_INPUT_KEY_UP` means a key was released, and is
-    not sent on key repeats. For both these events, a `key` may also mean a mouse button, as those are listed in the 
-    `app_key_t` enum. `APP_INPUT_DOUBLE_CLICK` means a mouse button have been double clicked, and is not sent for 
+    not sent on key repeats. For both these events, a `key` may also mean a mouse button, as those are listed in the
+    `app_key_t` enum. `APP_INPUT_DOUBLE_CLICK` means a mouse button have been double clicked, and is not sent for
     keyboard keys.
 * APP_INPUT_CHAR - use the `char_code` field of the `data` union, which contains the ASCII value of the key that was
-    pressed. This is used to read text input, and will handle things like upper/lower case, and characters which 
-    requires multiple keys to be pressed in sequence to generate one input. This means that generally, when a key is 
+    pressed. This is used to read text input, and will handle things like upper/lower case, and characters which
+    requires multiple keys to be pressed in sequence to generate one input. This means that generally, when a key is
     pressed, you will get both an `APP_INPUT_KEY_DOWN` event and an `APP_INPUT_CHAR` event - just use the one you are
     interested in, and ignore the other.
 * APP_INPUT_MOUSE_MOVE - use the `mouse_pos` field of the `data` union, which contains the x and y position of the
-    mouse pointer, in window coordinates. The function `app_coordinates_window_to_bitmap` can be used to convert between 
+    mouse pointer, in window coordinates. The function `app_coordinates_window_to_bitmap` can be used to convert between
     the coordinate system of the window and that of the currently displayed bitmap. The `APP_INPUT_MOUSE_MOVE` event is
     sent whenever the user moves the mouse, as long as the window has focus and the pointer is inside its client area.
 * APP_INPUT_MOUSE_DELTA - use the `mouse_delta` field of the `data` union, which contains the horizontal and vertical
@@ -662,9 +664,9 @@ struct is a union of fields, where only one of them is valid, depending on the v
     the scroll wheel on the mouse was turned, where positive values indicate that the wheel have been rotated away from
     the user, and negative values means it has turned towards the user. The `APP_INPUT_SCROLL_WHEEL` is sent every time
     the user turns the scroll wheel, as long as the window has focus.
-* APP_INPUT_TABLET - use the `tablet` field of the `data` union, which contains details about the pen used with a 
-    graphical tablet, if connected and installed. The `x` and `y` fields are the horizontal and vertical positions of 
-    the pen on the tablet, scaled to the coordinate system of the window. The function `app_coordinates_window_to_bitmap` 
+* APP_INPUT_TABLET - use the `tablet` field of the `data` union, which contains details about the pen used with a
+    graphical tablet, if connected and installed. The `x` and `y` fields are the horizontal and vertical positions of
+    the pen on the tablet, scaled to the coordinate system of the window. The function `app_coordinates_window_to_bitmap`
     can be used to convert between the coordinate system of the window and that of the currently displayed bitmap. The
     `pressure` field is the current pressure of the pen against the tablet, in normalized 0.0f to 1.0f range, inclusive,
     where 0.0f means no pressure and 1.0f means full pressure. The `tip` field is set to `APP_PRESSED` if the tip of the
@@ -685,8 +687,8 @@ fullscreen or windowed mode, and how the bitmap is stretched or padded depending
 used: `APP_INTERPOLATION_NONE` or `APP_INTERPOLATION_LINEAR`. `app_coordinates_window_to_bitmap` performs this
 translation, and is called with the following parameters:
 * width, height - dimensions of the bitmap being presented, the same as the ones passed to `app_present`.
-* x, y - pointers to integer values containing the coordinate, in the coordinate system of the window, to be translated. 
-    When the function returns, their values will have been updated with the corresponding position in the coordinate 
+* x, y - pointers to integer values containing the coordinate, in the coordinate system of the window, to be translated.
+    When the function returns, their values will have been updated with the corresponding position in the coordinate
     system of the bitmap.
 
 
@@ -695,9 +697,17 @@ app_coordinates_bitmap_to_window
 
     void app_coordinates_bitmap_to_window( app_t* app, int width, int height, int* x, int* y )
 
-This performs the opposite translation to `app_coordinates_window_to_bitmap` - it converts a position given in the 
+This performs the opposite translation to `app_coordinates_window_to_bitmap` - it converts a position given in the
 coordinate system of the bitmap into the coordinate system of the window. See `app_coordinates_window_to_bitmap` for
 details.
+
+app_last_dropped_file
+--------------------------------
+    char const* app_last_dropped_file( app_t* app )
+
+Returns the file name of the last file dropped on the app window, or NULL if no file has been set or if the
+backend implementation does not support file drag & drop. The returned string needs to be freed via APP_FREE()
+by the user of the function.
 
 **/
 
@@ -720,7 +730,7 @@ details.
 
 #if defined( APP_WINDOWS )
 
-    #define _CRT_NONSTDC_NO_DEPRECATE 
+    #define _CRT_NONSTDC_NO_DEPRECATE
     #ifndef _CRT_SECURE_NO_WARNINGS
         #define _CRT_SECURE_NO_WARNINGS
     #endif
@@ -735,7 +745,7 @@ details.
     typedef unsigned char APP_GLboolean;
     typedef size_t APP_GLsizeiptr;
     typedef unsigned int APP_GLbitfield;
-    
+
     #define APP_GL_FLOAT 0x1406
     #define APP_GL_FALSE 0
     #define APP_GL_FRAGMENT_SHADER 0x8b30
@@ -770,7 +780,7 @@ details.
     typedef GLboolean APP_GLboolean;
     typedef GLsizeiptr APP_GLsizeiptr;
     typedef GLbitfield APP_GLbitfield;
-    
+
     #define APP_GL_FLOAT GL_FLOAT
     #define APP_GL_FALSE GL_FALSE
     #define APP_GL_FRAGMENT_SHADER GL_FRAGMENT_SHADER
@@ -790,9 +800,9 @@ details.
     #define APP_GL_UNSIGNED_BYTE GL_UNSIGNED_BYTE
     #define APP_GL_COLOR_BUFFER_BIT GL_COLOR_BUFFER_BIT
     #define APP_GL_TRIANGLE_FAN GL_TRIANGLE_FAN
-    
+
 #else
-    
+
     #error Undefined platform. Define APP_WINDOWS, APP_SDL or APP_NULL.
     #define APP_GLCALLTYPE
     typedef int APP_GLuint;
@@ -856,8 +866,8 @@ struct app_internal_opengl_t
     int window_height;
 
     APP_GLuint vertexbuffer;
-    APP_GLuint texture; 
-    APP_GLuint shader;  
+    APP_GLuint texture;
+    APP_GLuint shader;
     };
 
 
@@ -869,7 +879,7 @@ static int app_internal_opengl_init( app_t* app, struct app_internal_opengl_t* g
     gl->window_width = window_width;
     gl->window_height = window_height;
 
-    char const* vs_source = 
+    char const* vs_source =
         "#version 120\n"
         "attribute vec4 pos;"
         "varying vec2 uv;"
@@ -881,7 +891,7 @@ static int app_internal_opengl_init( app_t* app, struct app_internal_opengl_t* g
         "    }"
         ;
 
-    char const* fs_source = 
+    char const* fs_source =
         "#version 120\n"
         "varying vec2 uv;"
         ""
@@ -895,7 +905,7 @@ static int app_internal_opengl_init( app_t* app, struct app_internal_opengl_t* g
         ;
 
     #ifdef APP_REPORT_SHADER_ERRORS
-        char error_message[ 1024 ]; 
+        char error_message[ 1024 ];
     #endif
 
     APP_GLuint vs = gl->CreateShader( APP_GL_VERTEX_SHADER );
@@ -905,18 +915,18 @@ static int app_internal_opengl_init( app_t* app, struct app_internal_opengl_t* g
     gl->GetShaderiv( vs, APP_GL_COMPILE_STATUS, &vs_compiled );
     if( !vs_compiled )
         {
-        #ifdef APP_REPORT_SHADER_ERRORS     
+        #ifdef APP_REPORT_SHADER_ERRORS
             char const* prefix = "Vertex Shader Error: ";
             memcpy( error_message, prefix, strlen( prefix ) + 1 );
             int len = 0, written = 0;
             gl->GetShaderiv( vs, APP_GL_INFO_LOG_LENGTH, &len );
-            gl->GetShaderInfoLog( vs, (APP_GLsizei)( sizeof( error_message ) - strlen( prefix ) ), &written, 
-                error_message + strlen( prefix ) );     
+            gl->GetShaderInfoLog( vs, (APP_GLsizei)( sizeof( error_message ) - strlen( prefix ) ), &written,
+                error_message + strlen( prefix ) );
             app_fatal_error( app, error_message );
         #endif
         return 0;
         }
-    
+
     APP_GLuint fs = gl->CreateShader( APP_GL_FRAGMENT_SHADER );
     gl->ShaderSource( fs, 1, (char const**) &fs_source, NULL );
     gl->CompileShader( fs );
@@ -924,13 +934,13 @@ static int app_internal_opengl_init( app_t* app, struct app_internal_opengl_t* g
     gl->GetShaderiv( fs, APP_GL_COMPILE_STATUS, &fs_compiled );
     if( !fs_compiled )
         {
-        #ifdef APP_REPORT_SHADER_ERRORS     
+        #ifdef APP_REPORT_SHADER_ERRORS
             char const* prefix = "Fragment Shader Error: ";
             memcpy( error_message, prefix, strlen( prefix ) + 1 );
             int len = 0, written = 0;
             gl->GetShaderiv( vs, APP_GL_INFO_LOG_LENGTH, &len );
-            gl->GetShaderInfoLog( fs, (APP_GLsizei)( sizeof( error_message ) - strlen( prefix ) ), &written, 
-                error_message + strlen( prefix ) );     
+            gl->GetShaderInfoLog( fs, (APP_GLsizei)( sizeof( error_message ) - strlen( prefix ) ), &written,
+                error_message + strlen( prefix ) );
             app_fatal_error( app, error_message );
         #endif
         return 0;
@@ -952,8 +962,8 @@ static int app_internal_opengl_init( app_t* app, struct app_internal_opengl_t* g
             memcpy( error_message, prefix, strlen( prefix ) + 1 );
             int len = 0, written = 0;
             gl->GetShaderiv( vs, APP_GL_INFO_LOG_LENGTH, &len );
-            gl->GetShaderInfoLog( prg, (APP_GLsizei)( sizeof( error_message ) - strlen( prefix ) ), &written, 
-                error_message + strlen( prefix ) );     
+            gl->GetShaderInfoLog( prg, (APP_GLsizei)( sizeof( error_message ) - strlen( prefix ) ), &written,
+                error_message + strlen( prefix ) );
             app_fatal_error( app, error_message );
         #endif
         return 0;
@@ -968,8 +978,8 @@ static int app_internal_opengl_init( app_t* app, struct app_internal_opengl_t* g
     gl->EnableVertexAttribArray( 0 );
     gl->VertexAttribPointer( 0, 4, APP_GL_FLOAT, APP_GL_FALSE, 4 * sizeof( APP_GLfloat ), 0 );
 
-    gl->GenTextures( 1, &gl->texture ); 
-    gl->Enable( APP_GL_TEXTURE_2D ); 
+    gl->GenTextures( 1, &gl->texture );
+    gl->Enable( APP_GL_TEXTURE_2D );
     gl->ActiveTexture( APP_GL_TEXTURE0 );
     gl->BindTexture( APP_GL_TEXTURE_2D, gl->texture );
     gl->TexParameteri( APP_GL_TEXTURE_2D, APP_GL_TEXTURE_MIN_FILTER, APP_GL_NEAREST );
@@ -982,13 +992,13 @@ static int app_internal_opengl_init( app_t* app, struct app_internal_opengl_t* g
 static int app_internal_opengl_term( struct app_internal_opengl_t* gl )
     {
     gl->DeleteProgram( gl->shader );
-    gl->DeleteBuffers( 1, &gl->vertexbuffer); 
-    gl->DeleteTextures( 1, &gl->texture ); 
+    gl->DeleteBuffers( 1, &gl->vertexbuffer);
+    gl->DeleteTextures( 1, &gl->texture );
     return 1;
     }
 
 
-static int app_internal_opengl_present( struct app_internal_opengl_t* gl, APP_U32 const* pixels_xbgr, int width, 
+static int app_internal_opengl_present( struct app_internal_opengl_t* gl, APP_U32 const* pixels_xbgr, int width,
     int height, APP_U32 mod_xbgr, APP_U32 border_xbgr )
     {
     float x1 = 0.0f, y1 = 0.0f, x2 = (float) gl->window_width, y2 = (float) gl->window_height;
@@ -1026,7 +1036,7 @@ static int app_internal_opengl_present( struct app_internal_opengl_t* gl, APP_U3
     y1 = ( y1 / gl->window_height ) * 2.0f - 1.0f;
     y2 = ( y2 / gl->window_height ) * 2.0f - 1.0f;
 
-    APP_GLfloat vertices[ 16 ]; 
+    APP_GLfloat vertices[ 16 ];
     vertices[  0 ] = x1;
     vertices[  1 ] = y1;
     vertices[  2 ] = 0.0f;
@@ -1061,7 +1071,7 @@ static int app_internal_opengl_present( struct app_internal_opengl_t* gl, APP_U3
 
     gl->ActiveTexture( APP_GL_TEXTURE0 );
     gl->BindTexture( APP_GL_TEXTURE_2D, gl->texture );
-    gl->TexImage2D( APP_GL_TEXTURE_2D, 0, APP_GL_RGBA, width, height, 0, APP_GL_RGBA, APP_GL_UNSIGNED_BYTE, pixels_xbgr ); 
+    gl->TexImage2D( APP_GL_TEXTURE_2D, 0, APP_GL_RGBA, width, height, 0, APP_GL_RGBA, APP_GL_UNSIGNED_BYTE, pixels_xbgr );
 
     if( gl->interpolation == APP_INTERPOLATION_LINEAR )
         {
@@ -1087,7 +1097,7 @@ static int app_internal_opengl_present( struct app_internal_opengl_t* gl, APP_U3
 
 static void app_internal_opengl_resize( struct app_internal_opengl_t* gl, int width, int height )
     {
-    gl->Viewport( 0, 0, width, height );    
+    gl->Viewport( 0, 0, width, height );
     gl->window_width = width;
     gl->window_height = height;
     }
@@ -1123,7 +1133,7 @@ APP_U64 app_time_freq( app_t* app ) { return 0ULL; }
 void app_log( app_t* app, app_log_level_t level, char const* message ) { }
 void app_fatal_error( app_t* app, char const* message ) { }
 void app_pointer( app_t* app, int width, int height, APP_U32* pixels_abgr, int hotspot_x, int hotspot_y ) { }
-void app_pointer_default( app_t* app, int* width, int* height, APP_U32* pixels_abgr, int* hotspot_x, int* hotspot_y ) { } 
+void app_pointer_default( app_t* app, int* width, int* height, APP_U32* pixels_abgr, int* hotspot_x, int* hotspot_y ) { }
 void app_pointer_pos( app_t* app, int x, int y ) { }
 int app_pointer_x( app_t* app ) { return 0; }
 int app_pointer_y( app_t* app ) { return 0;}
@@ -1152,17 +1162,17 @@ void app_coordinates_bitmap_to_window( app_t* app, int width, int height, int* x
 
 #elif defined( APP_WINDOWS )
 
-#define _CRT_NONSTDC_NO_DEPRECATE 
+#define _CRT_NONSTDC_NO_DEPRECATE
 #ifndef _CRT_SECURE_NO_WARNINGS
     #define _CRT_SECURE_NO_WARNINGS
 #endif
 
-#if !defined( _WIN32_WINNT ) || _WIN32_WINNT < 0x0501 
+#if !defined( _WIN32_WINNT ) || _WIN32_WINNT < 0x0501
     #undef _WIN32_WINNT
     #define _WIN32_WINNT 0x501// requires Windows XP minimum
 #endif
-// 0x0400=Windows NT 4.0, 0x0500=Windows 2000, 0x0501=Windows XP, 0x0502=Windows Server 2003, 0x0600=Windows Vista, 
-// 0x0601=Windows 7, 0x0602=Windows 8, 0x0603=Windows 8.1, 0x0A00=Windows 10, 
+// 0x0400=Windows NT 4.0, 0x0500=Windows 2000, 0x0501=Windows XP, 0x0502=Windows Server 2003, 0x0600=Windows Vista,
+// 0x0601=Windows 7, 0x0602=Windows 8, 0x0603=Windows 8.1, 0x0A00=Windows 10,
 #define _WINSOCKAPI_
 #pragma warning( push )
 #pragma warning( disable: 4619 ) // #pragma warning: there is no warning number 'nnnn'
@@ -1216,10 +1226,10 @@ void app_coordinates_bitmap_to_window( app_t* app, int width, int height, int* x
     #endif
 #endif
 
-typedef struct APP_LOGCONTEXTA 
+typedef struct APP_LOGCONTEXTA
     {
     char lcName[ 40 ]; UINT lcOptions; UINT lcStatus; UINT lcLocks; UINT lcMsgBase; UINT lcDevice; UINT lcPktRate;
-    DWORD lcPktData; DWORD lcPktMode; DWORD lcMoveMask; DWORD lcBtnDnMask; DWORD lcBtnUpMask; LONG lcInOrgX; 
+    DWORD lcPktData; DWORD lcPktMode; DWORD lcMoveMask; DWORD lcBtnDnMask; DWORD lcBtnUpMask; LONG lcInOrgX;
     LONG lcInOrgY; LONG lcInOrgZ; LONG lcInExtX; LONG lcInExtY; LONG lcInExtZ; LONG lcOutOrgX; LONG lcOutOrgY;
     LONG lcOutOrgZ; LONG lcOutExtX; LONG lcOutExtY; LONG lcOutExtZ; DWORD lcSensX; DWORD lcSensY; DWORD lcSensZ;
     BOOL lcSysMode; int lcSysOrgX; int lcSysOrgY; int lcSysExtX; int lcSysExtY; DWORD lcSysSensX; DWORD lcSysSensY;
@@ -1281,7 +1291,7 @@ typedef struct _DSBCAPS DSBCAPS;
 typedef struct _DSEFFECTDESC DSEFFECTDESC;
 struct IDirectSound8;
 
-typedef struct IDirectSoundBuffer8 { struct IDirectSoundBuffer8Vtbl* lpVtbl; } IDirectSoundBuffer8; 
+typedef struct IDirectSoundBuffer8 { struct IDirectSoundBuffer8Vtbl* lpVtbl; } IDirectSoundBuffer8;
 typedef struct IDirectSoundBuffer8Vtbl IDirectSoundBuffer8Vtbl;
 
 struct IDirectSoundBuffer8Vtbl
@@ -1327,7 +1337,7 @@ struct IDirectSoundBuffer8Vtbl
 #define IDirectSoundBuffer8_Release(p)                  (p)->lpVtbl->Release(p)
 
 
-typedef struct IDirectSound8 { struct IDirectSound8Vtbl* lpVtbl; } IDirectSound8; 
+typedef struct IDirectSound8 { struct IDirectSound8Vtbl* lpVtbl; } IDirectSound8;
 typedef struct IDirectSound8Vtbl IDirectSound8Vtbl;
 
 struct IDirectSound8Vtbl
@@ -1356,7 +1366,7 @@ struct IDirectSound8Vtbl
 #define IDirectSound8_SetCooperativeLevel(p,a,b)  (p)->lpVtbl->SetCooperativeLevel(p,a,b)
 
 
-typedef struct IDirectSoundNotify { struct IDirectSoundNotifyVtbl* lpVtbl; } IDirectSoundNotify; 
+typedef struct IDirectSoundNotify { struct IDirectSoundNotifyVtbl* lpVtbl; } IDirectSoundNotify;
 typedef struct IDirectSoundNotifyVtbl IDirectSoundNotifyVtbl;
 
 struct IDirectSoundNotifyVtbl
@@ -1418,7 +1428,7 @@ struct app_t
 
     struct app_internal_opengl_t gl;
     HMODULE gl_dll;
-    HGLRC gl_context; 
+    HGLRC gl_context;
     PROC (APP_GLCALLTYPE* wglGetProcAddress) (LPCSTR);
     HGLRC (APP_GLCALLTYPE* wglCreateContext) (HDC);
     BOOL (APP_GLCALLTYPE* wglDeleteContext) (HGLRC);
@@ -1430,7 +1440,7 @@ struct app_t
     HANDLE sound_notifications[ 2 ];
     HMODULE dsound_dll;
     struct IDirectSound8* dsound;
-    struct IDirectSoundBuffer8* dsoundbuf; 
+    struct IDirectSoundBuffer8* dsoundbuf;
     HANDLE sound_thread_handle;
     volatile LONG exit_sound_thread;
     int sample_pairs_count;
@@ -1457,7 +1467,7 @@ struct app_t
     app_display_t displays[ 16 ];
     HMONITOR displays_hmonitor[ 16 ];
 
-    struct  
+    struct
         {
         HMODULE wintab_dll;
         APP_HCTX context;
@@ -1474,39 +1484,39 @@ struct app_t
 static app_key_t app_internal_vkcode_to_appkey( app_t* app, int vkcode )
 
     {
-    int map[ 256 * 2 ] = { APP_KEY_INVALID, 0x00, APP_KEY_LBUTTON, 0x01, APP_KEY_RBUTTON, 0x02, APP_KEY_CANCEL, 0x03, APP_KEY_MBUTTON, 0x04, 
-        APP_KEY_XBUTTON1, 0x05, APP_KEY_XBUTTON2, 0x06, -1, 0x07, APP_KEY_BACK, 0x08, APP_KEY_TAB, 0x09, -1, 0x0A, -1, 0x0B, APP_KEY_CLEAR, 0x0C, 
-        APP_KEY_RETURN, 0x0D, -1, 0x0E, -1, 0x0F, APP_KEY_SHIFT, 0x10, APP_KEY_CONTROL, 0x11, APP_KEY_MENU, 0x12, APP_KEY_PAUSE, 0x13, 
-        APP_KEY_CAPITAL, 0x14, APP_KEY_KANA, 0x15, -1, 0x16, APP_KEY_JUNJA, 0x17, APP_KEY_FINAL, 0x18, APP_KEY_HANJA, 0x19, -1, 0x1A, 
-        APP_KEY_ESCAPE, 0x1B, APP_KEY_CONVERT, 0x1C, APP_KEY_NONCONVERT, 0x1D, APP_KEY_ACCEPT, 0x1E, APP_KEY_MODECHANGE, 0x1F, APP_KEY_SPACE, 0x20, 
-        APP_KEY_PRIOR, 0x21, APP_KEY_NEXT, 0x22, APP_KEY_END, 0x23, APP_KEY_HOME, 0x24, APP_KEY_LEFT, 0x25, APP_KEY_UP, 0x26, APP_KEY_RIGHT, 0x27, 
-        APP_KEY_DOWN, 0x28, APP_KEY_SELECT, 0x29, APP_KEY_PRINT, 0x2A, APP_KEY_EXEC, 0x2B, APP_KEY_SNAPSHOT, 0x2C, APP_KEY_INSERT, 0x2D, 
-        APP_KEY_DELETE, 0x2E, APP_KEY_HELP, 0x2F, APP_KEY_0, 0x30, APP_KEY_1, 0x31, APP_KEY_2, 0x32, APP_KEY_3, 0x33, APP_KEY_4, 0x34, 
-        APP_KEY_5, 0x35, APP_KEY_6, 0x36, APP_KEY_7, 0x37, APP_KEY_8, 0x38, APP_KEY_9, 0x39, -1, 0x3A, -1, 0x3B, -1, 0x3C, -1, 0x3D, -1, 0x3E, 
-        -1, 0x3F, -1, 0x40, APP_KEY_A, 0x41, APP_KEY_B, 0x42, APP_KEY_C, 0x43, APP_KEY_D, 0x44, APP_KEY_E, 0x45, APP_KEY_F, 0x46, APP_KEY_G, 0x47, 
-        APP_KEY_H, 0x48, APP_KEY_I, 0x49, APP_KEY_J, 0x4A, APP_KEY_K, 0x4B, APP_KEY_L, 0x4C, APP_KEY_M, 0x4D, APP_KEY_N, 0x4E, APP_KEY_O, 0x4F, 
-        APP_KEY_P, 0x50, APP_KEY_Q, 0x51, APP_KEY_R, 0x52, APP_KEY_S, 0x53, APP_KEY_T, 0x54, APP_KEY_U, 0x55, APP_KEY_V, 0x56, APP_KEY_W, 0x57, 
-        APP_KEY_X, 0x58, APP_KEY_Y, 0x59, APP_KEY_Z, 0x5A, APP_KEY_LWIN, 0x5B, APP_KEY_RWIN, 0x5C, APP_KEY_APPS, 0x5D, -1, 0x5E, APP_KEY_SLEEP, 0x5F, 
-        APP_KEY_NUMPAD0, 0x60, APP_KEY_NUMPAD1, 0x61, APP_KEY_NUMPAD2, 0x62, APP_KEY_NUMPAD3, 0x63, APP_KEY_NUMPAD4, 0x64, APP_KEY_NUMPAD5, 0x65, 
-        APP_KEY_NUMPAD6, 0x66, APP_KEY_NUMPAD7, 0x67, APP_KEY_NUMPAD8, 0x68, APP_KEY_NUMPAD9, 0x69, APP_KEY_MULTIPLY, 0x6A, APP_KEY_ADD, 0x6B, 
-        APP_KEY_SEPARATOR, 0x6C, APP_KEY_SUBTRACT, 0x6D, APP_KEY_DECIMAL, 0x6E, APP_KEY_DIVIDE, 0x6F, APP_KEY_F1, 0x70, APP_KEY_F2, 0x71, 
-        APP_KEY_F3, 0x72, APP_KEY_F4, 0x73, APP_KEY_F5, 0x74, APP_KEY_F6, 0x75, APP_KEY_F7, 0x76, APP_KEY_F8, 0x77, APP_KEY_F9, 0x78, 
-        APP_KEY_F10, 0x79, APP_KEY_F11, 0x7A, APP_KEY_F12, 0x7B, APP_KEY_F13, 0x7C, APP_KEY_F14, 0x7D, APP_KEY_F15, 0x7E, APP_KEY_F16, 0x7F, 
-        APP_KEY_F17, 0x80, APP_KEY_F18, 0x81, APP_KEY_F19, 0x82, APP_KEY_F20, 0x83, APP_KEY_F21, 0x84, APP_KEY_F22, 0x85, APP_KEY_F23, 0x86, 
-        APP_KEY_F24, 0x87, -1, 0x88, -1, 0x89, -1, 0x8A, -1, 0x8B, -1, 0x8C, -1, 0x8D, -1, 0x8E, -1, 0x8F, APP_KEY_NUMLOCK, 0x90, 
+    int map[ 256 * 2 ] = { APP_KEY_INVALID, 0x00, APP_KEY_LBUTTON, 0x01, APP_KEY_RBUTTON, 0x02, APP_KEY_CANCEL, 0x03, APP_KEY_MBUTTON, 0x04,
+        APP_KEY_XBUTTON1, 0x05, APP_KEY_XBUTTON2, 0x06, -1, 0x07, APP_KEY_BACK, 0x08, APP_KEY_TAB, 0x09, -1, 0x0A, -1, 0x0B, APP_KEY_CLEAR, 0x0C,
+        APP_KEY_RETURN, 0x0D, -1, 0x0E, -1, 0x0F, APP_KEY_SHIFT, 0x10, APP_KEY_CONTROL, 0x11, APP_KEY_MENU, 0x12, APP_KEY_PAUSE, 0x13,
+        APP_KEY_CAPITAL, 0x14, APP_KEY_KANA, 0x15, -1, 0x16, APP_KEY_JUNJA, 0x17, APP_KEY_FINAL, 0x18, APP_KEY_HANJA, 0x19, -1, 0x1A,
+        APP_KEY_ESCAPE, 0x1B, APP_KEY_CONVERT, 0x1C, APP_KEY_NONCONVERT, 0x1D, APP_KEY_ACCEPT, 0x1E, APP_KEY_MODECHANGE, 0x1F, APP_KEY_SPACE, 0x20,
+        APP_KEY_PRIOR, 0x21, APP_KEY_NEXT, 0x22, APP_KEY_END, 0x23, APP_KEY_HOME, 0x24, APP_KEY_LEFT, 0x25, APP_KEY_UP, 0x26, APP_KEY_RIGHT, 0x27,
+        APP_KEY_DOWN, 0x28, APP_KEY_SELECT, 0x29, APP_KEY_PRINT, 0x2A, APP_KEY_EXEC, 0x2B, APP_KEY_SNAPSHOT, 0x2C, APP_KEY_INSERT, 0x2D,
+        APP_KEY_DELETE, 0x2E, APP_KEY_HELP, 0x2F, APP_KEY_0, 0x30, APP_KEY_1, 0x31, APP_KEY_2, 0x32, APP_KEY_3, 0x33, APP_KEY_4, 0x34,
+        APP_KEY_5, 0x35, APP_KEY_6, 0x36, APP_KEY_7, 0x37, APP_KEY_8, 0x38, APP_KEY_9, 0x39, -1, 0x3A, -1, 0x3B, -1, 0x3C, -1, 0x3D, -1, 0x3E,
+        -1, 0x3F, -1, 0x40, APP_KEY_A, 0x41, APP_KEY_B, 0x42, APP_KEY_C, 0x43, APP_KEY_D, 0x44, APP_KEY_E, 0x45, APP_KEY_F, 0x46, APP_KEY_G, 0x47,
+        APP_KEY_H, 0x48, APP_KEY_I, 0x49, APP_KEY_J, 0x4A, APP_KEY_K, 0x4B, APP_KEY_L, 0x4C, APP_KEY_M, 0x4D, APP_KEY_N, 0x4E, APP_KEY_O, 0x4F,
+        APP_KEY_P, 0x50, APP_KEY_Q, 0x51, APP_KEY_R, 0x52, APP_KEY_S, 0x53, APP_KEY_T, 0x54, APP_KEY_U, 0x55, APP_KEY_V, 0x56, APP_KEY_W, 0x57,
+        APP_KEY_X, 0x58, APP_KEY_Y, 0x59, APP_KEY_Z, 0x5A, APP_KEY_LWIN, 0x5B, APP_KEY_RWIN, 0x5C, APP_KEY_APPS, 0x5D, -1, 0x5E, APP_KEY_SLEEP, 0x5F,
+        APP_KEY_NUMPAD0, 0x60, APP_KEY_NUMPAD1, 0x61, APP_KEY_NUMPAD2, 0x62, APP_KEY_NUMPAD3, 0x63, APP_KEY_NUMPAD4, 0x64, APP_KEY_NUMPAD5, 0x65,
+        APP_KEY_NUMPAD6, 0x66, APP_KEY_NUMPAD7, 0x67, APP_KEY_NUMPAD8, 0x68, APP_KEY_NUMPAD9, 0x69, APP_KEY_MULTIPLY, 0x6A, APP_KEY_ADD, 0x6B,
+        APP_KEY_SEPARATOR, 0x6C, APP_KEY_SUBTRACT, 0x6D, APP_KEY_DECIMAL, 0x6E, APP_KEY_DIVIDE, 0x6F, APP_KEY_F1, 0x70, APP_KEY_F2, 0x71,
+        APP_KEY_F3, 0x72, APP_KEY_F4, 0x73, APP_KEY_F5, 0x74, APP_KEY_F6, 0x75, APP_KEY_F7, 0x76, APP_KEY_F8, 0x77, APP_KEY_F9, 0x78,
+        APP_KEY_F10, 0x79, APP_KEY_F11, 0x7A, APP_KEY_F12, 0x7B, APP_KEY_F13, 0x7C, APP_KEY_F14, 0x7D, APP_KEY_F15, 0x7E, APP_KEY_F16, 0x7F,
+        APP_KEY_F17, 0x80, APP_KEY_F18, 0x81, APP_KEY_F19, 0x82, APP_KEY_F20, 0x83, APP_KEY_F21, 0x84, APP_KEY_F22, 0x85, APP_KEY_F23, 0x86,
+        APP_KEY_F24, 0x87, -1, 0x88, -1, 0x89, -1, 0x8A, -1, 0x8B, -1, 0x8C, -1, 0x8D, -1, 0x8E, -1, 0x8F, APP_KEY_NUMLOCK, 0x90,
         APP_KEY_SCROLL, 0x91, -1, 0x92, -1, 0x93, -1, 0x94, -1, 0x95, -1, 0x96, -1, 0x97, -1, 0x98, -1, 0x99, -1, 0x9A, -1, 0x9B, -1, 0x9C, -1, 0x9D,
         -1, 0x9E, -1, 0x9F, APP_KEY_LSHIFT, 0xA0, APP_KEY_RSHIFT, 0xA1, APP_KEY_LCONTROL, 0xA2, APP_KEY_RCONTROL, 0xA3, APP_KEY_LMENU, 0xA4,
-        APP_KEY_RMENU, 0xA5, APP_KEY_BROWSER_BACK, 0xA6, APP_KEY_BROWSER_FORWARD, 0xA7, APP_KEY_BROWSER_REFRESH, 0xA8, APP_KEY_BROWSER_STOP, 0xA9, 
-        APP_KEY_BROWSER_SEARCH, 0xAA, APP_KEY_BROWSER_FAVORITES, 0xAB, APP_KEY_BROWSER_HOME, 0xAC, APP_KEY_VOLUME_MUTE, 0xAD, 
+        APP_KEY_RMENU, 0xA5, APP_KEY_BROWSER_BACK, 0xA6, APP_KEY_BROWSER_FORWARD, 0xA7, APP_KEY_BROWSER_REFRESH, 0xA8, APP_KEY_BROWSER_STOP, 0xA9,
+        APP_KEY_BROWSER_SEARCH, 0xAA, APP_KEY_BROWSER_FAVORITES, 0xAB, APP_KEY_BROWSER_HOME, 0xAC, APP_KEY_VOLUME_MUTE, 0xAD,
         APP_KEY_VOLUME_DOWN, 0xAE, APP_KEY_VOLUME_UP, 0xAF, APP_KEY_MEDIA_NEXT_TRACK, 0xB0, APP_KEY_MEDIA_PREV_TRACK, 0xB1, APP_KEY_MEDIA_STOP, 0xB2,
-        APP_KEY_MEDIA_PLAY_PAUSE, 0xB3, APP_KEY_LAUNCH_MAIL, 0xB4, APP_KEY_LAUNCH_MEDIA_SELECT, 0xB5, APP_KEY_LAUNCH_APP1, 0xB6, 
-        APP_KEY_LAUNCH_APP2, 0xB7, -1, 0xB8, -1, 0xB9, APP_KEY_OEM_1, 0xBA, APP_KEY_OEM_PLUS, 0xBB, APP_KEY_OEM_COMMA, 0xBC, APP_KEY_OEM_MINUS, 0xBD, 
+        APP_KEY_MEDIA_PLAY_PAUSE, 0xB3, APP_KEY_LAUNCH_MAIL, 0xB4, APP_KEY_LAUNCH_MEDIA_SELECT, 0xB5, APP_KEY_LAUNCH_APP1, 0xB6,
+        APP_KEY_LAUNCH_APP2, 0xB7, -1, 0xB8, -1, 0xB9, APP_KEY_OEM_1, 0xBA, APP_KEY_OEM_PLUS, 0xBB, APP_KEY_OEM_COMMA, 0xBC, APP_KEY_OEM_MINUS, 0xBD,
         APP_KEY_OEM_PERIOD, 0xBE, APP_KEY_OEM_2, 0xBF, APP_KEY_OEM_3, 0xC0, -1, 0xC1, -1, 0xC2, -1, 0xC3, -1, 0xC4, -1, 0xC5, -1, 0xC6, -1, 0xC7,
         -1, 0xC8, -1, 0xC9, -1, 0xCA, -1, 0xCB, -1, 0xCC, -1, 0xCD, -1, 0xCE, -1, 0xCF, -1, 0xD0, -1, 0xD1, -1, 0xD2, -1, 0xD3, -1, 0xD4, -1, 0xD5,
         -1, 0xD6, -1, 0xD7, -1, 0xD8, -1, 0xD9, -1, 0xDA, APP_KEY_OEM_4, 0xDB, APP_KEY_OEM_5, 0xDC, APP_KEY_OEM_6, 0xDD, APP_KEY_OEM_7, 0xDE,
-        APP_KEY_OEM_8, 0xDF, -1, 0xE0, -1, 0xE1, APP_KEY_OEM_102, 0xE2, -1, 0xE3, -1, 0xE4, APP_KEY_PROCESSKEY, 0xE5, -1, 0xE6, -1, 0xE7, -1, 0xE8, 
+        APP_KEY_OEM_8, 0xDF, -1, 0xE0, -1, 0xE1, APP_KEY_OEM_102, 0xE2, -1, 0xE3, -1, 0xE4, APP_KEY_PROCESSKEY, 0xE5, -1, 0xE6, -1, 0xE7, -1, 0xE8,
         -1, 0xE9, -1, 0xEA, -1, 0xEB, -1, 0xEC, -1, 0xED, -1, 0xEE, -1, 0xEF, -1, 0xF0, -1, 0xF1, -1, 0xF2, -1, 0xF3, -1, 0xF4, -1, 0xF5,
-        APP_KEY_ATTN, 0xF6, APP_KEY_CRSEL, 0xF7, APP_KEY_EXSEL, 0xF8, APP_KEY_EREOF, 0xF9, APP_KEY_PLAY, 0xFA, APP_KEY_ZOOM, 0xFB, 
+        APP_KEY_ATTN, 0xF6, APP_KEY_CRSEL, 0xF7, APP_KEY_EXSEL, 0xF8, APP_KEY_EREOF, 0xF9, APP_KEY_PLAY, 0xFA, APP_KEY_ZOOM, 0xFB,
         APP_KEY_NONAME, 0xFC, APP_KEY_PA1, 0xFD, APP_KEY_OEM_CLEAR, 0xFE, -1, 0xFF, };
     if( vkcode < 0 || vkcode >= sizeof( map ) / ( 2 * sizeof( *map ) ) ) return APP_KEY_INVALID;
     if( map[ vkcode * 2 + 1 ] != vkcode )
@@ -1539,7 +1549,7 @@ static BOOL app_internal_tablet_init( app_t* app )
     app->tablet.wintab_dll = LoadLibraryA( "Wintab32.dll" );
     if( !app->tablet.wintab_dll ) return FALSE;
 
-    app->tablet.WTInfo = ( UINT (WINAPI*)( UINT, UINT, LPVOID ) ) 
+    app->tablet.WTInfo = ( UINT (WINAPI*)( UINT, UINT, LPVOID ) )
         (uintptr_t ) GetProcAddress( app->tablet.wintab_dll, "WTInfoA" );
     app->tablet.WTOpen = ( APP_HCTX (WINAPI*)( HWND, APP_LOGCONTEXTA*, BOOL ) )
         (uintptr_t ) GetProcAddress( app->tablet.wintab_dll, "WTOpenA" );
@@ -1551,12 +1561,12 @@ static BOOL app_internal_tablet_init( app_t* app )
         (uintptr_t ) GetProcAddress( app->tablet.wintab_dll, "WTPacket" );
 
     if( !app->tablet.WTInfo( 0 ,0, NULL ) ) return FALSE; // checks if tablet is present
-                                                      
-    APP_LOGCONTEXTA log_context; 
+
+    APP_LOGCONTEXTA log_context;
     memset( &log_context, 0, sizeof( log_context ) );
     app->tablet.WTInfo( APP_WTI_DDCTXS, 0, &log_context );
 
-    APP_AXIS pressure; 
+    APP_AXIS pressure;
     memset( &pressure, 0, sizeof( pressure ) );
     app->tablet.WTInfo( APP_WTI_DEVICES, APP_DVC_NPRESSURE, &pressure );
     app->tablet.max_pressure = pressure.axMax;
@@ -1595,146 +1605,146 @@ static LRESULT CALLBACK app_internal_wndproc( HWND hwnd, UINT message, WPARAM wp
 
     switch( message )
         {
-        case WM_CHAR: 
-            input_event.type = APP_INPUT_CHAR; input_event.data.char_code = (char) wparam; 
-            app_internal_add_input_event( app, &input_event ); 
+        case WM_CHAR:
+            input_event.type = APP_INPUT_CHAR; input_event.data.char_code = (char) wparam;
+            app_internal_add_input_event( app, &input_event );
             break;
-        case WM_LBUTTONDOWN: 
-            input_event.type = APP_INPUT_KEY_DOWN; input_event.data.key = APP_KEY_LBUTTON; 
-            app_internal_add_input_event( app, &input_event ); 
+        case WM_LBUTTONDOWN:
+            input_event.type = APP_INPUT_KEY_DOWN; input_event.data.key = APP_KEY_LBUTTON;
+            app_internal_add_input_event( app, &input_event );
             break;
-        case WM_LBUTTONUP: 
-            input_event.type = APP_INPUT_KEY_UP; input_event.data.key = APP_KEY_LBUTTON; 
-            app_internal_add_input_event( app, &input_event ); 
+        case WM_LBUTTONUP:
+            input_event.type = APP_INPUT_KEY_UP; input_event.data.key = APP_KEY_LBUTTON;
+            app_internal_add_input_event( app, &input_event );
             break;
-        case WM_LBUTTONDBLCLK: 
-            input_event.type = APP_INPUT_DOUBLE_CLICK; input_event.data.key = APP_KEY_LBUTTON; 
-            app_internal_add_input_event( app, &input_event ); 
+        case WM_LBUTTONDBLCLK:
+            input_event.type = APP_INPUT_DOUBLE_CLICK; input_event.data.key = APP_KEY_LBUTTON;
+            app_internal_add_input_event( app, &input_event );
             break;
-        case WM_RBUTTONDOWN: 
-            input_event.type = APP_INPUT_KEY_DOWN; input_event.data.key = APP_KEY_RBUTTON; 
-            app_internal_add_input_event( app, &input_event ); 
+        case WM_RBUTTONDOWN:
+            input_event.type = APP_INPUT_KEY_DOWN; input_event.data.key = APP_KEY_RBUTTON;
+            app_internal_add_input_event( app, &input_event );
             break;
-        case WM_RBUTTONUP: 
-            input_event.type = APP_INPUT_KEY_UP; input_event.data.key = APP_KEY_RBUTTON; 
-            app_internal_add_input_event( app, &input_event ); 
+        case WM_RBUTTONUP:
+            input_event.type = APP_INPUT_KEY_UP; input_event.data.key = APP_KEY_RBUTTON;
+            app_internal_add_input_event( app, &input_event );
             break;
-        case WM_RBUTTONDBLCLK: 
-            input_event.type = APP_INPUT_DOUBLE_CLICK; input_event.data.key = APP_KEY_RBUTTON; 
-            app_internal_add_input_event( app, &input_event ); 
+        case WM_RBUTTONDBLCLK:
+            input_event.type = APP_INPUT_DOUBLE_CLICK; input_event.data.key = APP_KEY_RBUTTON;
+            app_internal_add_input_event( app, &input_event );
             break;
-        case WM_MBUTTONDOWN: 
-            input_event.type = APP_INPUT_KEY_DOWN; input_event.data.key = APP_KEY_MBUTTON; 
-            app_internal_add_input_event( app, &input_event ); 
+        case WM_MBUTTONDOWN:
+            input_event.type = APP_INPUT_KEY_DOWN; input_event.data.key = APP_KEY_MBUTTON;
+            app_internal_add_input_event( app, &input_event );
             break;
-        case WM_MBUTTONUP: 
-            input_event.type = APP_INPUT_KEY_UP; input_event.data.key = APP_KEY_MBUTTON; 
-            app_internal_add_input_event( app, &input_event ); 
+        case WM_MBUTTONUP:
+            input_event.type = APP_INPUT_KEY_UP; input_event.data.key = APP_KEY_MBUTTON;
+            app_internal_add_input_event( app, &input_event );
             break;
-        case WM_MBUTTONDBLCLK: 
-            input_event.type = APP_INPUT_DOUBLE_CLICK; input_event.data.key = APP_KEY_MBUTTON; 
-            app_internal_add_input_event( app, &input_event ); 
+        case WM_MBUTTONDBLCLK:
+            input_event.type = APP_INPUT_DOUBLE_CLICK; input_event.data.key = APP_KEY_MBUTTON;
+            app_internal_add_input_event( app, &input_event );
             break;
-        case WM_XBUTTONDOWN: 
-            input_event.type = APP_INPUT_KEY_DOWN; input_event.data.key = HIWORD( wparam ) == 1 ? APP_KEY_XBUTTON1 :APP_KEY_XBUTTON2; 
-            app_internal_add_input_event( app, &input_event ); 
+        case WM_XBUTTONDOWN:
+            input_event.type = APP_INPUT_KEY_DOWN; input_event.data.key = HIWORD( wparam ) == 1 ? APP_KEY_XBUTTON1 :APP_KEY_XBUTTON2;
+            app_internal_add_input_event( app, &input_event );
             break;
-        case WM_XBUTTONUP: 
-            input_event.type = APP_INPUT_KEY_UP; input_event.data.key = HIWORD( wparam ) == 1 ? APP_KEY_XBUTTON1 :APP_KEY_XBUTTON2; 
-            app_internal_add_input_event( app, &input_event ); 
+        case WM_XBUTTONUP:
+            input_event.type = APP_INPUT_KEY_UP; input_event.data.key = HIWORD( wparam ) == 1 ? APP_KEY_XBUTTON1 :APP_KEY_XBUTTON2;
+            app_internal_add_input_event( app, &input_event );
             break;
-        case WM_XBUTTONDBLCLK: 
-            input_event.type = APP_INPUT_DOUBLE_CLICK; input_event.data.key = HIWORD( wparam ) == 1 ? APP_KEY_XBUTTON1 :APP_KEY_XBUTTON2; 
-            app_internal_add_input_event( app, &input_event ); 
+        case WM_XBUTTONDBLCLK:
+            input_event.type = APP_INPUT_DOUBLE_CLICK; input_event.data.key = HIWORD( wparam ) == 1 ? APP_KEY_XBUTTON1 :APP_KEY_XBUTTON2;
+            app_internal_add_input_event( app, &input_event );
             break;
-        case WM_SYSKEYDOWN: 
-        case WM_KEYDOWN: 
+        case WM_SYSKEYDOWN:
+        case WM_KEYDOWN:
             {
-            input_event.type = APP_INPUT_KEY_DOWN; 
+            input_event.type = APP_INPUT_KEY_DOWN;
             WPARAM vkcode = wparam;
             UINT scancode = (UINT)( ( lparam & 0x00ff0000 ) >> 16 );
             int extended  = ( lparam & 0x01000000 ) != 0;
             UINT const maptype = 3; //MAPVK_VSC_TO_VK_EX
-            switch( vkcode ) 
+            switch( vkcode )
                 {
                 case VK_SHIFT:
-                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) wparam ); 
-                    app_internal_add_input_event( app, &input_event ); 
+                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) wparam );
+                    app_internal_add_input_event( app, &input_event );
 
-                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) MapVirtualKey( scancode, maptype ) ); 
-                    app_internal_add_input_event( app, &input_event ); 
+                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) MapVirtualKey( scancode, maptype ) );
+                    app_internal_add_input_event( app, &input_event );
                     break;
                 case VK_CONTROL:
-                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) wparam ); 
-                    app_internal_add_input_event( app, &input_event ); 
+                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) wparam );
+                    app_internal_add_input_event( app, &input_event );
 
-                    input_event.data.key = app_internal_vkcode_to_appkey( app, extended ? VK_RCONTROL : VK_LCONTROL ); 
-                    app_internal_add_input_event( app, &input_event ); 
+                    input_event.data.key = app_internal_vkcode_to_appkey( app, extended ? VK_RCONTROL : VK_LCONTROL );
+                    app_internal_add_input_event( app, &input_event );
                     break;
                 case VK_MENU:
-                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) wparam ); 
-                    app_internal_add_input_event( app, &input_event ); 
+                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) wparam );
+                    app_internal_add_input_event( app, &input_event );
 
-                    input_event.data.key = app_internal_vkcode_to_appkey( app, extended ? VK_RMENU : VK_LMENU ); 
-                    app_internal_add_input_event( app, &input_event ); 
+                    input_event.data.key = app_internal_vkcode_to_appkey( app, extended ? VK_RMENU : VK_LMENU );
+                    app_internal_add_input_event( app, &input_event );
                     break;
                 default:
-                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) wparam ); 
-                    app_internal_add_input_event( app, &input_event ); 
-                    break;    
+                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) wparam );
+                    app_internal_add_input_event( app, &input_event );
+                    break;
                 }
             } break;
 
         case WM_HOTKEY:
             {
-            input_event.type = APP_INPUT_KEY_DOWN; 
-            input_event.data.key = app_internal_vkcode_to_appkey( app, (int) wparam ); 
+            input_event.type = APP_INPUT_KEY_DOWN;
+            input_event.data.key = app_internal_vkcode_to_appkey( app, (int) wparam );
             if( app->input_count < sizeof( app->input_events ) / sizeof( *app->input_events ) )
                 app->input_events[ app->input_count++ ] = input_event;
-            input_event.type = APP_INPUT_KEY_UP; 
+            input_event.type = APP_INPUT_KEY_UP;
             if( app->input_count < sizeof( app->input_events ) / sizeof( *app->input_events ) )
                 app->input_events[ app->input_count++ ] = input_event;
             } break;
 
-        case WM_SYSKEYUP: 
-        case WM_KEYUP: 
+        case WM_SYSKEYUP:
+        case WM_KEYUP:
             {
-            input_event.type = APP_INPUT_KEY_UP; 
+            input_event.type = APP_INPUT_KEY_UP;
             WPARAM vkcode = wparam;
             UINT scancode = (UINT)( ( lparam & 0x00ff0000 ) >> 16 );
             int extended  = ( lparam & 0x01000000 ) != 0;
             UINT const maptype = 3; //MAPVK_VSC_TO_VK_EX
-            switch( vkcode ) 
+            switch( vkcode )
                 {
                 case VK_SHIFT:
-                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) wparam ); 
-                    app_internal_add_input_event( app, &input_event ); 
+                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) wparam );
+                    app_internal_add_input_event( app, &input_event );
 
-                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) MapVirtualKey( scancode, maptype ) ); 
-                    app_internal_add_input_event( app, &input_event ); 
+                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) MapVirtualKey( scancode, maptype ) );
+                    app_internal_add_input_event( app, &input_event );
                     break;
                 case VK_CONTROL:
-                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) wparam ); 
-                    app_internal_add_input_event( app, &input_event ); 
+                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) wparam );
+                    app_internal_add_input_event( app, &input_event );
 
-                    input_event.data.key = app_internal_vkcode_to_appkey( app, extended ? VK_RCONTROL : VK_LCONTROL ); 
-                    app_internal_add_input_event( app, &input_event ); 
+                    input_event.data.key = app_internal_vkcode_to_appkey( app, extended ? VK_RCONTROL : VK_LCONTROL );
+                    app_internal_add_input_event( app, &input_event );
                     break;
                 case VK_MENU:
-                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) wparam ); 
-                    app_internal_add_input_event( app, &input_event ); 
+                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) wparam );
+                    app_internal_add_input_event( app, &input_event );
 
-                    input_event.data.key = app_internal_vkcode_to_appkey( app, extended ? VK_RMENU : VK_LMENU ); 
-                    app_internal_add_input_event( app, &input_event ); 
+                    input_event.data.key = app_internal_vkcode_to_appkey( app, extended ? VK_RMENU : VK_LMENU );
+                    app_internal_add_input_event( app, &input_event );
                     break;
                 default:
-                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) wparam ); 
-                    app_internal_add_input_event( app, &input_event ); 
-                    break;    
+                    input_event.data.key = app_internal_vkcode_to_appkey( app, (int) wparam );
+                    app_internal_add_input_event( app, &input_event );
+                    break;
                 }
             } break;
 
-        case WM_MOUSEWHEEL: 
+        case WM_MOUSEWHEEL:
             if( app->has_focus )
                 {
                 float const microsoft_mouse_wheel_constant = 120.0f;
@@ -1742,13 +1752,13 @@ static LRESULT CALLBACK app_internal_wndproc( HWND hwnd, UINT message, WPARAM wp
                 if( app->input_count > 0 && app->input_events[ app->input_count - 1 ].type == APP_INPUT_SCROLL_WHEEL )
                     {
                     app_input_event_t* event = &app->input_events[ app->input_count - 1 ];
-                    event->data.wheel_delta += wheel_delta;                 
+                    event->data.wheel_delta += wheel_delta;
                     }
                 else
                     {
                     input_event.type = APP_INPUT_SCROLL_WHEEL;
                     input_event.data.wheel_delta = wheel_delta;
-                    app_internal_add_input_event( app, &input_event ); 
+                    app_internal_add_input_event( app, &input_event );
                     }
                 }
             break;
@@ -1757,26 +1767,26 @@ static LRESULT CALLBACK app_internal_wndproc( HWND hwnd, UINT message, WPARAM wp
             if( app->has_focus )
                 {
                 POINT p;
-                GetCursorPos( &p ); 
+                GetCursorPos( &p );
                 ScreenToClient( app->hwnd, &p );
                 int mouse_x = p.x;
                 int mouse_y = p.y;
 
-                input_event.type = APP_INPUT_MOUSE_MOVE; 
-                input_event.data.mouse_pos.x = mouse_x; 
-                input_event.data.mouse_pos.y = mouse_y; 
-                app_internal_add_input_event( app, &input_event ); 
+                input_event.type = APP_INPUT_MOUSE_MOVE;
+                input_event.data.mouse_pos.x = mouse_x;
+                input_event.data.mouse_pos.y = mouse_y;
+                app_internal_add_input_event( app, &input_event );
                 }
             break;
 
-        case WM_INPUT: 
+        case WM_INPUT:
             {
-            if( app->GetRawInputDataPtr ) 
+            if( app->GetRawInputDataPtr )
                 {
                 RAWINPUT raw;
                 UINT size = sizeof( raw );
-                app->GetRawInputDataPtr( (HRAWINPUT) lparam, RID_INPUT, &raw, &size, sizeof( RAWINPUTHEADER ) );    
-                if( raw.header.dwType == RIM_TYPEMOUSE ) 
+                app->GetRawInputDataPtr( (HRAWINPUT) lparam, RID_INPUT, &raw, &size, sizeof( RAWINPUTHEADER ) );
+                if( raw.header.dwType == RIM_TYPEMOUSE )
                     {
                     float dx = (float) raw.data.mouse.lLastX;
                     float dy = (float) raw.data.mouse.lLastY;
@@ -1788,17 +1798,17 @@ static LRESULT CALLBACK app_internal_wndproc( HWND hwnd, UINT message, WPARAM wp
                     if( app->input_count > 0 && app->input_events[ app->input_count - 1 ].type == APP_INPUT_MOUSE_DELTA )
                         {
                         app_input_event_t* event = &app->input_events[ app->input_count - 1 ];
-                        event->data.mouse_delta.x += dx;                    
-                        event->data.mouse_delta.y += dy;                    
+                        event->data.mouse_delta.x += dx;
+                        event->data.mouse_delta.y += dy;
                         }
                     else
                         {
                         input_event.type = APP_INPUT_MOUSE_DELTA;
-                        input_event.data.mouse_delta.x = dx;                    
-                        input_event.data.mouse_delta.y = dy;                    
-                        app_internal_add_input_event( app, &input_event ); 
+                        input_event.data.mouse_delta.x = dx;
+                        input_event.data.mouse_delta.y = dy;
+                        app_internal_add_input_event( app, &input_event );
                         }
-                    } 
+                    }
                 }
             break;
             }
@@ -1807,7 +1817,7 @@ static LRESULT CALLBACK app_internal_wndproc( HWND hwnd, UINT message, WPARAM wp
             {
             APP_PACKET packet;
             memset( &packet, 0, sizeof( packet ) );
-            if( (APP_HCTX) lparam == app->tablet.context && 
+            if( (APP_HCTX) lparam == app->tablet.context &&
                 app->tablet.WTPacket( app->tablet.context, (UINT) wparam, &packet ) )
                 {
                 POINT p;
@@ -1818,13 +1828,13 @@ static LRESULT CALLBACK app_internal_wndproc( HWND hwnd, UINT message, WPARAM wp
                 int pen_y = p.y;
 
                 input_event.type = APP_INPUT_TABLET;
-                input_event.data.tablet.x = pen_x; 
-                input_event.data.tablet.y = pen_y; 
+                input_event.data.tablet.x = pen_x;
+                input_event.data.tablet.y = pen_y;
                 input_event.data.tablet.pressure = (float) packet.pkNormalPressure / (float) app->tablet.max_pressure;
                 input_event.data.tablet.tip = ( packet.pkButtons & 1 ) ? APP_PRESSED : APP_NOT_PRESSED;
                 input_event.data.tablet.lower = ( packet.pkButtons & 2 ) ? APP_PRESSED : APP_NOT_PRESSED;
                 input_event.data.tablet.upper = ( packet.pkButtons & 4 ) ? APP_PRESSED : APP_NOT_PRESSED;
-                app_internal_add_input_event( app, &input_event ); 
+                app_internal_add_input_event( app, &input_event );
                 }
             } break;
 
@@ -1851,7 +1861,7 @@ static LRESULT CALLBACK app_internal_wndproc( HWND hwnd, UINT message, WPARAM wp
                     }
                 }
 
-            if( app->clip_cursor ) 
+            if( app->clip_cursor )
                 {
                 RECT r = app->clip_rect;
                 ClientToScreen( app->hwnd, (POINT*)&r );
@@ -1875,17 +1885,17 @@ static LRESULT CALLBACK app_internal_wndproc( HWND hwnd, UINT message, WPARAM wp
                 }
 
             RECT r;
-            GetClientRect( app->hwnd, &r );     
+            GetClientRect( app->hwnd, &r );
             app_internal_opengl_resize( &app->gl, r.right - r.left, r.bottom - r.top );
             } break;
 
 
         case WM_ACTIVATEAPP:
             app->has_focus = (BOOL) wparam;
-            if( app->has_focus ) 
+            if( app->has_focus )
                 {
                 app->is_minimized = FALSE;
-                if( app->clip_cursor ) 
+                if( app->clip_cursor )
                     {
                     RECT r = app->clip_rect;
                     ClientToScreen( app->hwnd, (POINT*)&r );
@@ -1897,9 +1907,9 @@ static LRESULT CALLBACK app_internal_wndproc( HWND hwnd, UINT message, WPARAM wp
                 {
                 ClipCursor( NULL );
                 }
-            
+
             break;
-            
+
         case WM_SYSCOMMAND:
             if( ( wparam & 0xFFF0 ) == SC_MINIMIZE ) app->is_minimized = TRUE;
             break;
@@ -1917,7 +1927,7 @@ static LRESULT CALLBACK app_internal_wndproc( HWND hwnd, UINT message, WPARAM wp
     return DefWindowProc( hwnd, message, wparam, lparam);
     }
 
-    
+
 static BOOL CALLBACK app_internal_monitorenumproc( HMONITOR hmonitor, HDC dc, LPRECT rect, LPARAM data )
     {
     (void) dc;
@@ -1926,7 +1936,7 @@ static BOOL CALLBACK app_internal_monitorenumproc( HMONITOR hmonitor, HDC dc, LP
     if( app->display_count >= sizeof( app->displays ) / sizeof( *app->displays ) ) return FALSE;
     app->displays_hmonitor[ app->display_count ] = hmonitor;
     app_display_t* display = &app->displays[ app->display_count++ ];
-    
+
     display->x = rect->left;
     display->y = rect->top;
     display->width = rect->right - rect->left;
@@ -1952,7 +1962,7 @@ static BOOL CALLBACK app_internal_monitorenumproc( HMONITOR hmonitor, HDC dc, LP
 static void app_internal_app_default_cursor( app_t* app )
     {
     APP_U32 pointer_pixels[ 256 * 256 ];
-    int pointer_width, pointer_height, pointer_hotspot_x, pointer_hotspot_y; 
+    int pointer_width, pointer_height, pointer_hotspot_x, pointer_hotspot_y;
     app_pointer_default( app, &pointer_width, &pointer_height, pointer_pixels, &pointer_hotspot_x, &pointer_hotspot_y );
     app_pointer( app, pointer_width, pointer_height, pointer_pixels, pointer_hotspot_x, pointer_hotspot_y );
     }
@@ -1978,14 +1988,14 @@ int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, vo
     char msg[ 64 ];
     time_t t = time( NULL );
     struct tm* start = localtime( &t );
-    sprintf( msg, "Application started %02d:%02d:%02d %04d-%02d-%02d.", 
+    sprintf( msg, "Application started %02d:%02d:%02d %04d-%02d-%02d.",
         start->tm_hour, start->tm_min, start->tm_sec, start->tm_year + 1900, start->tm_mon + 1, start->tm_mday );
     app_log( app, APP_LOG_LEVEL_INFO, msg );
 
     // Increase timing precision
     #ifndef __TINYC__
         TIMECAPS tc;
-        if( timeGetDevCaps( &tc, sizeof( TIMECAPS ) ) == TIMERR_NOERROR ) 
+        if( timeGetDevCaps( &tc, sizeof( TIMECAPS ) ) == TIMERR_NOERROR )
             timeBeginPeriod( tc.wPeriodMin );
     #endif
 
@@ -1996,23 +2006,23 @@ int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, vo
     GetModuleFileNameA( 0, app->exe_path, sizeof( app->exe_path ) );
 
     HMODULE shell32 = LoadLibraryA( "shell32.dll" );
-    if( shell32 ) 
+    if( shell32 )
         {
-        HRESULT (__stdcall *SHGetFolderPathAPtr)(HWND, int, HANDLE, DWORD, LPSTR ) = 
-            (HRESULT (__stdcall*)(HWND, int, HANDLE, DWORD, LPSTR ) ) (uintptr_t) 
+        HRESULT (__stdcall *SHGetFolderPathAPtr)(HWND, int, HANDLE, DWORD, LPSTR ) =
+            (HRESULT (__stdcall*)(HWND, int, HANDLE, DWORD, LPSTR ) ) (uintptr_t)
                 GetProcAddress( shell32, "SHGetFolderPathA" );
 
-        if( SHGetFolderPathAPtr ) 
+        if( SHGetFolderPathAPtr )
             {
             int const CSIDL_PERSONAL = 0x0005; // My Documents
             int const CSIDL_COMMON_APPDATA = 0x0023; // All Users\Application Data
             int const CSIDL_FLAG_CREATE = 0x8000 ;
 
             // Retrieve user data path
-            SHGetFolderPathAPtr( NULL, CSIDL_PERSONAL | CSIDL_FLAG_CREATE, NULL, 0, app->userdata_path ); 
+            SHGetFolderPathAPtr( NULL, CSIDL_PERSONAL | CSIDL_FLAG_CREATE, NULL, 0, app->userdata_path );
 
             // Retrieve app data path
-            SHGetFolderPathAPtr( NULL, CSIDL_COMMON_APPDATA | CSIDL_FLAG_CREATE, NULL, 0, app->appdata_path ); 
+            SHGetFolderPathAPtr( NULL, CSIDL_COMMON_APPDATA | CSIDL_FLAG_CREATE, NULL, 0, app->appdata_path );
             }
 
         FreeLibrary( shell32 );
@@ -2021,7 +2031,7 @@ int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, vo
     // Get command line string
     app->cmdline = GetCommandLineA();
 
-    // Load a default Arrow cursor     
+    // Load a default Arrow cursor
     app_internal_app_default_cursor( app );
 
     // Load first icon in the exe and use as app icon
@@ -2034,23 +2044,23 @@ int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, vo
 
     // Setup the main application window
     app->windowed_w = app->displays[ 0 ].width - app->displays[ 0 ].width / 6;
-    app->windowed_h = app->displays[ 0 ].height - app->displays[ 0 ].height / 6; 
+    app->windowed_h = app->displays[ 0 ].height - app->displays[ 0 ].height / 6;
     app->windowed_x = ( app->displays[ 0 ].width - app->windowed_w ) /  2;
     app->windowed_y = ( app->displays[ 0 ].height - app->windowed_h ) / 2;
 
     app->fullscreen_width = app->displays[ 0 ].width;
     app->fullscreen_height = app->displays[ 0 ].height;
 
-    RECT winrect = app_internal_rect( app->windowed_x, app->windowed_y, 
+    RECT winrect = app_internal_rect( app->windowed_x, app->windowed_y,
         app->windowed_x + app->windowed_w, app->windowed_y + app->windowed_h );
     AdjustWindowRect( &winrect, WS_OVERLAPPEDWINDOW | WS_VISIBLE, FALSE );
 
-    WNDCLASSEX wc = { sizeof( WNDCLASSEX ), CS_DBLCLKS | CS_OWNDC ,  
+    WNDCLASSEX wc = { sizeof( WNDCLASSEX ), CS_DBLCLKS | CS_OWNDC ,
         (WNDPROC) app_internal_wndproc, 0, 0, 0, 0, 0, 0, 0, TEXT( "app_wc" ), 0 };
-    wc.hInstance = app->hinstance; wc.hIcon = app->icon; wc.hCursor = app->current_pointer; 
+    wc.hInstance = app->hinstance; wc.hIcon = app->icon; wc.hCursor = app->current_pointer;
     wc.hbrBackground = (HBRUSH) GetStockObject( BLACK_BRUSH ); wc.hIconSm = app->icon;
     RegisterClassEx( &wc );
-    app->hwnd = CreateWindowEx( 0, wc.lpszClassName, 0, WS_OVERLAPPEDWINDOW, app->windowed_x, app->windowed_y, 
+    app->hwnd = CreateWindowEx( 0, wc.lpszClassName, 0, WS_OVERLAPPEDWINDOW, app->windowed_x, app->windowed_y,
         winrect.right - winrect.left, winrect.bottom - winrect.top, (HWND) 0, (HMENU) 0, app->hinstance, 0 );
     if( !app->hwnd ) { app_log( app, APP_LOG_LEVEL_ERROR, "Failed to create window." ); goto init_failed; }
     app->hdc = GetDC( app->hwnd );
@@ -2085,7 +2095,7 @@ int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, vo
     if( !app->wglDeleteContext ) { app_log( app, APP_LOG_LEVEL_ERROR, "Failed to find wglDeleteContext" ); goto init_failed; }
     app->wglMakeCurrent = (BOOL(APP_GLCALLTYPE*)(HDC, HGLRC)) (uintptr_t) GetProcAddress( app->gl_dll, "wglMakeCurrent" );
     if( !app->wglMakeCurrent ) { app_log( app, APP_LOG_LEVEL_ERROR, "Failed to find wglMakeCurrent" ); goto init_failed; }
-    
+
     PIXELFORMATDESCRIPTOR pfd;
     memset( &pfd, 0, sizeof( pfd ) );
     pfd.nSize = sizeof( PIXELFORMATDESCRIPTOR );
@@ -2099,7 +2109,7 @@ int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, vo
     BOOL res = SetPixelFormat( app->hdc, ChoosePixelFormat( app->hdc, &pfd ), &pfd );
     if( !res ) { app_log( app, APP_LOG_LEVEL_ERROR, "Failed to set pixel format" ); goto init_failed; }
 
-    app->gl_context = app->wglCreateContext( app->hdc ); 
+    app->gl_context = app->wglCreateContext( app->hdc );
     if( !app->gl_context ) { app_log( app, APP_LOG_LEVEL_ERROR, "Failed to create OpenGL context" ); goto init_failed; }
     res = app->wglMakeCurrent( app->hdc, app->gl_context );
     if( !res ) { app_log( app, APP_LOG_LEVEL_ERROR, "Failed to activate OpenGl Context" ); goto init_failed; }
@@ -2222,9 +2232,9 @@ int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, vo
     int width = app->screenmode == APP_SCREENMODE_FULLSCREEN ? app->fullscreen_width : app->windowed_w;
     int height = app->screenmode == APP_SCREENMODE_FULLSCREEN ? app->fullscreen_height: app->windowed_h;
     if( !app_internal_opengl_init( app, &app->gl, app->interpolation, width, height ) )
-        { 
-        app_log( app, APP_LOG_LEVEL_ERROR, "Failed to initialize OpenGL" ); 
-        goto init_failed; 
+        {
+        app_log( app, APP_LOG_LEVEL_ERROR, "Failed to initialize OpenGL" );
+        goto init_failed;
         }
 
     app->sound_notifications[ 0 ] = CreateEventA( NULL, FALSE, FALSE, NULL );
@@ -2236,33 +2246,33 @@ int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, vo
 
     if( app->dsound_dll )
         {
-        HRESULT (WINAPI *DirectSoundCreate8Ptr)(LPCGUID,struct IDirectSound8**,void*) = ( HRESULT (WINAPI*)(LPCGUID,struct IDirectSound8**,void*) ) 
-            (uintptr_t) GetProcAddress( (HMODULE) app->dsound_dll, "DirectSoundCreate8" ); 
-        if( !DirectSoundCreate8Ptr ) 
-            { 
-            app_log( app, APP_LOG_LEVEL_WARNING, "Couldn't find DirectSoundCreate. Sound disabled." ); 
+        HRESULT (WINAPI *DirectSoundCreate8Ptr)(LPCGUID,struct IDirectSound8**,void*) = ( HRESULT (WINAPI*)(LPCGUID,struct IDirectSound8**,void*) )
+            (uintptr_t) GetProcAddress( (HMODULE) app->dsound_dll, "DirectSoundCreate8" );
+        if( !DirectSoundCreate8Ptr )
+            {
+            app_log( app, APP_LOG_LEVEL_WARNING, "Couldn't find DirectSoundCreate. Sound disabled." );
             FreeLibrary( app->dsound_dll );
             app->dsound_dll = 0;
             }
         if( DirectSoundCreate8Ptr )
             {
             HRESULT hr = DirectSoundCreate8Ptr( NULL, &app->dsound, NULL );
-            if( FAILED( hr ) || !app->dsound ) 
-                { 
-                app_log( app, APP_LOG_LEVEL_WARNING, "Couldn't create DirectSound object. Sound disabled." ); 
-                DirectSoundCreate8Ptr = 0; 
+            if( FAILED( hr ) || !app->dsound )
+                {
+                app_log( app, APP_LOG_LEVEL_WARNING, "Couldn't create DirectSound object. Sound disabled." );
+                DirectSoundCreate8Ptr = 0;
                 FreeLibrary( app->dsound_dll );
                 app->dsound_dll = 0;
-                }   
+                }
             else
                 {
                 hr = IDirectSound8_SetCooperativeLevel( app->dsound, app->hwnd, DSSCL_NORMAL);
-                if( FAILED( hr ) ) 
-                    { 
-                    app_log( app, APP_LOG_LEVEL_WARNING, "Couldn't set cooperative level for DirectSound object. Sound disabled." ); 
+                if( FAILED( hr ) )
+                    {
+                    app_log( app, APP_LOG_LEVEL_WARNING, "Couldn't set cooperative level for DirectSound object. Sound disabled." );
                     IDirectSound8_Release( app->dsound );
                     app->dsound = 0;
-                    DirectSoundCreate8Ptr = 0; 
+                    DirectSoundCreate8Ptr = 0;
                     FreeLibrary( app->dsound_dll );
                     app->dsound_dll = 0;
                     }
@@ -2272,9 +2282,9 @@ int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, vo
     app->sound_thread_handle = INVALID_HANDLE_VALUE;
 
     HMODULE user32 = LoadLibraryA( "user32.dll" );
-    if( user32 ) 
+    if( user32 )
         {
-        BOOL (WINAPI *RegisterRawInputDevicesPtr)( PCRAWINPUTDEVICE, UINT, UINT ) = 
+        BOOL (WINAPI *RegisterRawInputDevicesPtr)( PCRAWINPUTDEVICE, UINT, UINT ) =
             (BOOL (WINAPI*)( PCRAWINPUTDEVICE, UINT, UINT ) )(uintptr_t) GetProcAddress( user32, "RegisterRawInputDevices" );
 
         app->GetRawInputDataPtr = (UINT (WINAPI*)( HRAWINPUT, UINT, LPVOID, PUINT, UINT))
@@ -2284,9 +2294,9 @@ int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, vo
         USHORT const USAGE_GENERIC_MOUSE = ((USHORT) 0x02);
 
         RAWINPUTDEVICE rid[ 1 ];
-        rid[ 0 ].usUsagePage = USAGE_PAGE_GENERIC; 
-        rid[ 0 ].usUsage = USAGE_GENERIC_MOUSE; 
-        rid[ 0 ].dwFlags = RIDEV_INPUTSINK;   
+        rid[ 0 ].usUsagePage = USAGE_PAGE_GENERIC;
+        rid[ 0 ].usUsage = USAGE_GENERIC_MOUSE;
+        rid[ 0 ].dwFlags = RIDEV_INPUTSINK;
         rid[ 0 ].hwndTarget = app->hwnd;
         RegisterRawInputDevicesPtr( rid, 1, sizeof( *rid ) );
 
@@ -2310,9 +2320,9 @@ init_failed:
     if( app->dsound_dll ) FreeLibrary( app->dsound_dll );
     if( app->sound_notifications[ 0 ] ) CloseHandle( app->sound_notifications[ 0 ] );
     if( app->sound_notifications[ 1 ] ) CloseHandle( app->sound_notifications[ 1 ] );
-    if( !app_internal_opengl_term( &app->gl ) ) app_log( app, APP_LOG_LEVEL_WARNING, "Failed to terminate OpenGL" ); 
+    if( !app_internal_opengl_term( &app->gl ) ) app_log( app, APP_LOG_LEVEL_WARNING, "Failed to terminate OpenGL" );
     if( app->gl_context ) app->wglMakeCurrent( 0, 0 );
-    if( app->gl_context ) app->wglDeleteContext( app->gl_context );     
+    if( app->gl_context ) app->wglDeleteContext( app->gl_context );
     if( app->gl_dll ) FreeLibrary( app->gl_dll );
     if( app->icon ) DestroyIcon( app->icon );
     if( app->current_pointer ) DestroyIcon( app->current_pointer );
@@ -2321,13 +2331,13 @@ init_failed:
     UnregisterClass( TEXT( "app_wc" ), app->hinstance );
 
     #ifndef __TINYC__
-        if( timeGetDevCaps( &tc, sizeof( TIMECAPS ) ) == TIMERR_NOERROR ) 
+        if( timeGetDevCaps( &tc, sizeof( TIMECAPS ) ) == TIMERR_NOERROR )
             timeEndPeriod( tc.wPeriodMin );
     #endif
 
     t = time( NULL );
     struct tm* end = localtime( &t );
-    sprintf( msg, "Application terminated %02d:%02d:%02d %04d-%02d-%02d.", 
+    sprintf( msg, "Application terminated %02d:%02d:%02d %04d-%02d-%02d.",
         end->tm_hour, end->tm_min, end->tm_sec, end->tm_year + 1900, end->tm_mon + 1, end->tm_mday );
     app_log( app, APP_LOG_LEVEL_INFO, msg );
 
@@ -2342,7 +2352,7 @@ app_state_t app_yield( app_t* app )
     {
     if( !app->initialized )
         {
-        if( app->screenmode == APP_SCREENMODE_WINDOW ) 
+        if( app->screenmode == APP_SCREENMODE_WINDOW )
         {
             app->screenmode = APP_SCREENMODE_FULLSCREEN;
             app_screenmode( app, APP_SCREENMODE_WINDOW );
@@ -2352,7 +2362,7 @@ app_state_t app_yield( app_t* app )
             app->screenmode = APP_SCREENMODE_WINDOW;
             app_screenmode( app, APP_SCREENMODE_FULLSCREEN );
         }
-        ShowWindow( app->hwnd, SW_SHOWNORMAL );         
+        ShowWindow( app->hwnd, SW_SHOWNORMAL );
         SetActiveWindow( app->hwnd );
         BringWindowToTop( app->hwnd );
         SwitchToThisWindow( app->hwnd, TRUE );
@@ -2371,7 +2381,7 @@ app_state_t app_yield( app_t* app )
         SwitchToThread();   //  yield to any thread on same processor
     //else
     //  Sleep( 4 ); // Pause for a bit... we're not in a rush here
-    
+
     return app->closed == TRUE ? APP_STATE_EXIT_REQUESTED : APP_STATE_NORMAL;
     }
 
@@ -2468,7 +2478,7 @@ static HCURSOR app_internal_create_cursor( HWND hwnd, int width, int height, APP
     header.bV5RedMask   =  0x00FF0000;
     header.bV5GreenMask =  0x0000FF00;
     header.bV5BlueMask  =  0x000000FF;
-    header.bV5AlphaMask =  0xFF000000; 
+    header.bV5AlphaMask =  0xFF000000;
 
     HDC hdc = GetDC( hwnd );
     void* bits = NULL;
@@ -2491,17 +2501,17 @@ static HCURSOR app_internal_create_cursor( HWND hwnd, int width, int height, APP
 
     HBITMAP empty_mask = CreateBitmap( size, size, 1, 1, NULL );
     ICONINFO icon_info;
-    icon_info.fIcon = FALSE; 
+    icon_info.fIcon = FALSE;
     icon_info.xHotspot = (DWORD) hotspot_x;
     icon_info.yHotspot = (DWORD) hotspot_y;
     icon_info.hbmMask = empty_mask;
     icon_info.hbmColor = bitmap;
 
     HCURSOR cursor = CreateIconIndirect( &icon_info );
-    DeleteObject( bitmap );          
-    DeleteObject( empty_mask ); 
+    DeleteObject( bitmap );
+    DeleteObject( empty_mask );
 
-    return cursor;    
+    return cursor;
     }
 
 
@@ -2509,9 +2519,9 @@ void app_pointer( app_t* app, int width, int height, APP_U32* pixels_abgr, int h
     {
     if( app->current_pointer ) DestroyIcon( app->current_pointer );
     app->current_pointer = 0;
-    
+
     if( pixels_abgr )
-        app->current_pointer = app_internal_create_cursor( app->hwnd, width, height, 
+        app->current_pointer = app_internal_create_cursor( app->hwnd, width, height,
             pixels_abgr, hotspot_x, hotspot_y );
     ShowCursor( FALSE );
     SetCursor( app->current_pointer );
@@ -2519,39 +2529,39 @@ void app_pointer( app_t* app, int width, int height, APP_U32* pixels_abgr, int h
     }
 
 
-static BOOL app_internal_extract_default_windows_cursor( int* width, int* height, APP_U32* pixels_abgr, 
+static BOOL app_internal_extract_default_windows_cursor( int* width, int* height, APP_U32* pixels_abgr,
     int* hotspot_x, int* hotspot_y )
     {
     HCURSOR cursor = LoadCursor( NULL, IDC_ARROW );
     if( !cursor ) return FALSE;
-    
+
     ICONINFO info;
     if( !GetIconInfo( cursor, &info ) ) { DestroyCursor( cursor ); return FALSE; }
     BOOL bw_cursor = ( info.hbmColor == NULL );
 
     BITMAP bmpinfo;
     memset( &bmpinfo, 0, sizeof( bmpinfo ) );
-    if( bw_cursor && GetObject( info.hbmMask, sizeof( BITMAP ), &bmpinfo ) == 0 ) 
-        { 
-        DestroyCursor( cursor ); 
+    if( bw_cursor && GetObject( info.hbmMask, sizeof( BITMAP ), &bmpinfo ) == 0 )
+        {
+        DestroyCursor( cursor );
         DeleteObject( info.hbmColor );
         DeleteObject( info.hbmMask );
-        return FALSE; 
+        return FALSE;
         }
     if( !bw_cursor && GetObject( info.hbmColor, sizeof( BITMAP ), &bmpinfo ) == 0 )
-        { 
-        DestroyCursor( cursor ); 
+        {
+        DestroyCursor( cursor );
         DeleteObject( info.hbmColor );
         DeleteObject( info.hbmMask );
-        return FALSE; 
+        return FALSE;
         }
 
     if( bmpinfo.bmWidth > 256 || bmpinfo.bmHeight > 256 )
         {
-        DestroyCursor( cursor ); 
+        DestroyCursor( cursor );
         DeleteObject( info.hbmColor );
         DeleteObject( info.hbmMask );
-        return FALSE; 
+        return FALSE;
         }
     int pointer_width = bmpinfo.bmWidth;
     int pointer_height = ( bmpinfo.bmHeight >= 0 ? bmpinfo.bmHeight : -bmpinfo.bmHeight ) / ( bw_cursor ? 2 : 1 );
@@ -2562,12 +2572,12 @@ static BOOL app_internal_extract_default_windows_cursor( int* width, int* height
     if( hotspot_y ) *hotspot_y = (int) info.yHotspot;
     if( !pixels_abgr )
         {
-        DestroyCursor( cursor ); 
+        DestroyCursor( cursor );
         DeleteObject( info.hbmColor );
         DeleteObject( info.hbmMask );
         return TRUE;
         }
-    
+
     BITMAPINFOHEADER bmi;
     bmi.biSize = sizeof( BITMAPINFOHEADER );
     bmi.biPlanes = 1;
@@ -2577,10 +2587,10 @@ static BOOL app_internal_extract_default_windows_cursor( int* width, int* height
     bmi.biCompression = BI_RGB;
     bmi.biSizeImage = 0;
     HDC hdc = GetDC( NULL );
-    if( GetDIBits( hdc, bw_cursor ? info.hbmMask : info.hbmColor, 0, (UINT) bmpinfo.bmHeight, pixels_abgr, 
+    if( GetDIBits( hdc, bw_cursor ? info.hbmMask : info.hbmColor, 0, (UINT) bmpinfo.bmHeight, pixels_abgr,
         (BITMAPINFO*) &bmi, DIB_RGB_COLORS ) != bmpinfo.bmHeight )
         {
-        DestroyCursor( cursor ); 
+        DestroyCursor( cursor );
         DeleteObject( info.hbmColor );
         DeleteObject( info.hbmMask );
         ReleaseDC( NULL, hdc );
@@ -2629,7 +2639,7 @@ void app_pointer_default( app_t* app, int* width, int* height, APP_U32* pixels_a
     {
     (void) app;
 
-    APP_U32 default_pointer_data[ 11 * 16 ] = 
+    APP_U32 default_pointer_data[ 11 * 16 ] =
         {
         0xFF000000,0xFF000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,
         0xFF000000,0xFFFFFFFF,0xFF000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,
@@ -2667,14 +2677,14 @@ void app_pointer_pos( app_t* app, int x, int y )
     p.x = x;
     p.y = y;
     ClientToScreen( app->hwnd, &p );
-    SetCursorPos( p.x, p.y );     
+    SetCursorPos( p.x, p.y );
     }
 
 
 int app_pointer_x( app_t* app )
     {
     POINT p;
-    GetCursorPos( &p ); 
+    GetCursorPos( &p );
     ScreenToClient( app->hwnd, &p );
     return (int) p.x;
     }
@@ -2683,20 +2693,20 @@ int app_pointer_x( app_t* app )
 int app_pointer_y( app_t* app )
     {
     POINT p;
-    GetCursorPos( &p ); 
+    GetCursorPos( &p );
     ScreenToClient( app->hwnd, &p );
     return (int) p.y;
     }
 
 
 void app_pointer_limit( app_t* app, int x, int y, int width, int height )
-    { 
+    {
     app->clip_cursor = TRUE;
     app->clip_rect.left= x;
     app->clip_rect.top = y;
     app->clip_rect.right = x + width;
     app->clip_rect.bottom = y + height;
-    
+
     RECT r = app->clip_rect;
     ClientToScreen( app->hwnd, (POINT*)&r );
     ClientToScreen( app->hwnd, ( (POINT*)&r ) + 1 );
@@ -2717,15 +2727,15 @@ void app_interpolation( app_t* app, app_interpolation_t interpolation )
     app->interpolation = interpolation;
 
     POINT p;
-    GetCursorPos( &p ); 
+    GetCursorPos( &p );
     ScreenToClient( app->hwnd, &p );
     int mouse_x = p.x;
     int mouse_y = p.y;
 
     app_input_event_t input_event;
-    input_event.type = APP_INPUT_MOUSE_MOVE; 
-    input_event.data.mouse_pos.x = mouse_x; 
-    input_event.data.mouse_pos.y = mouse_y; 
+    input_event.type = APP_INPUT_MOUSE_MOVE;
+    input_event.data.mouse_pos.x = mouse_x;
+    input_event.data.mouse_pos.y = mouse_y;
     app_internal_add_input_event( app, &input_event );
 
     app_internal_opengl_interpolation( &app->gl, interpolation );
@@ -2737,15 +2747,15 @@ void app_screenmode( app_t* app, app_screenmode_t screenmode )
     if( screenmode == app->screenmode ) return;
     app->screenmode = screenmode;
     BOOL visible = IsWindowVisible( app->hwnd );
-    if( screenmode == APP_SCREENMODE_WINDOW ) 
+    if( screenmode == APP_SCREENMODE_WINDOW )
         {
         SetWindowLong( app->hwnd, GWL_STYLE, WS_OVERLAPPEDWINDOW | ( visible ? WS_VISIBLE : 0 ) );
 
         WINDOWPLACEMENT placement;
-        placement.length = sizeof( placement );        
+        placement.length = sizeof( placement );
         GetWindowPlacement( app->hwnd, &placement );
         placement.showCmd = (UINT)( visible ? SW_SHOW : SW_HIDE );
-        
+
         placement.rcNormalPosition.left = app->windowed_x;
         placement.rcNormalPosition.top = app->windowed_y;
         placement.rcNormalPosition.right = app->windowed_x + app->windowed_w;
@@ -2785,16 +2795,16 @@ void app_screenmode( app_t* app, app_screenmode_t screenmode )
             }
 
 
-        RECT r = app_internal_rect( app->displays[ display_index ].x, app->displays[ display_index ].y, 
-            app->displays[ display_index ].x + app->displays[ display_index ].width, 
+        RECT r = app_internal_rect( app->displays[ display_index ].x, app->displays[ display_index ].y,
+            app->displays[ display_index ].x + app->displays[ display_index ].width,
             app->displays[ display_index ].y + app->displays[ display_index ].height );
         app->fullscreen_width = r.right - r.left;
         app->fullscreen_height = r.bottom - r.top;
-        SetWindowPos( app->hwnd, 0, r.left, r.top, app->fullscreen_width, app->fullscreen_height, 
-            SWP_NOOWNERZORDER | SWP_FRAMECHANGED );     
+        SetWindowPos( app->hwnd, 0, r.left, r.top, app->fullscreen_width, app->fullscreen_height,
+            SWP_NOOWNERZORDER | SWP_FRAMECHANGED );
 
-        SetWindowLong( app->hwnd, GWL_STYLE, ( visible ? WS_VISIBLE : 0 ) );        
-        SetWindowPos( app->hwnd, 0, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOOWNERZORDER | SWP_FRAMECHANGED );       
+        SetWindowLong( app->hwnd, GWL_STYLE, ( visible ? WS_VISIBLE : 0 ) );
+        SetWindowPos( app->hwnd, 0, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOOWNERZORDER | SWP_FRAMECHANGED );
         }
     }
 
@@ -2804,13 +2814,13 @@ void app_window_size( app_t* app, int width, int height )
     RECT r;
     r = app_internal_rect( 0, 0, width, height );
     AdjustWindowRect( &r, WS_OVERLAPPEDWINDOW | WS_VISIBLE, FALSE );
-    
+
     width = r.right - r.left;
     height = r.bottom - r.top;
     app->windowed_w = width;
     app->windowed_h = height;
 
-    if( app->screenmode == APP_SCREENMODE_WINDOW ) 
+    if( app->screenmode == APP_SCREENMODE_WINDOW )
         SetWindowPos( app->hwnd, 0, 0, 0, width, height, SWP_NOMOVE | SWP_NOOWNERZORDER | SWP_FRAMECHANGED );
     }
 
@@ -2849,7 +2859,7 @@ int app_window_height( app_t* app )
 
 void app_window_pos( app_t* app, int x, int y )
     {
-    if( app->screenmode == APP_SCREENMODE_WINDOW ) 
+    if( app->screenmode == APP_SCREENMODE_WINDOW )
         {
         WINDOWPLACEMENT placement;
         placement.length = sizeof( placement );
@@ -2868,7 +2878,7 @@ void app_window_pos( app_t* app, int x, int y )
 
 int app_window_x( app_t* app )
     {
-    if( app->screenmode == APP_SCREENMODE_WINDOW ) 
+    if( app->screenmode == APP_SCREENMODE_WINDOW )
         {
         WINDOWPLACEMENT placement;
         placement.length = sizeof( placement );
@@ -2884,7 +2894,7 @@ int app_window_x( app_t* app )
 
 int app_window_y( app_t* app )
     {
-    if( app->screenmode == APP_SCREENMODE_WINDOW ) 
+    if( app->screenmode == APP_SCREENMODE_WINDOW )
         {
         WINDOWPLACEMENT placement;
         placement.length = sizeof( placement );
@@ -2898,59 +2908,59 @@ int app_window_y( app_t* app )
     }
 
 
-app_displays_t app_displays( app_t* app ) 
-    { 
-    app_displays_t displays; 
+app_displays_t app_displays( app_t* app )
+    {
+    app_displays_t displays;
     displays.count = app->display_count;
     displays.displays = app->displays;
-    return displays; 
+    return displays;
     }
 
 
 void app_present( app_t* app, APP_U32 const* pixels_xbgr, int width, int height, APP_U32 mod_xbgr, APP_U32 border_xbgr )
     {
     if( app->is_minimized ) return;
-    if( pixels_xbgr ) app_internal_opengl_present( &app->gl, pixels_xbgr, width, height, mod_xbgr, border_xbgr );  
+    if( pixels_xbgr ) app_internal_opengl_present( &app->gl, pixels_xbgr, width, height, mod_xbgr, border_xbgr );
     SwapBuffers( app->hdc );
     }
 
 
-static void app_sound_write( app_t* app, int sample_pairs_offset, int sample_pairs_count ) 
-    { 
+static void app_sound_write( app_t* app, int sample_pairs_offset, int sample_pairs_count )
+    {
     int offset = sample_pairs_offset * 2 * ( 16 / 8 );
     int length = sample_pairs_count * 2 * ( 16 / 8 );
 
     // Obtain memory address of write block. This will be in two parts if the block wraps around.
-    LPVOID lpvPtr1; 
-    DWORD dwBytes1; 
-    LPVOID lpvPtr2; 
-    DWORD dwBytes2; 
-    HRESULT hr = IDirectSoundBuffer8_Lock( app->dsoundbuf, (DWORD) offset, (DWORD) length, &lpvPtr1, &dwBytes1, 
-        &lpvPtr2, &dwBytes2, 0 ); 
- 
-    // If DSERR_BUFFERLOST is returned, restore and retry lock. 
-    if( hr == DSERR_BUFFERLOST ) 
-        { 
-        IDirectSoundBuffer8_Restore( app->dsoundbuf ); 
-        hr = IDirectSoundBuffer8_Lock( app->dsoundbuf, (DWORD) offset, (DWORD) length, &lpvPtr1, &dwBytes1, 
-            &lpvPtr2, &dwBytes2, 0 ); 
-        } 
-    if( FAILED( hr) ) 
-        { 
+    LPVOID lpvPtr1;
+    DWORD dwBytes1;
+    LPVOID lpvPtr2;
+    DWORD dwBytes2;
+    HRESULT hr = IDirectSoundBuffer8_Lock( app->dsoundbuf, (DWORD) offset, (DWORD) length, &lpvPtr1, &dwBytes1,
+        &lpvPtr2, &dwBytes2, 0 );
+
+    // If DSERR_BUFFERLOST is returned, restore and retry lock.
+    if( hr == DSERR_BUFFERLOST )
+        {
+        IDirectSoundBuffer8_Restore( app->dsoundbuf );
+        hr = IDirectSoundBuffer8_Lock( app->dsoundbuf, (DWORD) offset, (DWORD) length, &lpvPtr1, &dwBytes1,
+            &lpvPtr2, &dwBytes2, 0 );
+        }
+    if( FAILED( hr) )
+        {
         app_log( app, APP_LOG_LEVEL_WARNING, "Couldn't lock sound buffer" );
         IDirectSound8_Release( app->dsound );
         app->dsound = 0;
         return;
         }
 
-    // Write to pointers.      
+    // Write to pointers.
     app->sound_callback( (APP_S16*) lpvPtr1, (int) dwBytes1 / ( 2 * ( 16 / 8 ) ), app->sound_user_data );
     if( lpvPtr2 ) app->sound_callback( (APP_S16*) lpvPtr2, (int) dwBytes2 / ( 2 * ( 16 / 8 ) ), app->sound_user_data );
 
-    // Release the data back to DirectSound. 
-    hr = IDirectSoundBuffer8_Unlock( app->dsoundbuf, lpvPtr1, dwBytes1, lpvPtr2, dwBytes2 ); 
-    if( FAILED( hr) ) 
-        { 
+    // Release the data back to DirectSound.
+    hr = IDirectSoundBuffer8_Unlock( app->dsoundbuf, lpvPtr1, dwBytes1, lpvPtr2, dwBytes2 );
+    if( FAILED( hr) )
+        {
         app_log( app, APP_LOG_LEVEL_WARNING, "Couldn't unlock sound buffer" );
         IDirectSound8_Release( app->dsound );
         app->dsound = 0;
@@ -2977,7 +2987,7 @@ static DWORD WINAPI app_sound_thread_proc( LPVOID lpThreadParameter )
         else if( prev_pos < mid_point && pos >= mid_point )
             app_sound_write( app, 0, half_size );
 
-        prev_pos = pos; 
+        prev_pos = pos;
         }
 
     return 0;
@@ -2997,7 +3007,7 @@ void app_sound( app_t* app, int sample_pairs_count, void (*sound_callback)( APP_
             CloseHandle( app->sound_thread_handle );
             app->sound_thread_handle = INVALID_HANDLE_VALUE;
             }
-        if( app->dsoundbuf ) 
+        if( app->dsoundbuf )
             {
             IDirectSoundBuffer8_Release( app->dsoundbuf );
             app->dsoundbuf = NULL;
@@ -3008,11 +3018,11 @@ void app_sound( app_t* app, int sample_pairs_count, void (*sound_callback)( APP_
         return;
         }
 
-    if( app->sample_pairs_count != sample_pairs_count ) 
+    if( app->sample_pairs_count != sample_pairs_count )
         {
         app->sample_pairs_count = sample_pairs_count;
 
-        if( app->dsoundbuf ) 
+        if( app->dsoundbuf )
             {
             IDirectSoundBuffer8_Release( app->dsoundbuf );
             app->dsoundbuf = 0;
@@ -3025,31 +3035,31 @@ void app_sound( app_t* app, int sample_pairs_count, void (*sound_callback)( APP_
             int const bits_per_sample = 16;
 
             WORD const DSOUND_WAVE_FORMAT_PCM = 1;
-            DSOUND_WAVEFORMATEX format; 
-            memset( &format, 0, sizeof( DSOUND_WAVEFORMATEX ) ); 
-            format.wFormatTag = DSOUND_WAVE_FORMAT_PCM; 
-            format.nChannels = (WORD) channels; 
-            format.nSamplesPerSec = (DWORD) frequency; 
-            format.nBlockAlign = (WORD) ( ( channels * bits_per_sample ) / 8 ); 
-            format.nAvgBytesPerSec = (DWORD) ( frequency * format.nBlockAlign ); 
-            format.wBitsPerSample = (WORD) bits_per_sample; 
+            DSOUND_WAVEFORMATEX format;
+            memset( &format, 0, sizeof( DSOUND_WAVEFORMATEX ) );
+            format.wFormatTag = DSOUND_WAVE_FORMAT_PCM;
+            format.nChannels = (WORD) channels;
+            format.nSamplesPerSec = (DWORD) frequency;
+            format.nBlockAlign = (WORD) ( ( channels * bits_per_sample ) / 8 );
+            format.nAvgBytesPerSec = (DWORD) ( frequency * format.nBlockAlign );
+            format.wBitsPerSample = (WORD) bits_per_sample;
             format.cbSize = 0;
 
-            DSBUFFERDESC dsbdesc; 
-            memset( &dsbdesc, 0, sizeof( DSBUFFERDESC ) ); 
-            dsbdesc.dwSize = sizeof( DSBUFFERDESC ); 
-        
-            dsbdesc.dwFlags = DSBCAPS_CTRLVOLUME | DSBCAPS_GETCURRENTPOSITION2 | DSBCAPS_GLOBALFOCUS | DSBCAPS_CTRLPOSITIONNOTIFY ; 
-        
+            DSBUFFERDESC dsbdesc;
+            memset( &dsbdesc, 0, sizeof( DSBUFFERDESC ) );
+            dsbdesc.dwSize = sizeof( DSBUFFERDESC );
+
+            dsbdesc.dwFlags = DSBCAPS_CTRLVOLUME | DSBCAPS_GETCURRENTPOSITION2 | DSBCAPS_GLOBALFOCUS | DSBCAPS_CTRLPOSITIONNOTIFY ;
+
             int size = channels * ( bits_per_sample / 8 ) * sample_pairs_count;
-            dsbdesc.dwBufferBytes = (DWORD) size; 
-            dsbdesc.lpwfxFormat = &format; 
-        
-            struct IDirectSoundBuffer8* soundbuf = NULL;    
-            HRESULT hr = IDirectSound8_CreateSoundBuffer( app->dsound, &dsbdesc, &soundbuf, NULL ); 
-            if( FAILED( hr ) || !soundbuf ) 
+            dsbdesc.dwBufferBytes = (DWORD) size;
+            dsbdesc.lpwfxFormat = &format;
+
+            struct IDirectSoundBuffer8* soundbuf = NULL;
+            HRESULT hr = IDirectSound8_CreateSoundBuffer( app->dsound, &dsbdesc, &soundbuf, NULL );
+            if( FAILED( hr ) || !soundbuf )
                 {
-                app_log( app, APP_LOG_LEVEL_WARNING, "Failed to create sound buffer" ); 
+                app_log( app, APP_LOG_LEVEL_WARNING, "Failed to create sound buffer" );
                 IDirectSound8_Release( app->dsound );
                 app->dsound = 0;
                 app->sample_pairs_count = 0;
@@ -3068,17 +3078,17 @@ void app_sound( app_t* app, int sample_pairs_count, void (*sound_callback)( APP_
             IDirectSoundBuffer8_Release( soundbuf );
 
             if( FAILED( hr ) || !app->dsoundbuf )
-                { 
-                app_log( app, APP_LOG_LEVEL_WARNING, "Failed to create sound buffer" ); 
+                {
+                app_log( app, APP_LOG_LEVEL_WARNING, "Failed to create sound buffer" );
                 IDirectSound8_Release( app->dsound );
                 app->dsound = 0;
                 app->sample_pairs_count = 0;
                 app->sound_callback = NULL;
                 app->sound_user_data = NULL;
                 return;
-                }                    
+                }
 
-            struct IDirectSoundNotify* notify = NULL; 
+            struct IDirectSoundNotify* notify = NULL;
             GUID const GUID_IDirectSoundNotify8 = { 0xb0210783, 0x89cd, 0x11d0, { 0xaf, 0x8, 0x0, 0xa0, 0xc9, 0x25, 0xcd, 0x16 } };
             #ifdef __cplusplus
                 GUID const& ref_GUID_IDirectSoundNotify8 = GUID_IDirectSoundNotify8;
@@ -3087,8 +3097,8 @@ void app_sound( app_t* app, int sample_pairs_count, void (*sound_callback)( APP_
             #endif
             hr = IDirectSoundBuffer8_QueryInterface( app->dsoundbuf, ref_GUID_IDirectSoundNotify8, (void**) &notify );
             if( FAILED( hr ) || !notify )
-                { 
-                app_log( app, APP_LOG_LEVEL_WARNING, "Failed to create sound buffer" ); 
+                {
+                app_log( app, APP_LOG_LEVEL_WARNING, "Failed to create sound buffer" );
                 IDirectSoundBuffer8_Release( app->dsoundbuf );
                 IDirectSound8_Release( app->dsound );
                 app->dsound = 0;
@@ -3097,7 +3107,7 @@ void app_sound( app_t* app, int sample_pairs_count, void (*sound_callback)( APP_
                 app->sound_callback = NULL;
                 app->sound_user_data = NULL;
                 return;
-                }                    
+                }
 
             DSBPOSITIONNOTIFY notify_positions[ 2 ];
             notify_positions[ 0 ].dwOffset = 0;
@@ -3126,7 +3136,7 @@ void app_sound_volume( app_t* app, float volume )
     if( !app->dsoundbuf ) return;
 
     int level = volume < 0.000015f ? DSBVOLUME_MIN : (int) ( 2000.0f * (float) log10( (double ) volume ) );
-    if( app->sound_level == level ) return; 
+    if( app->sound_level == level ) return;
     app->sound_level = level;
 
     IDirectSoundBuffer8_SetVolume( app->dsoundbuf, level );
@@ -3135,8 +3145,8 @@ void app_sound_volume( app_t* app, float volume )
 
 app_input_t app_input( app_t* app )
     {
-    app_input_t input; 
-    input.events = app->input_events; 
+    app_input_t input;
+    input.events = app->input_events;
     input.count = app->input_count;
     app->input_count = 0;
     return input;
@@ -3166,7 +3176,7 @@ void app_coordinates_window_to_bitmap( app_t* app, int width, int height, int* x
             *x = (int)( *x / pixel_scale );
             *y = (int)( *y / pixel_scale );
             }
-        else 
+        else
             {
             *x = 0;
             *y = 0;
@@ -3210,7 +3220,7 @@ void app_coordinates_bitmap_to_window( app_t* app, int width, int height, int* x
             *x += (int)( hborder );
             *y += (int)( vborder );
             }
-        else 
+        else
             {
             *x = 0;
             *y = 0;
@@ -3230,9 +3240,11 @@ void app_coordinates_bitmap_to_window( app_t* app, int width, int height, int* x
         *y += (int)( vborder );
         }
     }
-    
-    
-    
+
+char const* app_last_dropped_file( app_t* app ) {
+    return NULL;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //    SDL
@@ -3261,19 +3273,19 @@ void app_coordinates_bitmap_to_window( app_t* app, int width, int height, int* x
             SDL_ShowSimpleMessageBox( SDL_MESSAGEBOX_ERROR, "Fatal Error!", message, NULL ); exit( 0xff ); }
 #endif
 
-struct app_t 
-    { 
+struct app_t
+    {
     void* memctx;
     void* logctx;
     void* fatalctx;
-    struct app_internal_opengl_t gl;    
+    struct app_internal_opengl_t gl;
 	int initialized;
 	int exit_requested;
 	int has_focus;
 	app_interpolation_t interpolation;
 	app_screenmode_t screenmode;
 
-    SDL_Window* window;	
+    SDL_Window* window;
     SDL_Cursor* cursor;
 
 	SDL_AudioDeviceID sound_device;
@@ -3287,11 +3299,13 @@ struct app_t
     int display_count;
     app_display_t displays[ 16 ];
 
+    char const* last_dropped_file;
+
     };
 
 
-int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, void* logctx, void* fatalctx ) 
-    { 
+int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, void* logctx, void* fatalctx )
+    {
     app_t* app = (app_t*) APP_MALLOC( memctx, sizeof( app_t ) );
     memset( app, 0, (int)sizeof( app_t ) );
     app->memctx = memctx;
@@ -3299,14 +3313,15 @@ int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, vo
     app->fatalctx = fatalctx;
     app->interpolation = APP_INTERPOLATION_LINEAR;
     app->screenmode = APP_SCREENMODE_FULLSCREEN;
+    app->last_dropped_file = NULL;
 
     int result = 0xff;
-   
+
     if( SDL_Init( SDL_INIT_EVERYTHING ) < 0 )
         {
 //        printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
         goto init_failed;
-        }    
+        }
 
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, 0);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
@@ -3337,10 +3352,10 @@ int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, vo
 		app->displays[ i ] = d;
 		}
 	app->display_count = display_count;
-    
+
     SDL_GL_CreateContext( app->window );
     glewInit();
-    
+
     SDL_GL_SetSwapInterval( 1 );
 
     app->gl.CreateShader = glCreateShader;
@@ -3378,26 +3393,26 @@ int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, vo
     #ifdef APP_REPORT_SHADER_ERRORS
         app->gl.GetShaderInfoLog = glGetShaderInfoLog;
     #endif
-	
+
     int glres = app_internal_opengl_init( app, &app->gl, app->interpolation, 640, 400 );
-    if( !glres ) 
+    if( !glres )
         {
         app_fatal_error( app, "OpenGL init fail" );
         goto init_failed;
         }
 
-    result = app_proc( app, user_data ); 
-    
+    result = app_proc( app, user_data );
+
 init_failed:
     if( app->sound_device )
         {
-		SDL_PauseAudioDevice( app->sound_device, 1 );			
+		SDL_PauseAudioDevice( app->sound_device, 1 );
 		SDL_CloseAudioDevice( app->sound_device );
         app->sound_device = 0;
 		app->sound_callback = NULL;
-		app->sound_user_data = NULL;		
+		app->sound_user_data = NULL;
         }
-        
+
     if( app->cursor ) SDL_FreeCursor( app->cursor );
 
     //Destroy window
@@ -3406,7 +3421,7 @@ init_failed:
 
     //Quit SDL subsystems
     SDL_Quit();
-    
+
     APP_FREE( memctx, app );
     return result;
     }
@@ -3416,78 +3431,78 @@ static app_key_t app_internal_scancode_to_appkey( app_t* app, SDL_Scancode scanc
 
     {
     int map[ 287 * 2 ] = { APP_KEY_INVALID, SDL_SCANCODE_UNKNOWN, APP_KEY_INVALID, 1, APP_KEY_INVALID, 2, APP_KEY_INVALID, 3, APP_KEY_A, SDL_SCANCODE_A,
-		APP_KEY_B, SDL_SCANCODE_B, APP_KEY_C, SDL_SCANCODE_C, APP_KEY_D, SDL_SCANCODE_D, APP_KEY_E, SDL_SCANCODE_E, APP_KEY_F, SDL_SCANCODE_F, APP_KEY_G, 
-		SDL_SCANCODE_G, APP_KEY_H, SDL_SCANCODE_H, APP_KEY_I, SDL_SCANCODE_I, APP_KEY_J, SDL_SCANCODE_J, APP_KEY_K, SDL_SCANCODE_K, APP_KEY_L, 
-		SDL_SCANCODE_L, APP_KEY_M, SDL_SCANCODE_M, APP_KEY_N, SDL_SCANCODE_N, APP_KEY_O, SDL_SCANCODE_O, APP_KEY_P, SDL_SCANCODE_P, APP_KEY_Q, 
-		SDL_SCANCODE_Q, APP_KEY_R, SDL_SCANCODE_R, APP_KEY_S, SDL_SCANCODE_S, APP_KEY_T, SDL_SCANCODE_T, APP_KEY_U, SDL_SCANCODE_U, APP_KEY_V, 
-		SDL_SCANCODE_V, APP_KEY_W, SDL_SCANCODE_W, APP_KEY_X, SDL_SCANCODE_X, APP_KEY_Y, SDL_SCANCODE_Y, APP_KEY_Z, SDL_SCANCODE_Z, APP_KEY_1, 
-		SDL_SCANCODE_1, APP_KEY_2, SDL_SCANCODE_2, APP_KEY_3, SDL_SCANCODE_3, APP_KEY_4, SDL_SCANCODE_4, APP_KEY_5, SDL_SCANCODE_5, APP_KEY_6, 
-		SDL_SCANCODE_6, APP_KEY_7, SDL_SCANCODE_7, APP_KEY_8, SDL_SCANCODE_8, APP_KEY_9, SDL_SCANCODE_9, APP_KEY_0, SDL_SCANCODE_0, APP_KEY_RETURN, 
-		SDL_SCANCODE_RETURN, APP_KEY_ESCAPE, SDL_SCANCODE_ESCAPE, APP_KEY_BACK, SDL_SCANCODE_BACKSPACE, APP_KEY_TAB, SDL_SCANCODE_TAB, APP_KEY_SPACE, 
-		SDL_SCANCODE_SPACE, APP_KEY_OEM_MINUS, SDL_SCANCODE_MINUS, APP_KEY_INVALID, SDL_SCANCODE_EQUALS, APP_KEY_OEM_4, SDL_SCANCODE_LEFTBRACKET, 
-		APP_KEY_OEM_6, SDL_SCANCODE_RIGHTBRACKET, APP_KEY_OEM_5, SDL_SCANCODE_BACKSLASH, APP_KEY_INVALID, SDL_SCANCODE_NONUSHASH, APP_KEY_OEM_1, 
-		SDL_SCANCODE_SEMICOLON, APP_KEY_OEM_7, SDL_SCANCODE_APOSTROPHE, APP_KEY_INVALID, SDL_SCANCODE_GRAVE, APP_KEY_OEM_COMMA, SDL_SCANCODE_COMMA, 
+		APP_KEY_B, SDL_SCANCODE_B, APP_KEY_C, SDL_SCANCODE_C, APP_KEY_D, SDL_SCANCODE_D, APP_KEY_E, SDL_SCANCODE_E, APP_KEY_F, SDL_SCANCODE_F, APP_KEY_G,
+		SDL_SCANCODE_G, APP_KEY_H, SDL_SCANCODE_H, APP_KEY_I, SDL_SCANCODE_I, APP_KEY_J, SDL_SCANCODE_J, APP_KEY_K, SDL_SCANCODE_K, APP_KEY_L,
+		SDL_SCANCODE_L, APP_KEY_M, SDL_SCANCODE_M, APP_KEY_N, SDL_SCANCODE_N, APP_KEY_O, SDL_SCANCODE_O, APP_KEY_P, SDL_SCANCODE_P, APP_KEY_Q,
+		SDL_SCANCODE_Q, APP_KEY_R, SDL_SCANCODE_R, APP_KEY_S, SDL_SCANCODE_S, APP_KEY_T, SDL_SCANCODE_T, APP_KEY_U, SDL_SCANCODE_U, APP_KEY_V,
+		SDL_SCANCODE_V, APP_KEY_W, SDL_SCANCODE_W, APP_KEY_X, SDL_SCANCODE_X, APP_KEY_Y, SDL_SCANCODE_Y, APP_KEY_Z, SDL_SCANCODE_Z, APP_KEY_1,
+		SDL_SCANCODE_1, APP_KEY_2, SDL_SCANCODE_2, APP_KEY_3, SDL_SCANCODE_3, APP_KEY_4, SDL_SCANCODE_4, APP_KEY_5, SDL_SCANCODE_5, APP_KEY_6,
+		SDL_SCANCODE_6, APP_KEY_7, SDL_SCANCODE_7, APP_KEY_8, SDL_SCANCODE_8, APP_KEY_9, SDL_SCANCODE_9, APP_KEY_0, SDL_SCANCODE_0, APP_KEY_RETURN,
+		SDL_SCANCODE_RETURN, APP_KEY_ESCAPE, SDL_SCANCODE_ESCAPE, APP_KEY_BACK, SDL_SCANCODE_BACKSPACE, APP_KEY_TAB, SDL_SCANCODE_TAB, APP_KEY_SPACE,
+		SDL_SCANCODE_SPACE, APP_KEY_OEM_MINUS, SDL_SCANCODE_MINUS, APP_KEY_INVALID, SDL_SCANCODE_EQUALS, APP_KEY_OEM_4, SDL_SCANCODE_LEFTBRACKET,
+		APP_KEY_OEM_6, SDL_SCANCODE_RIGHTBRACKET, APP_KEY_OEM_5, SDL_SCANCODE_BACKSLASH, APP_KEY_INVALID, SDL_SCANCODE_NONUSHASH, APP_KEY_OEM_1,
+		SDL_SCANCODE_SEMICOLON, APP_KEY_OEM_7, SDL_SCANCODE_APOSTROPHE, APP_KEY_INVALID, SDL_SCANCODE_GRAVE, APP_KEY_OEM_COMMA, SDL_SCANCODE_COMMA,
 		APP_KEY_OEM_PERIOD, SDL_SCANCODE_PERIOD, APP_KEY_OEM_2, SDL_SCANCODE_SLASH, APP_KEY_CAPITAL, SDL_SCANCODE_CAPSLOCK, APP_KEY_F1, SDL_SCANCODE_F1,
 		APP_KEY_F2, SDL_SCANCODE_F2, APP_KEY_F3, SDL_SCANCODE_F3, APP_KEY_F4, SDL_SCANCODE_F4, APP_KEY_F5, SDL_SCANCODE_F5, APP_KEY_F6, SDL_SCANCODE_F6,
-		APP_KEY_F7, SDL_SCANCODE_F7, APP_KEY_F8, SDL_SCANCODE_F8, APP_KEY_F9, SDL_SCANCODE_F9, APP_KEY_F10, SDL_SCANCODE_F10, APP_KEY_F11, 
-		SDL_SCANCODE_F11, APP_KEY_F12, SDL_SCANCODE_F12, APP_KEY_SNAPSHOT, SDL_SCANCODE_PRINTSCREEN, APP_KEY_SCROLL, SDL_SCANCODE_SCROLLLOCK, 
-		APP_KEY_PAUSE, SDL_SCANCODE_PAUSE, APP_KEY_INSERT, SDL_SCANCODE_INSERT, APP_KEY_HOME, SDL_SCANCODE_HOME, APP_KEY_PRIOR, SDL_SCANCODE_PAGEUP, 
-		APP_KEY_DELETE, SDL_SCANCODE_DELETE, APP_KEY_END, SDL_SCANCODE_END, APP_KEY_NEXT, SDL_SCANCODE_PAGEDOWN, APP_KEY_RIGHT, SDL_SCANCODE_RIGHT, 
-		APP_KEY_LEFT, SDL_SCANCODE_LEFT, APP_KEY_DOWN, SDL_SCANCODE_DOWN, APP_KEY_UP, SDL_SCANCODE_UP, APP_KEY_NUMLOCK, SDL_SCANCODE_NUMLOCKCLEAR, 
-		APP_KEY_DIVIDE, SDL_SCANCODE_KP_DIVIDE, APP_KEY_MULTIPLY, SDL_SCANCODE_KP_MULTIPLY, APP_KEY_SUBTRACT, SDL_SCANCODE_KP_MINUS, APP_KEY_ADD, 
+		APP_KEY_F7, SDL_SCANCODE_F7, APP_KEY_F8, SDL_SCANCODE_F8, APP_KEY_F9, SDL_SCANCODE_F9, APP_KEY_F10, SDL_SCANCODE_F10, APP_KEY_F11,
+		SDL_SCANCODE_F11, APP_KEY_F12, SDL_SCANCODE_F12, APP_KEY_SNAPSHOT, SDL_SCANCODE_PRINTSCREEN, APP_KEY_SCROLL, SDL_SCANCODE_SCROLLLOCK,
+		APP_KEY_PAUSE, SDL_SCANCODE_PAUSE, APP_KEY_INSERT, SDL_SCANCODE_INSERT, APP_KEY_HOME, SDL_SCANCODE_HOME, APP_KEY_PRIOR, SDL_SCANCODE_PAGEUP,
+		APP_KEY_DELETE, SDL_SCANCODE_DELETE, APP_KEY_END, SDL_SCANCODE_END, APP_KEY_NEXT, SDL_SCANCODE_PAGEDOWN, APP_KEY_RIGHT, SDL_SCANCODE_RIGHT,
+		APP_KEY_LEFT, SDL_SCANCODE_LEFT, APP_KEY_DOWN, SDL_SCANCODE_DOWN, APP_KEY_UP, SDL_SCANCODE_UP, APP_KEY_NUMLOCK, SDL_SCANCODE_NUMLOCKCLEAR,
+		APP_KEY_DIVIDE, SDL_SCANCODE_KP_DIVIDE, APP_KEY_MULTIPLY, SDL_SCANCODE_KP_MULTIPLY, APP_KEY_SUBTRACT, SDL_SCANCODE_KP_MINUS, APP_KEY_ADD,
 		SDL_SCANCODE_KP_PLUS, APP_KEY_RETURN, SDL_SCANCODE_KP_ENTER, APP_KEY_NUMPAD1,SDL_SCANCODE_KP_1, APP_KEY_NUMPAD2,SDL_SCANCODE_KP_2, APP_KEY_NUMPAD3,
 		SDL_SCANCODE_KP_3, APP_KEY_NUMPAD4,SDL_SCANCODE_KP_4, APP_KEY_NUMPAD5,SDL_SCANCODE_KP_5, APP_KEY_NUMPAD6,SDL_SCANCODE_KP_6, APP_KEY_NUMPAD7,
-		SDL_SCANCODE_KP_7, APP_KEY_NUMPAD8,SDL_SCANCODE_KP_8, APP_KEY_NUMPAD9,SDL_SCANCODE_KP_9, APP_KEY_NUMPAD0,SDL_SCANCODE_KP_0, APP_KEY_DECIMAL, 
+		SDL_SCANCODE_KP_7, APP_KEY_NUMPAD8,SDL_SCANCODE_KP_8, APP_KEY_NUMPAD9,SDL_SCANCODE_KP_9, APP_KEY_NUMPAD0,SDL_SCANCODE_KP_0, APP_KEY_DECIMAL,
 		SDL_SCANCODE_KP_PERIOD, APP_KEY_INVALID, SDL_SCANCODE_NONUSBACKSLASH, APP_KEY_APPS, SDL_SCANCODE_APPLICATION, APP_KEY_INVALID, SDL_SCANCODE_POWER,
-		APP_KEY_RETURN, SDL_SCANCODE_KP_EQUALS, APP_KEY_F13, SDL_SCANCODE_F13, APP_KEY_F14, SDL_SCANCODE_F14, APP_KEY_F15, SDL_SCANCODE_F15, APP_KEY_F16, 
+		APP_KEY_RETURN, SDL_SCANCODE_KP_EQUALS, APP_KEY_F13, SDL_SCANCODE_F13, APP_KEY_F14, SDL_SCANCODE_F14, APP_KEY_F15, SDL_SCANCODE_F15, APP_KEY_F16,
 		SDL_SCANCODE_F16, APP_KEY_F17, SDL_SCANCODE_F17, APP_KEY_F18, SDL_SCANCODE_F18, APP_KEY_F19, SDL_SCANCODE_F19, APP_KEY_F20, SDL_SCANCODE_F20,
-		APP_KEY_F21, SDL_SCANCODE_F21, APP_KEY_F22, SDL_SCANCODE_F22, APP_KEY_F23, SDL_SCANCODE_F23, APP_KEY_F24, SDL_SCANCODE_F24, APP_KEY_EXEC, 
-		SDL_SCANCODE_EXECUTE, APP_KEY_HELP, SDL_SCANCODE_HELP, APP_KEY_MENU, SDL_SCANCODE_MENU, APP_KEY_SELECT, SDL_SCANCODE_SELECT, APP_KEY_MEDIA_STOP, 
-		SDL_SCANCODE_STOP, APP_KEY_INVALID, SDL_SCANCODE_AGAIN, APP_KEY_INVALID, SDL_SCANCODE_UNDO, APP_KEY_INVALID, SDL_SCANCODE_CUT, APP_KEY_INVALID, 
-		SDL_SCANCODE_COPY, APP_KEY_INVALID, SDL_SCANCODE_PASTE, APP_KEY_INVALID, SDL_SCANCODE_FIND, APP_KEY_VOLUME_MUTE, SDL_SCANCODE_MUTE, 
-		APP_KEY_VOLUME_UP, SDL_SCANCODE_VOLUMEUP, APP_KEY_VOLUME_DOWN, SDL_SCANCODE_VOLUMEDOWN, APP_KEY_INVALID, 130, APP_KEY_INVALID, 131, 
-		APP_KEY_INVALID, 132, APP_KEY_SEPARATOR, SDL_SCANCODE_KP_COMMA, APP_KEY_INVALID, SDL_SCANCODE_KP_EQUALSAS400, APP_KEY_INVALID, 
-		SDL_SCANCODE_INTERNATIONAL1, APP_KEY_INVALID, SDL_SCANCODE_INTERNATIONAL2, APP_KEY_INVALID, SDL_SCANCODE_INTERNATIONAL3, APP_KEY_INVALID, 
-		SDL_SCANCODE_INTERNATIONAL4, APP_KEY_INVALID, SDL_SCANCODE_INTERNATIONAL5, APP_KEY_INVALID, SDL_SCANCODE_INTERNATIONAL6, APP_KEY_INVALID, 
-		SDL_SCANCODE_INTERNATIONAL7, APP_KEY_INVALID, SDL_SCANCODE_INTERNATIONAL8, APP_KEY_INVALID, SDL_SCANCODE_INTERNATIONAL9, APP_KEY_HANGUL, 
-		SDL_SCANCODE_LANG1, APP_KEY_HANJA, SDL_SCANCODE_LANG2,  APP_KEY_INVALID, SDL_SCANCODE_LANG3, APP_KEY_INVALID, SDL_SCANCODE_LANG4, APP_KEY_INVALID, 
-		SDL_SCANCODE_LANG5, APP_KEY_INVALID, SDL_SCANCODE_LANG6, APP_KEY_INVALID, SDL_SCANCODE_LANG7, APP_KEY_INVALID, SDL_SCANCODE_LANG8, APP_KEY_INVALID, 
-		SDL_SCANCODE_LANG9, APP_KEY_INVALID, SDL_SCANCODE_ALTERASE, APP_KEY_INVALID, SDL_SCANCODE_SYSREQ, APP_KEY_CANCEL, SDL_SCANCODE_CANCEL, APP_KEY_CLEAR, 
-		SDL_SCANCODE_CLEAR, APP_KEY_PRIOR, SDL_SCANCODE_PRIOR, APP_KEY_RETURN, SDL_SCANCODE_RETURN2, APP_KEY_OEM_COMMA, SDL_SCANCODE_SEPARATOR, 
+		APP_KEY_F21, SDL_SCANCODE_F21, APP_KEY_F22, SDL_SCANCODE_F22, APP_KEY_F23, SDL_SCANCODE_F23, APP_KEY_F24, SDL_SCANCODE_F24, APP_KEY_EXEC,
+		SDL_SCANCODE_EXECUTE, APP_KEY_HELP, SDL_SCANCODE_HELP, APP_KEY_MENU, SDL_SCANCODE_MENU, APP_KEY_SELECT, SDL_SCANCODE_SELECT, APP_KEY_MEDIA_STOP,
+		SDL_SCANCODE_STOP, APP_KEY_INVALID, SDL_SCANCODE_AGAIN, APP_KEY_INVALID, SDL_SCANCODE_UNDO, APP_KEY_INVALID, SDL_SCANCODE_CUT, APP_KEY_INVALID,
+		SDL_SCANCODE_COPY, APP_KEY_INVALID, SDL_SCANCODE_PASTE, APP_KEY_INVALID, SDL_SCANCODE_FIND, APP_KEY_VOLUME_MUTE, SDL_SCANCODE_MUTE,
+		APP_KEY_VOLUME_UP, SDL_SCANCODE_VOLUMEUP, APP_KEY_VOLUME_DOWN, SDL_SCANCODE_VOLUMEDOWN, APP_KEY_INVALID, 130, APP_KEY_INVALID, 131,
+		APP_KEY_INVALID, 132, APP_KEY_SEPARATOR, SDL_SCANCODE_KP_COMMA, APP_KEY_INVALID, SDL_SCANCODE_KP_EQUALSAS400, APP_KEY_INVALID,
+		SDL_SCANCODE_INTERNATIONAL1, APP_KEY_INVALID, SDL_SCANCODE_INTERNATIONAL2, APP_KEY_INVALID, SDL_SCANCODE_INTERNATIONAL3, APP_KEY_INVALID,
+		SDL_SCANCODE_INTERNATIONAL4, APP_KEY_INVALID, SDL_SCANCODE_INTERNATIONAL5, APP_KEY_INVALID, SDL_SCANCODE_INTERNATIONAL6, APP_KEY_INVALID,
+		SDL_SCANCODE_INTERNATIONAL7, APP_KEY_INVALID, SDL_SCANCODE_INTERNATIONAL8, APP_KEY_INVALID, SDL_SCANCODE_INTERNATIONAL9, APP_KEY_HANGUL,
+		SDL_SCANCODE_LANG1, APP_KEY_HANJA, SDL_SCANCODE_LANG2,  APP_KEY_INVALID, SDL_SCANCODE_LANG3, APP_KEY_INVALID, SDL_SCANCODE_LANG4, APP_KEY_INVALID,
+		SDL_SCANCODE_LANG5, APP_KEY_INVALID, SDL_SCANCODE_LANG6, APP_KEY_INVALID, SDL_SCANCODE_LANG7, APP_KEY_INVALID, SDL_SCANCODE_LANG8, APP_KEY_INVALID,
+		SDL_SCANCODE_LANG9, APP_KEY_INVALID, SDL_SCANCODE_ALTERASE, APP_KEY_INVALID, SDL_SCANCODE_SYSREQ, APP_KEY_CANCEL, SDL_SCANCODE_CANCEL, APP_KEY_CLEAR,
+		SDL_SCANCODE_CLEAR, APP_KEY_PRIOR, SDL_SCANCODE_PRIOR, APP_KEY_RETURN, SDL_SCANCODE_RETURN2, APP_KEY_OEM_COMMA, SDL_SCANCODE_SEPARATOR,
 		APP_KEY_INVALID, SDL_SCANCODE_OUT, APP_KEY_INVALID, SDL_SCANCODE_OPER, APP_KEY_INVALID, SDL_SCANCODE_CLEARAGAIN, APP_KEY_CRSEL, SDL_SCANCODE_CRSEL,
-		APP_KEY_EXSEL, SDL_SCANCODE_EXSEL, APP_KEY_INVALID, 165, APP_KEY_INVALID, 166, APP_KEY_INVALID, 167, APP_KEY_INVALID, 168, APP_KEY_INVALID, 169, 
-		APP_KEY_INVALID, 170, APP_KEY_INVALID, 171, APP_KEY_INVALID, 172, APP_KEY_INVALID, 173, APP_KEY_INVALID, 174, APP_KEY_INVALID, 175, APP_KEY_INVALID, 
-		SDL_SCANCODE_KP_00, APP_KEY_INVALID, SDL_SCANCODE_KP_000, APP_KEY_INVALID, SDL_SCANCODE_THOUSANDSSEPARATOR, APP_KEY_INVALID, 
-		SDL_SCANCODE_DECIMALSEPARATOR, APP_KEY_INVALID, SDL_SCANCODE_CURRENCYUNIT, APP_KEY_INVALID, SDL_SCANCODE_CURRENCYSUBUNIT, APP_KEY_INVALID, 
-		SDL_SCANCODE_KP_LEFTPAREN, APP_KEY_INVALID, SDL_SCANCODE_KP_RIGHTPAREN, APP_KEY_INVALID, SDL_SCANCODE_KP_LEFTBRACE, APP_KEY_INVALID, 
-		SDL_SCANCODE_KP_RIGHTBRACE, APP_KEY_INVALID, SDL_SCANCODE_KP_TAB, APP_KEY_INVALID, SDL_SCANCODE_KP_BACKSPACE, APP_KEY_INVALID, SDL_SCANCODE_KP_A, 
-		APP_KEY_INVALID, SDL_SCANCODE_KP_B, APP_KEY_INVALID, SDL_SCANCODE_KP_C, APP_KEY_INVALID, SDL_SCANCODE_KP_D, APP_KEY_INVALID, SDL_SCANCODE_KP_E, 
-		APP_KEY_INVALID, SDL_SCANCODE_KP_F, APP_KEY_INVALID, SDL_SCANCODE_KP_XOR, APP_KEY_INVALID, SDL_SCANCODE_KP_POWER, APP_KEY_INVALID, 
-		SDL_SCANCODE_KP_PERCENT, APP_KEY_INVALID, SDL_SCANCODE_KP_LESS, APP_KEY_INVALID, SDL_SCANCODE_KP_GREATER, APP_KEY_INVALID, SDL_SCANCODE_KP_AMPERSAND, 
-		APP_KEY_INVALID, SDL_SCANCODE_KP_DBLAMPERSAND, APP_KEY_INVALID, SDL_SCANCODE_KP_VERTICALBAR, APP_KEY_INVALID, SDL_SCANCODE_KP_DBLVERTICALBAR, 
-		APP_KEY_INVALID, SDL_SCANCODE_KP_COLON, APP_KEY_INVALID, SDL_SCANCODE_KP_HASH, APP_KEY_INVALID, SDL_SCANCODE_KP_SPACE, APP_KEY_INVALID, 
-		SDL_SCANCODE_KP_AT, APP_KEY_INVALID, SDL_SCANCODE_KP_EXCLAM, APP_KEY_INVALID, SDL_SCANCODE_KP_MEMSTORE, APP_KEY_INVALID, SDL_SCANCODE_KP_MEMRECALL, 
-		APP_KEY_INVALID, SDL_SCANCODE_KP_MEMCLEAR, APP_KEY_INVALID, SDL_SCANCODE_KP_MEMADD, APP_KEY_INVALID, SDL_SCANCODE_KP_MEMSUBTRACT, APP_KEY_INVALID, 
-		SDL_SCANCODE_KP_MEMMULTIPLY, APP_KEY_INVALID, SDL_SCANCODE_KP_MEMDIVIDE, APP_KEY_INVALID, SDL_SCANCODE_KP_PLUSMINUS, APP_KEY_INVALID, 
-		SDL_SCANCODE_KP_CLEAR, APP_KEY_INVALID, SDL_SCANCODE_KP_CLEARENTRY, APP_KEY_INVALID, SDL_SCANCODE_KP_BINARY, APP_KEY_INVALID, SDL_SCANCODE_KP_OCTAL, 
-		APP_KEY_INVALID, SDL_SCANCODE_KP_DECIMAL, APP_KEY_INVALID, SDL_SCANCODE_KP_HEXADECIMAL, APP_KEY_INVALID, 222, APP_KEY_INVALID, 223, APP_KEY_LCONTROL, 
-		SDL_SCANCODE_LCTRL, APP_KEY_LSHIFT, SDL_SCANCODE_LSHIFT, APP_KEY_LMENU, SDL_SCANCODE_LALT, APP_KEY_LWIN, SDL_SCANCODE_LGUI, APP_KEY_RCONTROL, 
-		SDL_SCANCODE_RCTRL, APP_KEY_RSHIFT, SDL_SCANCODE_RSHIFT, APP_KEY_RMENU, SDL_SCANCODE_RALT, APP_KEY_RWIN, SDL_SCANCODE_RGUI, APP_KEY_INVALID, 232, 
-		APP_KEY_INVALID, 233, APP_KEY_INVALID, 234, APP_KEY_INVALID, 235, APP_KEY_INVALID, 236, APP_KEY_INVALID, 237, APP_KEY_INVALID, 238, APP_KEY_INVALID, 
-		239, APP_KEY_INVALID, 240, APP_KEY_INVALID, 241, APP_KEY_INVALID, 242, APP_KEY_INVALID, 243, APP_KEY_INVALID, 244, APP_KEY_INVALID, 245, 
-		APP_KEY_INVALID, 246, APP_KEY_INVALID, 247, APP_KEY_INVALID, 248, APP_KEY_INVALID, 249, APP_KEY_INVALID, 250, APP_KEY_INVALID, 251, APP_KEY_INVALID, 
-		252, APP_KEY_INVALID, 253, APP_KEY_INVALID, 254, APP_KEY_INVALID, 255, APP_KEY_INVALID, 256, APP_KEY_MODECHANGE, SDL_SCANCODE_MODE, 
-		APP_KEY_MEDIA_NEXT_TRACK, SDL_SCANCODE_AUDIONEXT, APP_KEY_MEDIA_PREV_TRACK, SDL_SCANCODE_AUDIOPREV, APP_KEY_MEDIA_PLAY_PAUSE, SDL_SCANCODE_AUDIOSTOP, 
-		APP_KEY_PLAY, SDL_SCANCODE_AUDIOPLAY, APP_KEY_VOLUME_MUTE, SDL_SCANCODE_AUDIOMUTE, APP_KEY_LAUNCH_MEDIA_SELECT, SDL_SCANCODE_MEDIASELECT, 
-		APP_KEY_INVALID, SDL_SCANCODE_WWW, APP_KEY_LAUNCH_MAIL, SDL_SCANCODE_MAIL, APP_KEY_INVALID, SDL_SCANCODE_CALCULATOR, APP_KEY_INVALID, 
-		SDL_SCANCODE_COMPUTER, APP_KEY_BROWSER_SEARCH, SDL_SCANCODE_AC_SEARCH, APP_KEY_BROWSER_HOME, SDL_SCANCODE_AC_HOME, APP_KEY_BROWSER_BACK, 
-		SDL_SCANCODE_AC_BACK, APP_KEY_BROWSER_FORWARD, SDL_SCANCODE_AC_FORWARD, APP_KEY_BROWSER_STOP, SDL_SCANCODE_AC_STOP, APP_KEY_BROWSER_REFRESH, 
-		SDL_SCANCODE_AC_REFRESH, APP_KEY_BROWSER_FAVORITES, SDL_SCANCODE_AC_BOOKMARKS, APP_KEY_INVALID, SDL_SCANCODE_BRIGHTNESSDOWN, APP_KEY_INVALID, 
-		SDL_SCANCODE_BRIGHTNESSUP, APP_KEY_INVALID, SDL_SCANCODE_DISPLAYSWITCH, APP_KEY_INVALID, SDL_SCANCODE_KBDILLUMTOGGLE, APP_KEY_INVALID, 
-		SDL_SCANCODE_KBDILLUMDOWN, APP_KEY_INVALID, SDL_SCANCODE_KBDILLUMUP, APP_KEY_INVALID, SDL_SCANCODE_EJECT, APP_KEY_SLEEP, SDL_SCANCODE_SLEEP, 
-		APP_KEY_LAUNCH_APP1, SDL_SCANCODE_APP1, APP_KEY_LAUNCH_APP2, SDL_SCANCODE_APP2, APP_KEY_INVALID, SDL_SCANCODE_AUDIOREWIND, APP_KEY_INVALID, 
+		APP_KEY_EXSEL, SDL_SCANCODE_EXSEL, APP_KEY_INVALID, 165, APP_KEY_INVALID, 166, APP_KEY_INVALID, 167, APP_KEY_INVALID, 168, APP_KEY_INVALID, 169,
+		APP_KEY_INVALID, 170, APP_KEY_INVALID, 171, APP_KEY_INVALID, 172, APP_KEY_INVALID, 173, APP_KEY_INVALID, 174, APP_KEY_INVALID, 175, APP_KEY_INVALID,
+		SDL_SCANCODE_KP_00, APP_KEY_INVALID, SDL_SCANCODE_KP_000, APP_KEY_INVALID, SDL_SCANCODE_THOUSANDSSEPARATOR, APP_KEY_INVALID,
+		SDL_SCANCODE_DECIMALSEPARATOR, APP_KEY_INVALID, SDL_SCANCODE_CURRENCYUNIT, APP_KEY_INVALID, SDL_SCANCODE_CURRENCYSUBUNIT, APP_KEY_INVALID,
+		SDL_SCANCODE_KP_LEFTPAREN, APP_KEY_INVALID, SDL_SCANCODE_KP_RIGHTPAREN, APP_KEY_INVALID, SDL_SCANCODE_KP_LEFTBRACE, APP_KEY_INVALID,
+		SDL_SCANCODE_KP_RIGHTBRACE, APP_KEY_INVALID, SDL_SCANCODE_KP_TAB, APP_KEY_INVALID, SDL_SCANCODE_KP_BACKSPACE, APP_KEY_INVALID, SDL_SCANCODE_KP_A,
+		APP_KEY_INVALID, SDL_SCANCODE_KP_B, APP_KEY_INVALID, SDL_SCANCODE_KP_C, APP_KEY_INVALID, SDL_SCANCODE_KP_D, APP_KEY_INVALID, SDL_SCANCODE_KP_E,
+		APP_KEY_INVALID, SDL_SCANCODE_KP_F, APP_KEY_INVALID, SDL_SCANCODE_KP_XOR, APP_KEY_INVALID, SDL_SCANCODE_KP_POWER, APP_KEY_INVALID,
+		SDL_SCANCODE_KP_PERCENT, APP_KEY_INVALID, SDL_SCANCODE_KP_LESS, APP_KEY_INVALID, SDL_SCANCODE_KP_GREATER, APP_KEY_INVALID, SDL_SCANCODE_KP_AMPERSAND,
+		APP_KEY_INVALID, SDL_SCANCODE_KP_DBLAMPERSAND, APP_KEY_INVALID, SDL_SCANCODE_KP_VERTICALBAR, APP_KEY_INVALID, SDL_SCANCODE_KP_DBLVERTICALBAR,
+		APP_KEY_INVALID, SDL_SCANCODE_KP_COLON, APP_KEY_INVALID, SDL_SCANCODE_KP_HASH, APP_KEY_INVALID, SDL_SCANCODE_KP_SPACE, APP_KEY_INVALID,
+		SDL_SCANCODE_KP_AT, APP_KEY_INVALID, SDL_SCANCODE_KP_EXCLAM, APP_KEY_INVALID, SDL_SCANCODE_KP_MEMSTORE, APP_KEY_INVALID, SDL_SCANCODE_KP_MEMRECALL,
+		APP_KEY_INVALID, SDL_SCANCODE_KP_MEMCLEAR, APP_KEY_INVALID, SDL_SCANCODE_KP_MEMADD, APP_KEY_INVALID, SDL_SCANCODE_KP_MEMSUBTRACT, APP_KEY_INVALID,
+		SDL_SCANCODE_KP_MEMMULTIPLY, APP_KEY_INVALID, SDL_SCANCODE_KP_MEMDIVIDE, APP_KEY_INVALID, SDL_SCANCODE_KP_PLUSMINUS, APP_KEY_INVALID,
+		SDL_SCANCODE_KP_CLEAR, APP_KEY_INVALID, SDL_SCANCODE_KP_CLEARENTRY, APP_KEY_INVALID, SDL_SCANCODE_KP_BINARY, APP_KEY_INVALID, SDL_SCANCODE_KP_OCTAL,
+		APP_KEY_INVALID, SDL_SCANCODE_KP_DECIMAL, APP_KEY_INVALID, SDL_SCANCODE_KP_HEXADECIMAL, APP_KEY_INVALID, 222, APP_KEY_INVALID, 223, APP_KEY_LCONTROL,
+		SDL_SCANCODE_LCTRL, APP_KEY_LSHIFT, SDL_SCANCODE_LSHIFT, APP_KEY_LMENU, SDL_SCANCODE_LALT, APP_KEY_LWIN, SDL_SCANCODE_LGUI, APP_KEY_RCONTROL,
+		SDL_SCANCODE_RCTRL, APP_KEY_RSHIFT, SDL_SCANCODE_RSHIFT, APP_KEY_RMENU, SDL_SCANCODE_RALT, APP_KEY_RWIN, SDL_SCANCODE_RGUI, APP_KEY_INVALID, 232,
+		APP_KEY_INVALID, 233, APP_KEY_INVALID, 234, APP_KEY_INVALID, 235, APP_KEY_INVALID, 236, APP_KEY_INVALID, 237, APP_KEY_INVALID, 238, APP_KEY_INVALID,
+		239, APP_KEY_INVALID, 240, APP_KEY_INVALID, 241, APP_KEY_INVALID, 242, APP_KEY_INVALID, 243, APP_KEY_INVALID, 244, APP_KEY_INVALID, 245,
+		APP_KEY_INVALID, 246, APP_KEY_INVALID, 247, APP_KEY_INVALID, 248, APP_KEY_INVALID, 249, APP_KEY_INVALID, 250, APP_KEY_INVALID, 251, APP_KEY_INVALID,
+		252, APP_KEY_INVALID, 253, APP_KEY_INVALID, 254, APP_KEY_INVALID, 255, APP_KEY_INVALID, 256, APP_KEY_MODECHANGE, SDL_SCANCODE_MODE,
+		APP_KEY_MEDIA_NEXT_TRACK, SDL_SCANCODE_AUDIONEXT, APP_KEY_MEDIA_PREV_TRACK, SDL_SCANCODE_AUDIOPREV, APP_KEY_MEDIA_PLAY_PAUSE, SDL_SCANCODE_AUDIOSTOP,
+		APP_KEY_PLAY, SDL_SCANCODE_AUDIOPLAY, APP_KEY_VOLUME_MUTE, SDL_SCANCODE_AUDIOMUTE, APP_KEY_LAUNCH_MEDIA_SELECT, SDL_SCANCODE_MEDIASELECT,
+		APP_KEY_INVALID, SDL_SCANCODE_WWW, APP_KEY_LAUNCH_MAIL, SDL_SCANCODE_MAIL, APP_KEY_INVALID, SDL_SCANCODE_CALCULATOR, APP_KEY_INVALID,
+		SDL_SCANCODE_COMPUTER, APP_KEY_BROWSER_SEARCH, SDL_SCANCODE_AC_SEARCH, APP_KEY_BROWSER_HOME, SDL_SCANCODE_AC_HOME, APP_KEY_BROWSER_BACK,
+		SDL_SCANCODE_AC_BACK, APP_KEY_BROWSER_FORWARD, SDL_SCANCODE_AC_FORWARD, APP_KEY_BROWSER_STOP, SDL_SCANCODE_AC_STOP, APP_KEY_BROWSER_REFRESH,
+		SDL_SCANCODE_AC_REFRESH, APP_KEY_BROWSER_FAVORITES, SDL_SCANCODE_AC_BOOKMARKS, APP_KEY_INVALID, SDL_SCANCODE_BRIGHTNESSDOWN, APP_KEY_INVALID,
+		SDL_SCANCODE_BRIGHTNESSUP, APP_KEY_INVALID, SDL_SCANCODE_DISPLAYSWITCH, APP_KEY_INVALID, SDL_SCANCODE_KBDILLUMTOGGLE, APP_KEY_INVALID,
+		SDL_SCANCODE_KBDILLUMDOWN, APP_KEY_INVALID, SDL_SCANCODE_KBDILLUMUP, APP_KEY_INVALID, SDL_SCANCODE_EJECT, APP_KEY_SLEEP, SDL_SCANCODE_SLEEP,
+		APP_KEY_LAUNCH_APP1, SDL_SCANCODE_APP1, APP_KEY_LAUNCH_APP2, SDL_SCANCODE_APP2, APP_KEY_INVALID, SDL_SCANCODE_AUDIOREWIND, APP_KEY_INVALID,
 		SDL_SCANCODE_AUDIOFASTFORWARD, };
-		
+
     if( scancode < 0 || scancode >= sizeof( map ) / ( 2 * sizeof( *map ) ) ) return APP_KEY_INVALID;
     if( map[ scancode * 2 + 1 ] != scancode )
         {
@@ -3497,7 +3512,7 @@ static app_key_t app_internal_scancode_to_appkey( app_t* app, SDL_Scancode scanc
     return (app_key_t) map[ scancode * 2 ];
     }
 
-    
+
 static void app_internal_add_input_event( app_t* app, app_input_event_t* event )
     {
     if( app->has_focus )
@@ -3507,10 +3522,10 @@ static void app_internal_add_input_event( app_t* app, app_input_event_t* event )
         }
     }
 
-	
-app_state_t app_yield( app_t* app ) 
-    { 
-	if( !app->initialized ) 
+
+app_state_t app_yield( app_t* app )
+    {
+	if( !app->initialized )
 		{
 		app->initialized = 1;
         if( app->screenmode == APP_SCREENMODE_FULLSCREEN ) SDL_SetWindowFullscreen( app->window, SDL_WINDOW_FULLSCREEN_DESKTOP );
@@ -3520,18 +3535,18 @@ app_state_t app_yield( app_t* app )
 		SDL_GL_GetDrawableSize( app->window, &w, &h );
 		app_internal_opengl_resize( &app->gl, w, h );
 		}
-        
+
     SDL_Event e;
     while( SDL_PollEvent( &e ) )
         {
-        if( e.type == SDL_WINDOWEVENT ) 
+        if( e.type == SDL_WINDOWEVENT )
             {
 			if( e.window.event == SDL_WINDOWEVENT_SIZE_CHANGED )
-				{			
+				{
 				int w = app->gl.window_width;
 				int h = app->gl.window_height;
 				SDL_GL_GetDrawableSize( app->window, &w, &h );
-				if( w != app->gl.window_width || h != app->gl.window_height ) 
+				if( w != app->gl.window_width || h != app->gl.window_height )
 					{
 					app_internal_opengl_resize( &app->gl, w, h );
 					}
@@ -3552,92 +3567,108 @@ app_state_t app_yield( app_t* app )
         else if( e.type == SDL_KEYDOWN )
             {
             app_input_event_t input_event;
-            input_event.type = APP_INPUT_KEY_DOWN; 
-			input_event.data.key = app_internal_scancode_to_appkey( app, e.key.keysym.scancode ); 
-			app_internal_add_input_event( app, &input_event ); 
+            input_event.type = APP_INPUT_KEY_DOWN;
+			input_event.data.key = app_internal_scancode_to_appkey( app, e.key.keysym.scancode );
+			app_internal_add_input_event( app, &input_event );
             }
         else if( e.type == SDL_KEYUP )
             {
             app_input_event_t input_event;
-            input_event.type = APP_INPUT_KEY_UP; 
-			input_event.data.key = app_internal_scancode_to_appkey( app, e.key.keysym.scancode ); 
-			app_internal_add_input_event( app, &input_event ); 
+            input_event.type = APP_INPUT_KEY_UP;
+			input_event.data.key = app_internal_scancode_to_appkey( app, e.key.keysym.scancode );
+			app_internal_add_input_event( app, &input_event );
             }
         else if( e.type == SDL_MOUSEMOTION )
             {
             app_input_event_t input_event;
-            input_event.type = APP_INPUT_MOUSE_MOVE; 
-            input_event.data.mouse_pos.x = e.motion.x; 
-            input_event.data.mouse_pos.y = e.motion.y; 
+            input_event.type = APP_INPUT_MOUSE_MOVE;
+            input_event.data.mouse_pos.x = e.motion.x;
+            input_event.data.mouse_pos.y = e.motion.y;
             app_internal_add_input_event( app, &input_event );
             }
         else if( e.type == SDL_MOUSEBUTTONDOWN )
             {
             app_input_event_t input_event;
-            input_event.type = APP_INPUT_KEY_DOWN; 
+            input_event.type = APP_INPUT_KEY_DOWN;
             if( e.button.button == SDL_BUTTON_LEFT )
-                input_event.data.key = APP_KEY_LBUTTON; 
+                input_event.data.key = APP_KEY_LBUTTON;
             else if( e.button.button == SDL_BUTTON_RIGHT )
-                input_event.data.key = APP_KEY_RBUTTON; 
+                input_event.data.key = APP_KEY_RBUTTON;
             else if( e.button.button == SDL_BUTTON_MIDDLE )
-                input_event.data.key = APP_KEY_MBUTTON; 
+                input_event.data.key = APP_KEY_MBUTTON;
             else if( e.button.button == SDL_BUTTON_X1 )
-                input_event.data.key = APP_KEY_XBUTTON1; 
+                input_event.data.key = APP_KEY_XBUTTON1;
             else if( e.button.button == SDL_BUTTON_X2 )
-                input_event.data.key = APP_KEY_XBUTTON2; 
-			app_internal_add_input_event( app, &input_event ); 
+                input_event.data.key = APP_KEY_XBUTTON2;
+			app_internal_add_input_event( app, &input_event );
             }
-        else if( e.type == SDL_MOUSEBUTTONUP )     
+        else if( e.type == SDL_MOUSEBUTTONUP )
             {
             app_input_event_t input_event;
-            input_event.type = APP_INPUT_KEY_UP; 
+            input_event.type = APP_INPUT_KEY_UP;
             if( e.button.button == SDL_BUTTON_LEFT )
-                input_event.data.key = APP_KEY_LBUTTON; 
+                input_event.data.key = APP_KEY_LBUTTON;
             else if( e.button.button == SDL_BUTTON_RIGHT )
-                input_event.data.key = APP_KEY_RBUTTON; 
+                input_event.data.key = APP_KEY_RBUTTON;
             else if( e.button.button == SDL_BUTTON_MIDDLE )
-                input_event.data.key = APP_KEY_MBUTTON; 
+                input_event.data.key = APP_KEY_MBUTTON;
             else if( e.button.button == SDL_BUTTON_X1 )
-                input_event.data.key = APP_KEY_XBUTTON1; 
+                input_event.data.key = APP_KEY_XBUTTON1;
             else if( e.button.button == SDL_BUTTON_X2 )
-                input_event.data.key = APP_KEY_XBUTTON2; 
-			app_internal_add_input_event( app, &input_event ); 
+                input_event.data.key = APP_KEY_XBUTTON2;
+			app_internal_add_input_event( app, &input_event );
             }
-        else if( e.type == SDL_MOUSEWHEEL )     
+        else if( e.type == SDL_MOUSEWHEEL )
             {
             float const microsoft_mouse_wheel_constant = 120.0f;
             float wheel_delta = ( (float) e.wheel.y ) / microsoft_mouse_wheel_constant;
             if( app->input_count > 0 && app->input_events[ app->input_count - 1 ].type == APP_INPUT_SCROLL_WHEEL )
                 {
                 app_input_event_t* event = &app->input_events[ app->input_count - 1 ];
-                event->data.wheel_delta += wheel_delta;                 
+                event->data.wheel_delta += wheel_delta;
                 }
             else
                 {
                 app_input_event_t input_event;
                 input_event.type = APP_INPUT_SCROLL_WHEEL;
                 input_event.data.wheel_delta = wheel_delta;
-                app_internal_add_input_event( app, &input_event ); 
+                app_internal_add_input_event( app, &input_event );
                 }
             }
-            
+        else if ( e.type == SDL_DROPFILE )
+            {
+                if (app->last_dropped_file)
+                    {
+                         APP_FREE(memctx, (void*)app->last_dropped_file);
+                         app->last_dropped_file = NULL;
+                    }
+                if (e.drop.file)
+                {
+                    size_t file_length = strlen(e.drop.file);
+                    if (file_length > 0)
+                        {
+                            app->last_dropped_file = (char const*)APP_MALLOC(memctx, file_length + 1);
+                            memcpy((void*)app->last_dropped_file, e.drop.file, file_length + 1);
+                            SDL_free(e.drop.file);
+                        }
+                }
+            }
         }
-        
-    return app->exit_requested ? APP_STATE_EXIT_REQUESTED : APP_STATE_NORMAL; 
+    return app->exit_requested ? APP_STATE_EXIT_REQUESTED : APP_STATE_NORMAL;
     }
-	
-    
-void app_cancel_exit( app_t* app ) 
-	{ 
+
+
+void app_cancel_exit( app_t* app )
+	{
 	app->exit_requested = 0;
 	}
 
 
-void app_title( app_t* app, char const* title ) 
-	{ 
+void app_title( app_t* app, char const* title )
+	{
 	SDL_SetWindowTitle( app->window, title );
 	}
-	
+
 
 char const* app_cmdline( app_t* app ) { /* NOT IMPLEMENTED */ return NULL; }
 char const* app_filename( app_t* app ) { /* NOT IMPLEMENTED */ return NULL; }
@@ -3645,67 +3676,67 @@ char const* app_userdata( app_t* app ) { /* NOT IMPLEMENTED */ return NULL; }
 char const* app_appdata( app_t* app ) { /* NOT IMPLEMENTED */ return NULL; }
 
 
-APP_U64 app_time_count( app_t* app ) 
-	{ 
-	return SDL_GetPerformanceCounter(); 
+APP_U64 app_time_count( app_t* app )
+	{
+	return SDL_GetPerformanceCounter();
 	}
 
-    
-APP_U64 app_time_freq( app_t* app ) 
-	{ 
-	return SDL_GetPerformanceFrequency(); 
+
+APP_U64 app_time_freq( app_t* app )
+	{
+	return SDL_GetPerformanceFrequency();
 	}
 
-    
+
 void app_log( app_t* app, app_log_level_t level, char const* message ) { /* NOT IMPLEMENTED */ }
 
 
-void app_fatal_error( app_t* app, char const* message ) 
-	{ 
-	APP_FATAL_ERROR( app->fatalctx, message ); 
+void app_fatal_error( app_t* app, char const* message )
+	{
+	APP_FATAL_ERROR( app->fatalctx, message );
 	}
 
-	
-void app_pointer( app_t* app, int width, int height, APP_U32* pixels_abgr, int hotspot_x, int hotspot_y ) 
-    { 
-    SDL_Surface* surf = SDL_CreateRGBSurfaceFrom( (void*)pixels_abgr, width, height, 32, 4 * width, 0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000 );   
+
+void app_pointer( app_t* app, int width, int height, APP_U32* pixels_abgr, int hotspot_x, int hotspot_y )
+    {
+    SDL_Surface* surf = SDL_CreateRGBSurfaceFrom( (void*)pixels_abgr, width, height, 32, 4 * width, 0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000 );
     if( app->cursor ) SDL_FreeCursor( app->cursor );
     app->cursor = SDL_CreateColorCursor( surf, hotspot_x, hotspot_y );
     SDL_SetCursor( app->cursor );
     SDL_FreeSurface( surf );
     }
 
-   
-void app_pointer_default( app_t* app, int* width, int* height, APP_U32* pixels_abgr, int* hotspot_x, int* hotspot_y ) { /* NOT IMPLEMENTED */ } 
+
+void app_pointer_default( app_t* app, int* width, int* height, APP_U32* pixels_abgr, int* hotspot_x, int* hotspot_y ) { /* NOT IMPLEMENTED */ }
 
 
-void app_pointer_pos( app_t* app, int x, int y ) 
-    { 
+void app_pointer_pos( app_t* app, int x, int y )
+    {
     SDL_WarpMouseInWindow( app->window, x, y );
     }
 
 
-int app_pointer_x( app_t* app ) 
-    { 
+int app_pointer_x( app_t* app )
+    {
     int x = 0;
     SDL_GetMouseState( &x, NULL );
-    return x; 
+    return x;
     }
 
-    
-int app_pointer_y( app_t* app ) 
-    { 
+
+int app_pointer_y( app_t* app )
+    {
     int y = 0;
     SDL_GetMouseState( NULL, &y );
-    return y; 
+    return y;
     }
 
 
 void app_pointer_limit( app_t* app, int x, int y, int width, int height ) { /* NOT IMPLEMENTED */ }
 void app_pointer_limit_off( app_t* app ) { /* NOT IMPLEMENTED */ }
 
-void app_interpolation( app_t* app, app_interpolation_t interpolation ) 
-	{ 
+void app_interpolation( app_t* app, app_interpolation_t interpolation )
+	{
     if( interpolation == app->interpolation ) return;
     app->interpolation = interpolation;
 
@@ -3714,82 +3745,82 @@ void app_interpolation( app_t* app, app_interpolation_t interpolation )
 	SDL_GetMouseState( &mouse_x, &mouse_y );
 
     app_input_event_t input_event;
-    input_event.type = APP_INPUT_MOUSE_MOVE; 
-    input_event.data.mouse_pos.x = mouse_x; 
-    input_event.data.mouse_pos.y = mouse_y; 
+    input_event.type = APP_INPUT_MOUSE_MOVE;
+    input_event.data.mouse_pos.x = mouse_x;
+    input_event.data.mouse_pos.y = mouse_y;
     app_internal_add_input_event( app, &input_event );
 
     app_internal_opengl_interpolation( &app->gl, interpolation );
 	}
 
 
-void app_screenmode( app_t* app, app_screenmode_t screenmode ) 
-	{ 
-	if( screenmode != app->screenmode ) 
+void app_screenmode( app_t* app, app_screenmode_t screenmode )
+	{
+	if( screenmode != app->screenmode )
 		{
 		app->screenmode = screenmode;
-		SDL_SetWindowFullscreen( app->window, 
+		SDL_SetWindowFullscreen( app->window,
 			screenmode == APP_SCREENMODE_FULLSCREEN ? SDL_WINDOW_FULLSCREEN_DESKTOP  : 0 );
 		}
 	}
 
 
-void app_window_size( app_t* app, int width, int height ) 
-    { 
+void app_window_size( app_t* app, int width, int height )
+    {
     SDL_SetWindowSize( app->window, width, height );
     }
 
 
-int app_window_width( app_t* app ) 
-    { 
+int app_window_width( app_t* app )
+    {
     int width = 0;
-    SDL_GetWindowSize( app->window, &width, NULL );    
-    return width; 
+    SDL_GetWindowSize( app->window, &width, NULL );
+    return width;
     }
-    
-    
+
+
 int app_window_height( app_t* app )
-    { 
+    {
     int height = 0;
-    SDL_GetWindowSize( app->window, NULL, &height );    
-    return height; 
+    SDL_GetWindowSize( app->window, NULL, &height );
+    return height;
     }
 
 
-void app_window_pos( app_t* app, int x, int y ) 
-    { 
+void app_window_pos( app_t* app, int x, int y )
+    {
     SDL_SetWindowPosition( app->window, x, y );
     }
 
 
-int app_window_x( app_t* app ) 
-    { 
+int app_window_x( app_t* app )
+    {
     int x = 0;
     SDL_GetWindowPosition( app->window, &x, NULL );
-    return x; 
+    return x;
     }
-    
-    
-int app_window_y( app_t* app ) 
-    { 
+
+
+int app_window_y( app_t* app )
+    {
     int y = 0;
     SDL_GetWindowPosition( app->window, NULL, &y );
-    return y; 
+    return y;
     }
-    
 
-app_displays_t app_displays( app_t* app ) 
-	{ 
-    app_displays_t displays; 
+
+app_displays_t app_displays( app_t* app )
+	{
+    app_displays_t displays;
     displays.count = app->display_count;
     displays.displays = app->displays;
-    return displays; 
+    return displays;
 	}
 
 
 void app_present( app_t* app, APP_U32 const* pixels_xbgr, int width, int height, APP_U32 mod_xbgr, APP_U32 border_xbgr )
     {
-    if( pixels_xbgr ) app_internal_opengl_present( &app->gl, pixels_xbgr, width, height, mod_xbgr, border_xbgr );  
+    if( pixels_xbgr ) app_internal_opengl_present( &app->gl, pixels_xbgr, width, height, mod_xbgr, border_xbgr );
     SDL_GL_SwapWindow( app->window );
     }
 
@@ -3797,7 +3828,7 @@ void app_present( app_t* app, APP_U32 const* pixels_xbgr, int width, int height,
 static void app_internal_sdl_sound_callback( void* userdata, Uint8* stream, int len )
 	{
 	app_t* app = (app_t*) userdata;
-	if( app->sound_callback ) 
+	if( app->sound_callback )
         {
         app->sound_callback( (APP_S16*) stream, len / ( 2 * sizeof( APP_S16 ) ), app->sound_user_data );
         if( app->volume < 256 )
@@ -3806,25 +3837,25 @@ static void app_internal_sdl_sound_callback( void* userdata, Uint8* stream, int 
             for( int i = 0; i < len / sizeof( APP_S16 ); ++i )
                 {
                 int s = (int)(*samples);
-                s = ( s * app->volume ) >> 8;                
+                s = ( s * app->volume ) >> 8;
                 *samples++ = (APP_S16) s;
                 }
             }
         }
 	}
-	
 
-void app_sound( app_t* app, int sample_pairs_count, void (*sound_callback)( APP_S16* sample_pairs, int sample_pairs_count, void* user_data ), void* user_data ) 
-	{ 
+
+void app_sound( app_t* app, int sample_pairs_count, void (*sound_callback)( APP_S16* sample_pairs, int sample_pairs_count, void* user_data ), void* user_data )
+	{
 	if( app->sound_device )
 		{
-		SDL_PauseAudioDevice( app->sound_device, 1 );			
+		SDL_PauseAudioDevice( app->sound_device, 1 );
 		SDL_CloseAudioDevice( app->sound_device );
     	app->sound_callback = NULL;
-		app->sound_user_data = NULL;		
+		app->sound_user_data = NULL;
         app->sound_device = 0;
 		}
-	if( sample_pairs_count > 0 && sound_callback ) 
+	if( sample_pairs_count > 0 && sound_callback )
 		{
 		SDL_AudioSpec spec;
 		spec.freq = 44100;
@@ -3836,28 +3867,28 @@ void app_sound( app_t* app, int sample_pairs_count, void (*sound_callback)( APP_
 		spec.size = 0;
 		spec.callback = app_internal_sdl_sound_callback;
 		spec.userdata = app;
-		
+
 		app->sound_device = SDL_OpenAudioDevice( NULL, 0, &spec, NULL, 0 );
 		if( !app->sound_device ) return;
-		
+
 		app->sound_callback = sound_callback;
 		app->sound_user_data = user_data;
-		SDL_PauseAudioDevice( app->sound_device, 0 );					
+		SDL_PauseAudioDevice( app->sound_device, 0 );
 		}
 	}
-	
-	
-void app_sound_volume( app_t* app, float volume ) 
+
+
+void app_sound_volume( app_t* app, float volume )
     {
-    int v = (int) ( volume * 256.0f ); 
+    int v = (int) ( volume * 256.0f );
     app->volume = v < 0 ? 0 : v > 256 ? 256 : v;
     }
 
 
-app_input_t app_input( app_t* app ) 
+app_input_t app_input( app_t* app )
 	{
-    app_input_t input; 
-    input.events = app->input_events; 
+    app_input_t input;
+    input.events = app->input_events;
     input.count = app->input_count;
     app->input_count = 0;
     return input;
@@ -3886,7 +3917,7 @@ void app_coordinates_window_to_bitmap( app_t* app, int width, int height, int* x
             *x = (int)( *x / pixel_scale );
             *y = (int)( *y / pixel_scale );
             }
-        else 
+        else
             {
             *x = 0;
             *y = 0;
@@ -3928,7 +3959,7 @@ void app_coordinates_bitmap_to_window( app_t* app, int width, int height, int* x
             *x += (int)( hborder );
             *y += (int)( vborder );
             }
-        else 
+        else
             {
             *x = 0;
             *y = 0;
@@ -3948,11 +3979,20 @@ void app_coordinates_bitmap_to_window( app_t* app, int width, int height, int* x
         *y += (int)( vborder );
         }
     }
+char const* app_last_dropped_file( app_t* app ) {
+    if (app->last_dropped_file == NULL) return NULL;
 
+    size_t file_length = strlen(app->last_dropped_file);
+    const char* file_copy = APP_MALLOC(app->memctx, file_length + 1);
+    memcpy((void*)file_copy, app->last_dropped_file, file_length + 1);
+    APP_FREE(app->memctx, (void*)app->last_dropped_file);
+    app->last_dropped_file = NULL;
+    return file_copy;
+}
 
 #else
     #error Undefined platform. Define APP_WINDOWS, APP_SDL or APP_NULL.
-#endif 
+#endif
 
 
 #endif /* APP_IMPLEMENTATION */
@@ -3961,7 +4001,7 @@ void app_coordinates_bitmap_to_window( app_t* app, int width, int height, int* x
 revision history:
     0.4     pointer x/y, callback for sound, modifier keys fix, gl binding fix, cursor fix
     0.3     added API documentation
-    0.2     first publicly released version 
+    0.2     first publicly released version
 */
 
 /*
@@ -3975,22 +4015,22 @@ ALTERNATIVE A - MIT License
 
 Copyright (c) 2016 Mattias Gustavsson
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of 
-this software and associated documentation files (the "Software"), to deal in 
-the Software without restriction, including without limitation the rights to 
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies 
-of the Software, and to permit persons to whom the Software is furnished to do 
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
 so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all 
+The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ------------------------------------------------------------------------------
@@ -3999,22 +4039,22 @@ ALTERNATIVE B - Public Domain (www.unlicense.org)
 
 This is free and unencumbered software released into the public domain.
 
-Anyone is free to copy, modify, publish, use, compile, sell, or distribute this 
-software, either in source code form or as a compiled binary, for any purpose, 
+Anyone is free to copy, modify, publish, use, compile, sell, or distribute this
+software, either in source code form or as a compiled binary, for any purpose,
 commercial or non-commercial, and by any means.
 
-In jurisdictions that recognize copyright laws, the author or authors of this 
-software dedicate any and all copyright interest in the software to the public 
-domain. We make this dedication for the benefit of the public at large and to 
-the detriment of our heirs and successors. We intend this dedication to be an 
-overt act of relinquishment in perpetuity of all present and future rights to 
+In jurisdictions that recognize copyright laws, the author or authors of this
+software dedicate any and all copyright interest in the software to the public
+domain. We make this dedication for the benefit of the public at large and to
+the detriment of our heirs and successors. We intend this dedication to be an
+overt act of relinquishment in perpetuity of all present and future rights to
 this software under copyright law.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN 
-ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ------------------------------------------------------------------------------
