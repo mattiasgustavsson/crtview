@@ -1,6 +1,12 @@
 name: build
 
-on: [push, pull_request]
+on:
+  push: 
+    branches: [ main ]
+  pull_request: 
+    branches: [ main ]
+  workflow_dispatch:
+    branches: [ main ] 
 
 jobs:
   build-windows-msvc:
@@ -11,7 +17,12 @@ jobs:
       - uses: seanmiddleditch/gha-setup-vsdevenv@master
       - name: build crtview
         run: |
-          cl source\main.c
+          cl /Fe"crtview" source\main.c
+      - name: Upload executable
+        uses: actions/upload-artifact@v2
+        with:
+          name: crtview.exe
+          path: crtview.exe
   build-macos:
     runs-on: macOS-latest
     steps:
@@ -20,7 +31,14 @@ jobs:
         run: brew install sdl2 glew
       - name: build crtview
         run: |
-          clang source/main.c -lSDL2 -lGLEW -framework OpenGL
+          clang -o crtview-mac source/main.c /usr/local/lib/libSDL2.a /usr/local/lib/libGLEW.a -framework OpenGL -Wl,-framework,CoreAudio -Wl,-framework,AudioToolbox -Wl,-weak_framework,CoreHaptics -Wl,-weak_framework,GameController -Wl,-framework,ForceFeedback -lobjc -Wl,-framework,CoreVideo -Wl,-framework,Cocoa -Wl,-framework,Carbon -Wl,-framework,IOKit -Wl,-weak_framework,QuartzCore -Wl,-weak_framework,Metal -liconv -lm
+          chmod a+x crtview-mac
+          tar -cvf crtview-mac.tar crtview-mac
+      - name: Upload executable
+        uses: actions/upload-artifact@v2
+        with:
+          name: crtview-mac.tar
+          path: crtview-mac.tar
   build-linux-gcc:
     runs-on: ubuntu-18.04
     steps:
@@ -32,4 +50,11 @@ jobs:
           sudo apt-get install -qq libglew-dev
       - name: build crtview
         run: |
-          gcc source/main.c -lSDL2 -lGLEW -lGL -lm -lpthread
+          gcc -o crtview-linux source/main.c -lSDL2 -lGLEW -lGL -lm -lpthread
+          chmod a+x crtview-linux
+          tar -cvf crtview-linux.tar crtview-linux
+      - name: Upload executable
+        uses: actions/upload-artifact@v2
+        with:
+          name: crtview-linux.tar
+          path: crtview-linux.tar
