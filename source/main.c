@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdlib.h>
+#include <string.h>
 #include "app.h"
 #include "frametimer.h"
 #include "crtemu.h"
@@ -7,7 +8,111 @@
 #include "crtemu_pc.h"
 #include "crt_frame_pc.h"
 #include "stb_image.h"
+#include "gif_load.h"
 
+typedef struct gif_t {
+    uint32_t* pict;
+    uint32_t* prev;
+    unsigned long last;    
+    int width;
+    int height;
+    uint32_t** frames;
+    int* times;
+    int capacity;
+    int count;
+} gif_t;
+
+
+void gif_frame( void *data, struct GIF_WHDR* whdr ) {
+    uint32_t x, y, yoff, iter, ifin, dsrc;
+    gif_t* gif = (gif_t*)data;
+
+    #define BGRA(i) ((whdr->bptr[i] == whdr->tran)? 0 : \
+          ((uint32_t)(whdr->cpal[whdr->bptr[i]].B << ((GIF_BIGE)? 8 : 16)) \
+         | (uint32_t)(whdr->cpal[whdr->bptr[i]].G << ((GIF_BIGE)? 16 : 8)) \
+         | (uint32_t)(whdr->cpal[whdr->bptr[i]].R << ((GIF_BIGE)? 24 : 0)) \
+         | ((GIF_BIGE)? 0xFF : 0xFF000000)))
+    if (!whdr->ifrm) {
+        uint32_t ddst = (uint32_t)(whdr->xdim * whdr->ydim);
+        gif->pict = (uint32_t*)calloc(sizeof(uint32_t), ddst);
+        gif->prev = (uint32_t*)calloc(sizeof(uint32_t), ddst);
+        gif->width = whdr->xdim;
+        gif->height = whdr->ydim;
+        gif->capacity = 16;
+        gif->count = 0;
+        gif->frames = (uint32_t**) malloc( sizeof( uint32_t* ) * gif->capacity );
+        gif->times = (int*) malloc( sizeof( int ) * gif->capacity );
+    }
+
+    /** [TODO:] the frame is assumed to be inside global bounds,
+                however it might exceed them in some GIFs; fix me. **/
+    uint32_t* pict = (uint32_t*)gif->pict;
+    uint32_t ddst = (uint32_t)(whdr->xdim * whdr->fryo + whdr->frxo);
+    ifin = (!(iter = (whdr->intr)? 0 : 4))? 4 : 5; /** interlacing support **/
+    for (dsrc = (uint32_t)-1; iter < ifin; iter++)
+        for (yoff = 16U >> ((iter > 1)? iter : 1), y = (8 >> iter) & 7;
+             y < (uint32_t)whdr->fryd; y += yoff)
+            for (x = 0; x < (uint32_t)whdr->frxd; x++)
+                if (whdr->tran != (long)whdr->bptr[++dsrc])
+                    pict[(uint32_t)whdr->xdim * y + x + ddst] = BGRA(dsrc);
+                
+    if( gif->count >= gif->capacity ) {
+        gif->capacity *= 2;
+        gif->frames = (uint32_t**) realloc( gif->frames, sizeof( uint32_t* ) * gif->capacity );
+        gif->times = (int*) realloc( gif->times, sizeof( int ) * gif->capacity );
+    }
+    uint32_t* frame = (uint32_t*) malloc( sizeof( uint32_t ) * whdr->xdim * whdr->ydim );
+    memcpy( frame, gif->pict, sizeof( uint32_t ) * whdr->xdim * whdr->ydim );
+    gif->times[ gif->count ] = whdr->time;
+    gif->frames[ gif->count++ ] = frame;
+
+    if ((whdr->mode == GIF_PREV) && !gif->last) {
+        whdr->frxd = whdr->xdim;
+        whdr->fryd = whdr->ydim;
+        whdr->mode = GIF_BKGD;
+        ddst = 0;
+    }
+    else {
+        gif->last = (whdr->mode == GIF_PREV)?
+                      gif->last : (unsigned long)(whdr->ifrm + 1);
+        pict = (uint32_t*)((whdr->mode == GIF_PREV)? gif->pict : gif->prev);
+        uint32_t* prev = (uint32_t*)((whdr->mode == GIF_PREV)? gif->prev : gif->pict);
+        for (x = (uint32_t)(whdr->xdim * whdr->ydim); --x;
+             pict[x - 1] = prev[x - 1]);
+    }
+    if (whdr->mode == GIF_BKGD) /** cutting a hole for the next frame **/
+        for (whdr->bptr[0] = (uint8_t)((whdr->tran >= 0)?
+                                        whdr->tran : whdr->bkgd), y = 0,
+             pict = (uint32_t*)gif->pict; y < (uint32_t)whdr->fryd; y++)
+            for (x = 0; x < (uint32_t)whdr->frxd; x++)
+                pict[(uint32_t)whdr->xdim * y + x + ddst] = BGRA(0);
+    #undef BGRA
+}
+
+
+gif_t* load_gif( char const* filename ) {
+    FILE* fp = fopen( filename, "rb" );
+    if( !fp ) {
+        return NULL;
+    }
+    fseek( fp, 0, SEEK_END );
+    size_t size = ftell( fp );
+    fseek( fp, 0, SEEK_SET );
+    void* data = malloc( size );
+    fread( data, 1, size, fp );
+    fclose( fp );
+    gif_t* gif = (gif_t*)malloc( sizeof( gif_t ) );
+    long result = GIF_Load( data, (long)size, gif_frame, NULL, (void*)gif, 0L );
+    if( result == 0 ) {
+        free( data );
+        free( gif );
+        return NULL;
+    }
+    
+    free( gif->pict );
+    free( gif->prev );
+    return gif;
+}
 
 int app_proc( app_t* app, void* user_data ) {
     char const* filename = (char const*) user_data;
@@ -31,19 +136,32 @@ int app_proc( app_t* app, void* user_data ) {
     int w = 1;
     int h = 1;
     int c;
-
-    APP_U32* xbgr = filename ? (APP_U32*) stbi_load( filename, &w, &h, &c, 4 ) : NULL;
-    if( !xbgr ) {
-        xbgr = &blank;
+    
+    
+    gif_t* gif = filename ? load_gif( filename ) : NULL;
+    if( gif ) {
+        w = gif->width;
+        h = gif->height;
     }
+
+    APP_U32* xbgr = filename && !gif ? (APP_U32*) stbi_load( filename, &w, &h, &c, 4 ) : NULL;
 
     APP_U64 start = app_time_count( app );
 
+    int curr_frame = 0;
+    int delay = gif ? gif->times[ 0 ] : 0;
     int mode = 0;
 
     int exit = 0;
     while( !exit && app_yield( app ) != APP_STATE_EXIT_REQUESTED ) {
-        frametimer_update( frametimer );
+        frametimer_update( frametimer );        
+        if( gif) {
+            --delay;
+            if( delay <= 0 ) {
+                curr_frame = ( curr_frame + 1 ) % gif->count;
+                delay = gif->times[ curr_frame ];
+            }
+        }
 
         int newmode = mode;
         app_input_t input = app_input( app );
@@ -86,13 +204,13 @@ int app_proc( app_t* app, void* user_data ) {
         APP_U64 t = ( app_time_count( app ) - start ) / div;
 
         if( mode == 0 ) {
-            crtemu_pc_present( crtemu_pc, t, xbgr, w, h, 0xffffff, 0x181818 );
+            crtemu_pc_present( crtemu_pc, t, xbgr ? xbgr : gif ? gif->frames[ curr_frame ] : &blank, w, h, 0xffffff, 0x181818 );
             app_present( app, NULL, w, h, 0xffffff, 0x000000 );
         } else if( mode == 1 ) {
-            crtemu_present( crtemu, t, xbgr, w, h, 0xffffff, 0x181818 );
+            crtemu_present( crtemu, t, xbgr ? xbgr : gif ? gif->frames[ curr_frame ] : &blank, w, h, 0xffffff, 0x181818 );
             app_present( app, NULL, w, h, 0xffffff, 0x000000 );
         } else {
-            app_present( app, xbgr, w, h, 0xffffff, 0x181818 );
+            app_present( app, xbgr ? xbgr : gif ? gif->frames[ curr_frame ] : &blank, w, h, 0xffffff, 0x181818 );
         }
     }
 
