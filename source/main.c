@@ -164,6 +164,7 @@ int app_proc( app_t* app, void* user_data ) {
             }
             xbgr = !gif ? (APP_U32*) stbi_load( dropped_file, &w, &h, &c, 4 ) : NULL;
             delay = gif ? gif->times[ 0 ] : 0;
+            curr_frame = 0;
         }
 
         if( gif) {

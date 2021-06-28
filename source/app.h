@@ -1187,6 +1187,7 @@ void app_coordinates_bitmap_to_window( app_t* app, int width, int height, int* x
     #pragma comment( lib, "user32.lib" )
     #pragma comment( lib, "gdi32.lib" )
     #pragma comment( lib, "winmm.lib" )
+    #pragma comment( lib, "shell32.lib" )	
 #endif
 
 #include <time.h>
@@ -1412,6 +1413,7 @@ struct app_t
     BOOL initialized;
     BOOL closed;
 
+    char last_dropped_file[ 260 ];
     char exe_path[ 260 ];
     char userdata_path[ 260 ];
     char appdata_path[ 260 ];
@@ -1919,6 +1921,11 @@ static LRESULT CALLBACK app_internal_wndproc( HWND hwnd, UINT message, WPARAM wp
             return 0;
             break;
 
+        case WM_DROPFILES:
+            if( !DragQueryFileA( (HDROP)wparam, 0, app->last_dropped_file, (UINT)sizeof( app->last_dropped_file ) ) ) {
+                *app->last_dropped_file = '\0';
+            }
+            break;
         }
 
     if( app->user_wndproc )
@@ -2066,6 +2073,8 @@ int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, vo
     app->hdc = GetDC( app->hwnd );
     app->has_focus = TRUE;
     app->is_minimized = FALSE;
+    
+    DragAcceptFiles( app->hwnd, TRUE );
 
     // Store app pointer with window
     #pragma warning( push )
@@ -2370,6 +2379,8 @@ app_state_t app_yield( app_t* app )
         app->initialized = TRUE;
         }
 
+    *app->last_dropped_file = '\0';
+        
     MSG msg;
     while( PeekMessage( &msg, app->hwnd, 0,0, PM_REMOVE ) )
         {
@@ -3242,7 +3253,11 @@ void app_coordinates_bitmap_to_window( app_t* app, int width, int height, int* x
     }
 
 char const* app_last_dropped_file( app_t* app ) {
-    return NULL;
+    if( *app->last_dropped_file ) {
+        return app->last_dropped_file;
+    } else {
+        return NULL;
+    }
 }
 
 
