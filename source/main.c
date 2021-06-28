@@ -13,7 +13,7 @@
 typedef struct gif_t {
     uint32_t* pict;
     uint32_t* prev;
-    unsigned long last;    
+    unsigned long last;
     int width;
     int height;
     uint32_t** frames;
@@ -55,7 +55,7 @@ void gif_frame( void *data, struct GIF_WHDR* whdr ) {
             for (x = 0; x < (uint32_t)whdr->frxd; x++)
                 if (whdr->tran != (long)whdr->bptr[++dsrc])
                     pict[(uint32_t)whdr->xdim * y + x + ddst] = BGRA(dsrc);
-                
+
     if( gif->count >= gif->capacity ) {
         gif->capacity *= 2;
         gif->frames = (uint32_t**) realloc( gif->frames, sizeof( uint32_t* ) * gif->capacity );
@@ -108,7 +108,7 @@ gif_t* load_gif( char const* filename ) {
         free( gif );
         return NULL;
     }
-    
+
     free( gif->pict );
     free( gif->prev );
     return gif;
@@ -136,25 +136,36 @@ int app_proc( app_t* app, void* user_data ) {
     int w = 1;
     int h = 1;
     int c;
-    
-    
+
+
     gif_t* gif = filename ? load_gif( filename ) : NULL;
     if( gif ) {
         w = gif->width;
         h = gif->height;
     }
-
     APP_U32* xbgr = filename && !gif ? (APP_U32*) stbi_load( filename, &w, &h, &c, 4 ) : NULL;
+    int delay = gif ? gif->times[ 0 ] : 0;
 
     APP_U64 start = app_time_count( app );
 
     int curr_frame = 0;
-    int delay = gif ? gif->times[ 0 ] : 0;
     int mode = 0;
 
     int exit = 0;
     while( !exit && app_yield( app ) != APP_STATE_EXIT_REQUESTED ) {
-        frametimer_update( frametimer );        
+        frametimer_update( frametimer );
+
+        char const* dropped_file = app_last_dropped_file(app);
+        if (dropped_file) {
+            gif = load_gif( dropped_file );
+            if( gif ) {
+                w = gif->width;
+                h = gif->height;
+            }
+            xbgr = !gif ? (APP_U32*) stbi_load( dropped_file, &w, &h, &c, 4 ) : NULL;
+            delay = gif ? gif->times[ 0 ] : 0;
+        }
+
         if( gif) {
             --delay;
             if( delay <= 0 ) {
@@ -234,15 +245,15 @@ int app_proc( app_t* app, void* user_data ) {
 -------------------------
     ENTRY POINT (MAIN)
 -------------------------
-*/     
+*/
 
 #if defined( _WIN32 ) && !defined( __TINYC__ )
     #ifndef NDEBUG
-        #pragma warning( push ) 
+        #pragma warning( push )
         #pragma warning( disable: 4619 ) // pragma warning : there is no warning number 'number'
         #pragma warning( disable: 4668 ) // 'symbol' is not defined as a preprocessor macro, replacing with '0' for 'directives'
         #include <crtdbg.h>
-        #pragma warning( pop ) 
+        #pragma warning( pop )
     #endif
 #endif /* _WIN32 && !__TINYC__ */
 
@@ -261,14 +272,14 @@ int main( int argc, char** argv ) {
 
     char* filename = argc > 1 ? argv[ 1 ] : NULL;
     return app_run( app_proc, filename, NULL, NULL, NULL );
-} 
+}
 
 #ifdef _WIN32
     // pass-through so the program will build with either /SUBSYSTEM:WINDOWS or /SUBSYSTEM:CONSOLE
     struct HINSTANCE__;
-    int __stdcall WinMain( struct HINSTANCE__* a, struct HINSTANCE__* b, char* c, int d ) { 
-        (void) a, (void) b, (void) c, (void) d; 
-        return main( __argc, __argv ); 
+    int __stdcall WinMain( struct HINSTANCE__* a, struct HINSTANCE__* b, char* c, int d ) {
+        (void) a, (void) b, (void) c, (void) d;
+        return main( __argc, __argv );
     }
 #endif /* _WIN32 */
 
@@ -283,7 +294,7 @@ int main( int argc, char** argv ) {
 #ifdef _WIN32
     #define APP_WINDOWS
 #else
-    #define APP_SDL    
+    #define APP_SDL
 #endif
 #define APP_LOG( ctx, level, message )
 #include "app.h"
