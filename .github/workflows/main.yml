@@ -17,7 +17,7 @@ jobs:
       - uses: seanmiddleditch/gha-setup-vsdevenv@master
       - name: build crtview
         run: |
-          cl /Fe"crtview" source\main.c
+          cl  source\main.c /O2 /Fe:crtview.exe /MT /link /SUBSYSTEM:WINDOWS
       - name: Upload executable
         uses: actions/upload-artifact@v2
         with:
