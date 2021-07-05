@@ -765,6 +765,8 @@ by the user of the function.
     #define APP_GL_UNSIGNED_BYTE 0x1401
     #define APP_GL_COLOR_BUFFER_BIT 0x00004000
     #define APP_GL_TRIANGLE_FAN 0x0006
+    #define APP_GL_VIEWPORT 0x0ba2
+    #define APP_GL_FRONT 0x0404
 
 #elif defined( APP_SDL )
 
@@ -800,6 +802,8 @@ by the user of the function.
     #define APP_GL_UNSIGNED_BYTE GL_UNSIGNED_BYTE
     #define APP_GL_COLOR_BUFFER_BIT GL_COLOR_BUFFER_BIT
     #define APP_GL_TRIANGLE_FAN GL_TRIANGLE_FAN
+    #define APP_GL_VIEWPORT GL_VIEWPORT
+    #define APP_GL_FRONT GL_FRONT
 
 #else
 
@@ -857,6 +861,9 @@ struct app_internal_opengl_t
     void (APP_GLCALLTYPE* Viewport) (APP_GLint x, APP_GLint y, APP_GLsizei width, APP_GLsizei height);
     void (APP_GLCALLTYPE* DeleteShader) (APP_GLuint shader);
     void (APP_GLCALLTYPE* DeleteProgram) (APP_GLuint program);
+    void (APP_GLCALLTYPE* GetIntegerv) (APP_GLenum pname, APP_GLint* data);
+    void (APP_GLCALLTYPE* ReadBuffer) (APP_GLenum mode);
+    void (APP_GLCALLTYPE* ReadPixels) (APP_GLint x, APP_GLint y, APP_GLsizei width, APP_GLsizei height, APP_GLenum format, APP_GLenum type, void *pixels);    
     #ifdef APP_REPORT_SHADER_ERRORS
         void (APP_GLCALLTYPE* GetShaderInfoLog) (APP_GLuint shader, APP_GLsizei bufSize, APP_GLsizei *length, APP_GLchar *infoLog);
     #endif
@@ -2159,6 +2166,11 @@ int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, vo
     app->gl.Viewport = ( void (APP_GLCALLTYPE*) (APP_GLint, APP_GLint, APP_GLsizei, APP_GLsizei) ) (uintptr_t) GetProcAddress( app->gl_dll, "glViewport" );
     app->gl.DeleteShader = ( void (APP_GLCALLTYPE*) (APP_GLuint) ) (uintptr_t) GetProcAddress( app->gl_dll, "glDeleteShader" );
     app->gl.DeleteProgram = ( void (APP_GLCALLTYPE*) (APP_GLuint) ) (uintptr_t) GetProcAddress( app->gl_dll, "glDeleteProgram" );
+    app->gl.GetIntegerv = ( void (APP_GLCALLTYPE*) (APP_GLenum, APP_GLint*) ) (uintptr_t) GetProcAddress( app->gl_dll, "glGetIntegerv" );
+    app->gl.ReadBuffer = ( void (APP_GLCALLTYPE*) (APP_GLenum) ) (uintptr_t) GetProcAddress( app->gl_dll, "glReadBuffer" );
+    app->gl.ReadPixels = ( void (APP_GLCALLTYPE*) (APP_GLint, APP_GLint, APP_GLsizei, APP_GLsizei, APP_GLenum, APP_GLenum, void*) ) (uintptr_t) GetProcAddress( app->gl_dll, "glReadPixels" );
+    void (APP_GLCALLTYPE* ReadPixels) ();    
+
     #ifdef APP_REPORT_SHADER_ERRORS
         app->gl.GetShaderInfoLog = ( void (APP_GLCALLTYPE*) (APP_GLuint, APP_GLsizei, APP_GLsizei*, APP_GLchar*) ) (uintptr_t) GetProcAddress( app->gl_dll, "glGetShaderInfoLog" );
     #endif
@@ -2196,6 +2208,9 @@ int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, vo
     if( !app->gl.Viewport ) app->gl.Viewport = ( void (APP_GLCALLTYPE*) (APP_GLint, APP_GLint, APP_GLsizei, APP_GLsizei) ) (uintptr_t) app->wglGetProcAddress( "glViewport" );
     if( !app->gl.DeleteShader ) app->gl.DeleteShader = ( void (APP_GLCALLTYPE*) (APP_GLuint) ) (uintptr_t) app->wglGetProcAddress( "glDeleteShader" );
     if( !app->gl.DeleteProgram ) app->gl.DeleteProgram = ( void (APP_GLCALLTYPE*) (APP_GLuint) ) (uintptr_t) app->wglGetProcAddress( "glDeleteProgram" );
+    if( !app->gl.GetIntegerv ) app->gl.GetIntegerv = ( void (APP_GLCALLTYPE*) (APP_GLenum, APP_GLint*) ) (uintptr_t) app->wglGetProcAddress( "glGetIntegerv" );
+    if( !app->gl.ReadBuffer ) app->gl.ReadBuffer = ( void (APP_GLCALLTYPE*) (APP_GLenum) ) (uintptr_t) app->wglGetProcAddress( "glReadBuffer" );
+    if( !app->gl.ReadPixels ) app->gl.ReadPixels = ( void (APP_GLCALLTYPE*) (APP_GLint, APP_GLint, APP_GLsizei, APP_GLsizei, APP_GLenum, APP_GLenum, void*) ) (uintptr_t) app->wglGetProcAddress( "glReadPixels" );
     #ifdef APP_REPORT_SHADER_ERRORS
         if( !app->gl.GetShaderInfoLog ) app->gl.GetShaderInfoLog = ( void (APP_GLCALLTYPE*) (APP_GLuint, APP_GLsizei, APP_GLsizei*, APP_GLchar*) ) (uintptr_t) app->wglGetProcAddress( "glGetShaderInfoLog" );
     #endif
@@ -3405,6 +3420,9 @@ int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, vo
     app->gl.Viewport = glViewport;
     app->gl.DeleteShader = glDeleteShader;
     app->gl.DeleteProgram = glDeleteProgram;
+    app->gl.GetIntegerv = glGetIntegerv;
+    app->gl.ReadBuffer = glReadBuffer;
+    app->gl.ReadPixels = glReadPixels;
     #ifdef APP_REPORT_SHADER_ERRORS
         app->gl.GetShaderInfoLog = glGetShaderInfoLog;
     #endif

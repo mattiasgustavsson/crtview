@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include "app.h"
 #include "frametimer.h"
 #include "crtemu.h"
@@ -9,6 +10,13 @@
 #include "crt_frame_pc.h"
 #include "stb_image.h"
 #include "gif_load.h"
+
+typedef struct jo_gif_t jo_gif_t;
+
+jo_gif_t* export_start( app_t* app );
+
+void export_frame( app_t* app, jo_gif_t* gif, int delay );
+void export_end( jo_gif_t* gif );
 
 typedef struct gif_t {
     uint32_t* pict;
@@ -116,7 +124,7 @@ gif_t* load_gif( char const* filename ) {
 
 int app_proc( app_t* app, void* user_data ) {
     char const* filename = (char const*) user_data;
-    app_title( app, "CRTView - UP/DOWN F11 ESC" );
+    app_title( app, "CRTView - UP/DOWN F11 ESC - F8 Export GIF" );
     app_interpolation( app, APP_INTERPOLATION_NONE );
     app_screenmode_t screenmode = APP_SCREENMODE_WINDOW;
     app_screenmode( app, screenmode );
@@ -144,10 +152,13 @@ int app_proc( app_t* app, void* user_data ) {
         h = gif->height;
     }
     APP_U32* xbgr = filename && !gif ? (APP_U32*) stbi_load( filename, &w, &h, &c, 4 ) : NULL;
-    int delay = gif ? gif->times[ 0 ] : 0;
+    int delay = gif ? gif->times[ 0 ] * 10 : 0;
 
     APP_U64 start = app_time_count( app );
 
+    bool prepare_export = false;
+    jo_gif_t* exp_gif = NULL;
+    
     int curr_frame = 0;
     int mode = 0;
 
@@ -167,11 +178,23 @@ int app_proc( app_t* app, void* user_data ) {
             curr_frame = 0;
         }
 
-        if( gif) {
-            --delay;
+        if( gif ) {
+            delay -= 16;
             if( delay <= 0 ) {
-                curr_frame = ( curr_frame + 1 ) % gif->count;
-                delay = gif->times[ curr_frame ];
+                if( exp_gif && !prepare_export ) {
+                   export_frame( app, exp_gif, gif->times[ curr_frame ] );
+                }
+                curr_frame = curr_frame + 1;
+                if( curr_frame >= gif->count ) {
+                    if( exp_gif && !prepare_export ) {
+                        export_end( exp_gif );
+                        exp_gif = NULL;
+                        app_title( app, "CRTView - UP/DOWN F11 ESC - F8 Export GIF" );
+                    }
+                    curr_frame = 0;
+                    prepare_export = false;
+                }
+                delay = gif->times[ curr_frame ] * 10;
             }
         }
 
@@ -181,15 +204,21 @@ int app_proc( app_t* app, void* user_data ) {
             if( input.events->type == APP_INPUT_KEY_DOWN ) {
                 if( input.events->data.key == APP_KEY_ESCAPE ) {
                     exit = 1;
-                }
-                else if( input.events->data.key == APP_KEY_F11 ) {
+                } else if( input.events->data.key == APP_KEY_F11 ) {
                     screenmode = screenmode == APP_SCREENMODE_WINDOW ? APP_SCREENMODE_FULLSCREEN : APP_SCREENMODE_WINDOW;
                     app_screenmode( app, screenmode );
                 } else if( input.events->data.key == APP_KEY_UP ) {
                     newmode = ( 3 + mode - 1 ) % 3;
-                }
-                else if( input.events->data.key == APP_KEY_DOWN ) {
+                } else if( input.events->data.key == APP_KEY_DOWN ) {
                     newmode = ( mode + 1 ) % 3;
+                } else if( input.events->data.key == APP_KEY_F8 ) {
+                    if( gif && !exp_gif ) {
+                        exp_gif = export_start( app );
+                        curr_frame = 0;
+                        delay = gif->times[ curr_frame ] * 10;
+                        prepare_export = true;
+                        app_title( app, "CRTView - EXPORTING GIF" );
+                    }
                 }
             }
         }
@@ -214,6 +243,7 @@ int app_proc( app_t* app, void* user_data ) {
 
         APP_U64 div = app_time_freq( app ) / 1000000ULL;
         APP_U64 t = ( app_time_count( app ) - start ) / div;
+        if( exp_gif ) t = 0;
 
         if( mode == 0 ) {
             crtemu_pc_present( crtemu_pc, t, xbgr ? xbgr : gif ? gif->frames[ curr_frame ] : &blank, w, h, 0xffffff, 0x181818 );
@@ -319,3 +349,37 @@ int main( int argc, char** argv ) {
 #pragma warning( disable: 4296 )
 #include "stb_image.h"
 #pragma warning( pop )
+
+
+#include "jo_gif.h"
+
+
+jo_gif_t* export_start( app_t* app ) {
+    APP_GLint dims[4] = {0};
+    app->gl.GetIntegerv(APP_GL_VIEWPORT, dims);
+    int w = dims[2];
+    int h = dims[3];
+
+    jo_gif_t* jo_gif = malloc( sizeof( jo_gif_t ) );
+    *jo_gif = jo_gif_start("crtview.gif", w, h, 0, 256); 
+    return jo_gif;
+}
+
+
+void export_frame( app_t* app, jo_gif_t* gif, int delay ) {
+    uint8_t* pixels = malloc( 4 * gif->width * gif->height * 2 );  
+    
+    app->gl.ReadBuffer( APP_GL_FRONT );
+    app->gl.ReadPixels( 0, 0, gif->width, gif->height, APP_GL_RGBA, APP_GL_UNSIGNED_BYTE, pixels + 4 * gif->width * gif->height );
+    for( int y = 0; y < gif->height; ++y ) {
+        memcpy( pixels + 4 * gif->width * y, pixels + 4 * gif->width * ( gif->height * 2 - 1 - y ), 4 * gif->width );
+    }
+    jo_gif_frame( gif, pixels, delay, true ); 
+    free( pixels );
+}
+
+
+void export_end( jo_gif_t* gif ) {
+    jo_gif_end(gif);
+    free( gif );
+}
