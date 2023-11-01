@@ -40,7 +40,7 @@ jobs:
           name: crtview-mac.tar
           path: crtview-mac.tar
   build-linux-gcc:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - name: install dependencies
