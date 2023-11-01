@@ -1,4 +1,5 @@
-![build](https://github.com/mattiasgustavsson/crtview/workflows/build/badge.svg)
+![build](https://github.com/mattiasgustavsson/crtview/actions/workflows/main.yml/badge.svg)
+
 # crtview
 View any image with my CRT filter applied
 Use Up/Down cursor keys to toggle display mode
