@@ -10,6 +10,8 @@ Pass the filename of your image as command-line parameter (or just drag-drop it 
 
 Pre-built binaries can be found here: https://mattiasgustavsson.itch.io/crtview
 
+For MacOS, the crtview.app can be ran directly.
+
 Build instructions
 ------------------
 

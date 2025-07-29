@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Get the path to the app bundle's Resources directory
+DIR="$(dirname "$0")/../Resources"
+
+# Show file picker using AppleScript
+FILE=$(osascript <<EOF
+    set chosenFile to choose file with prompt "Select a file"
+    POSIX path of chosenFile
+EOF
+)
+
+# Call your Unix binary with the file as argument
+"$DIR/crtview-mac" "$FILE"
